@@ -233,3 +233,26 @@
 .hotspot-ping {
   animation: hotspot-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
+
+/* ─────────────────────────────────────────────
+   CART DRAWER — Elegant thin scrollbar
+   ───────────────────────────────────────────── */
+.cart-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #c8c9b2 transparent;
+}
+.cart-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.cart-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 99px;
+}
+.cart-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #c8c9b2;
+  border-radius: 99px;
+  transition: background-color 0.2s;
+}
+.cart-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #86895d;
+}

@@ -9,6 +9,7 @@ const navLinks = [
   { to: "/tienda", label: "Maceteros" },
   { to: "/tienda", label: "Jardinería" },
   { to: "/tienda", label: "Lookbook" },
+  { to: "https://www.bascharant.com/", label: "Servicios" },
 ];
 
 interface MobileMenuProps {
@@ -64,26 +65,41 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
 
             {/* Nav links */}
             <nav className="flex flex-col px-6 pt-8 gap-0">
-              {navLinks.map((n, i) => (
-                <motion.div
-                  key={n.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    duration: 0.45,
-                    ease: easeOutQuint,
-                    delay: 0.08 + i * 0.07,
-                  }}
-                >
-                  <Link
-                    to={n.to}
-                    onClick={onClose}
-                    className="block font-display text-3xl py-3 border-b border-border/50 hover:text-forest transition-colors"
+              {navLinks.map((n, i) => {
+                const isExternal = n.to.startsWith("http");
+                return (
+                  <motion.div
+                    key={n.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.45,
+                      ease: easeOutQuint,
+                      delay: 0.08 + i * 0.07,
+                    }}
                   >
-                    {n.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    {isExternal ? (
+                      <a
+                        href={n.to}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={onClose}
+                        className="block font-display text-3xl py-3 border-b border-border/50 hover:text-forest transition-colors"
+                      >
+                        {n.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={n.to}
+                        onClick={onClose}
+                        className="block font-display text-3xl py-3 border-b border-border/50 hover:text-forest transition-colors"
+                      >
+                        {n.label}
+                      </Link>
+                    )}
+                  </motion.div>
+                );
+              })}
             </nav>
 
             {/* Footer inside drawer */}

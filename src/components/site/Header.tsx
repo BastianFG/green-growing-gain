@@ -5,6 +5,7 @@ import { Search, ShoppingBag, Heart, Menu } from "lucide-react";
 import { getCart } from "@/lib/cart";
 import { AnnouncementBar } from "./AnnouncementBar";
 import { MobileMenu } from "./MobileMenu";
+import { CartDrawer } from "./CartDrawer";
 import { easeInOutExpo } from "@/lib/motion";
 
 const nav = [
@@ -13,12 +14,14 @@ const nav = [
   { to: "/tienda", label: "Maceteros" },
   { to: "/tienda", label: "Jardinería" },
   { to: "/tienda", label: "Lookbook" },
+  { to: "https://www.bascharant.com/", label: "Servicios" },
 ];
 
 export function Header() {
   const [count, setCount] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const { scrollY } = useScroll();
 
   // Cart sync
@@ -34,11 +37,11 @@ export function Header() {
     setScrolled(latest > 60);
   });
 
-  // Lock body scroll when mobile menu open
+  // Lock body scroll when mobile menu or cart drawer open
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    document.body.style.overflow = (mobileOpen || cartOpen) ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
+  }, [mobileOpen, cartOpen]);
 
   return (
     <>
@@ -86,17 +89,35 @@ export function Header() {
             className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2"
             aria-label="Principal"
           >
-            {nav.map((n) => (
-              <Link
-                key={n.label}
-                to={n.to}
-                className="relative text-[12px] tracking-[0.12em] uppercase font-medium text-foreground/75 hover:text-foreground transition-colors group"
-              >
-                {n.label}
-                {/* Animated underline */}
-                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-ink group-hover:w-full transition-all duration-300 ease-out" />
-              </Link>
-            ))}
+            {nav.map((n) => {
+              const isExternal = n.to.startsWith("http");
+              if (isExternal) {
+                return (
+                  <a
+                    key={n.label}
+                    href={n.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative text-[12px] tracking-[0.12em] uppercase font-medium text-foreground/75 hover:text-foreground transition-colors group"
+                  >
+                    {n.label}
+                    {/* Animated underline */}
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-ink group-hover:w-full transition-all duration-300 ease-out" />
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={n.label}
+                  to={n.to}
+                  className="relative text-[12px] tracking-[0.12em] uppercase font-medium text-foreground/75 hover:text-foreground transition-colors group"
+                >
+                  {n.label}
+                  {/* Animated underline */}
+                  <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-ink group-hover:w-full transition-all duration-300 ease-out" />
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Action icons */}
@@ -119,34 +140,35 @@ export function Header() {
             >
               <Heart className="size-[18px]" strokeWidth={1.5} />
             </motion.button>
-            <motion.div
+            <motion.button
+              aria-label="Abrir carrito"
+              onClick={() => setCartOpen(true)}
+              className="p-2 relative"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.92 }}
               transition={{ duration: 0.2 }}
             >
-              <Link
-                to="/carrito"
-                aria-label="Carrito"
-                className="p-2 relative block"
-              >
-                <ShoppingBag className="size-[18px]" strokeWidth={1.5} />
-                {count > 0 && (
-                  <motion.span
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="absolute -top-0.5 -right-0.5 text-[10px] bg-forest text-white rounded-full size-4 flex items-center justify-center font-bold"
-                  >
-                    {count}
-                  </motion.span>
-                )}
-              </Link>
-            </motion.div>
+              <ShoppingBag className="size-[18px]" strokeWidth={1.5} />
+              {count > 0 && (
+                <motion.span
+                  key={count}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="absolute -top-0.5 -right-0.5 text-[10px] bg-forest text-white rounded-full size-4 flex items-center justify-center font-bold"
+                >
+                  {count}
+                </motion.span>
+              )}
+            </motion.button>
           </div>
         </div>
       </motion.header>
 
-      {/* Mobile drawer */}
+      {/* Mobile nav drawer */}
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
+
+      {/* Cart drawer */}
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
     </>
   );
 }

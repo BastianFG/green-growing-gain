@@ -12,6 +12,7 @@ import {
   Sun, Droplets, Thermometer, PawPrint, TrendingUp, Ruler, X,
 } from "lucide-react";
 import { staggerContainer } from "@/lib/motion";
+import { toast } from "sonner";
 export const Route = createFileRoute("/producto/$slug")({
   loader: async ({ params }) => {
     const product = await getShopifyProductByHandle(params.slug);
@@ -98,7 +99,26 @@ function PDP() {
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 
-  const handleAdd = () => {
+  const handleAddToCartOnly = () => {
+    addToCart({
+      slug: product.slug,
+      name: product.name,
+      image: product.image,
+      price: product.price,
+      qty,
+      size: SIZES[size].label,
+      variantId: product.variantId,
+    });
+    toast.success(`${product.name} agregado`, {
+      description: `${SIZES[size].label} · ${qty} unidad(es)`,
+      action: {
+        label: "Ver carrito",
+        onClick: () => router.navigate({ to: "/carrito" }),
+      },
+    });
+  };
+
+  const handleBuyNow = () => {
     addToCart({
       slug: product.slug,
       name: product.name,
@@ -269,26 +289,37 @@ function PDP() {
             </div>
 
             {/* Qty + CTA */}
-            <div className="mt-6 flex gap-3">
-              <div className="flex items-center border border-neutral-200 rounded-full overflow-hidden bg-neutral-50 px-1 shrink-0">
-                <button onClick={() => setQty(Math.max(1, qty - 1))} aria-label="Disminuir" className="px-3 py-3 hover:bg-neutral-200 rounded-full transition-colors">
-                  <Minus className="size-3.5 text-[#272831]" strokeWidth={2} />
+            <div className="mt-6 flex flex-col gap-3">
+              <div className="flex gap-3">
+                <div className="flex items-center border border-neutral-200 rounded-full overflow-hidden bg-neutral-50 px-1 shrink-0">
+                  <button onClick={() => setQty(Math.max(1, qty - 1))} aria-label="Disminuir" className="px-3 py-3 hover:bg-neutral-200 rounded-full transition-colors">
+                    <Minus className="size-3.5 text-[#272831]" strokeWidth={2} />
+                  </button>
+                  <span className="px-2 min-w-[2.5ch] text-center font-bold text-sm text-[#272831]">{qty}</span>
+                  <button onClick={() => setQty(qty + 1)} aria-label="Aumentar" className="px-3 py-3 hover:bg-neutral-200 rounded-full transition-colors">
+                    <Plus className="size-3.5 text-[#272831]" strokeWidth={2} />
+                  </button>
+                </div>
+                <button
+                  onClick={handleAddToCartOnly}
+                  disabled={product.inStock === false}
+                  className="flex-1 bg-[#86895d] hover:bg-[#777a53] disabled:bg-neutral-400 text-white text-[12px] font-semibold tracking-[0.2em] uppercase rounded-full shadow-md transition-all py-4 hover:shadow-lg disabled:cursor-not-allowed"
+                >
+                  {product.inStock === false ? "Agotado" : "Agregar al carrito"}
                 </button>
-                <span className="px-2 min-w-[2.5ch] text-center font-bold text-sm text-[#272831]">{qty}</span>
-                <button onClick={() => setQty(qty + 1)} aria-label="Aumentar" className="px-3 py-3 hover:bg-neutral-200 rounded-full transition-colors">
-                  <Plus className="size-3.5 text-[#272831]" strokeWidth={2} />
+                <button aria-label="Favoritos" className="border border-neutral-200 size-14 rounded-full flex items-center justify-center hover:border-neutral-400 hover:text-[#86895d] transition-colors shrink-0">
+                  <Heart className="size-5" strokeWidth={1.5} />
                 </button>
               </div>
-              <button
-                onClick={handleAdd}
-                disabled={product.inStock === false}
-                className="flex-1 bg-[#86895d] hover:bg-[#777a53] disabled:bg-neutral-400 text-white text-[12px] font-semibold tracking-[0.2em] uppercase rounded-full shadow-md transition-all py-4 hover:shadow-lg disabled:cursor-not-allowed"
-              >
-                {product.inStock === false ? "Agotado" : "Agregar al carrito"}
-              </button>
-              <button aria-label="Favoritos" className="border border-neutral-200 size-14 rounded-full flex items-center justify-center hover:border-neutral-400 hover:text-[#86895d] transition-colors shrink-0">
-                <Heart className="size-5" strokeWidth={1.5} />
-              </button>
+
+              {product.inStock !== false && (
+                <button
+                  onClick={handleBuyNow}
+                  className="w-full bg-[#272831] hover:bg-[#1a1b22] text-white text-[12px] font-semibold tracking-[0.2em] uppercase rounded-full shadow-md transition-all py-4 hover:shadow-lg"
+                >
+                  Comprar Ahora
+                </button>
+              )}
             </div>
 
             {/* Trust */}
@@ -353,9 +384,29 @@ function PDP() {
 
         {/* Sticky mobile CTA */}
         <div className="lg:hidden sticky bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-border p-4 z-30">
-          <button onClick={handleAdd} className="w-full bg-[#86895d] text-white py-4 rounded-full text-[12px] font-semibold tracking-[0.2em] uppercase shadow-lg">
-            Agregar · {formatCLP(product.price)}
-          </button>
+          {product.inStock === false ? (
+            <button
+              disabled
+              className="w-full bg-neutral-400 text-white py-4 rounded-full text-[12px] font-semibold tracking-[0.2em] uppercase cursor-not-allowed"
+            >
+              Agotado
+            </button>
+          ) : (
+            <div className="flex gap-3">
+              <button
+                onClick={handleAddToCartOnly}
+                className="flex-1 border border-[#86895d] text-[#86895d] py-4 rounded-full text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-neutral-50"
+              >
+                Agregar
+              </button>
+              <button
+                onClick={handleBuyNow}
+                className="flex-1 bg-[#86895d] text-white py-4 rounded-full text-[11px] font-semibold tracking-[0.15em] uppercase shadow-md hover:bg-[#777a53]"
+              >
+                Comprar Ahora
+              </button>
+            </div>
+          )}
         </div>
       </main>
 

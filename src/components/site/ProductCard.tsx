@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart, Plus } from "lucide-react";
@@ -7,6 +7,7 @@ import { formatCLP } from "@/lib/products";
 import { addToCart } from "@/lib/cart";
 import { easeOutQuint } from "@/lib/motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   product: Product;
@@ -25,6 +26,7 @@ function getOptimizedImageUrl(url: string, width = 600): string {
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const isMobile = useIsMobile();
+  const router = useRouter();
   return (
     <motion.article
       variants={{
@@ -99,7 +101,6 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             <Heart className="size-3.5 text-[#272831]" strokeWidth={1.5} />
           </motion.button>
 
-          {/* Quick-add button: circular + icon, visible on mobile, slides up on desktop hover */}
           {product.inStock !== false && (
             <motion.button
               onClick={(e) => {
@@ -111,6 +112,13 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                   image: product.image,
                   price: product.price,
                   qty: 1,
+                });
+                toast.success(`${product.name} agregado`, {
+                  description: "1 unidad",
+                  action: {
+                    label: "Ver carrito",
+                    onClick: () => router.navigate({ to: "/carrito" }),
+                  },
                 });
               }}
               className="absolute bottom-3 right-3 z-10 size-8 md:size-10 rounded-full bg-[#86895d] text-white flex items-center justify-center shadow-md cursor-pointer"
