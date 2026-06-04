@@ -6,9 +6,10 @@ import { Footer } from "@/components/site/Footer";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products, formatCLP, getShopifyProductByHandle } from "@/lib/products";
 import { addToCart } from "@/lib/cart";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight, Truck, RotateCcw, ShieldCheck, Heart, Plus, Minus,
-  Sun, Droplets, Thermometer, PawPrint, TrendingUp, Ruler,
+  Sun, Droplets, Thermometer, PawPrint, TrendingUp, Ruler, X,
 } from "lucide-react";
 
 export const Route = createFileRoute("/producto/$slug")({
@@ -80,6 +81,7 @@ function PDP() {
     : [product.image, product.image, product.image, product.image, product.image];
 
   const [activeImage, setActiveImage] = useState(productImages[0]);
+  const [zoomImage, setZoomImage] = useState<string | null>(null);
 
   useEffect(() => {
     setActiveImage(productImages[0]);
@@ -149,14 +151,17 @@ function PDP() {
               </div>
 
               {/* Main Image */}
-              <div className="flex-1 aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
+              <div 
+                onClick={() => setZoomImage(activeImage)}
+                className="flex-1 aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm cursor-zoom-in"
+              >
                 <img
                   src={activeImage}
                   alt={product.name}
                   width={1200} height={1500}
                   fetchPriority="high"
                   decoding="async"
-                  className="size-full object-cover rounded-[20px] transition-all duration-300"
+                  className="size-full object-cover rounded-[20px] transition-all duration-300 hover:scale-[1.02]"
                 />
               </div>
             </div>
@@ -167,7 +172,10 @@ function PDP() {
                 <CarouselContent>
                   {productImages.map((img, i) => (
                     <CarouselItem key={i}>
-                      <div className="aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
+                      <div 
+                        onClick={() => setZoomImage(img)}
+                        className="aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm cursor-zoom-in"
+                      >
                         <img
                           src={img}
                           alt={`${product.name} - Imagen ${i + 1}`}
@@ -344,6 +352,42 @@ function PDP() {
           </button>
         </div>
       </main>
+
+      {/* Lightbox / Zoom Overlay */}
+      <AnimatePresence>
+        {zoomImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setZoomImage(null)}
+            className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 cursor-zoom-out"
+          >
+            <button
+              onClick={() => setZoomImage(null)}
+              className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
+              aria-label="Cerrar vista ampliada"
+            >
+              <X className="size-8" strokeWidth={1.5} />
+            </button>
+            <motion.div
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 350, damping: 25 }}
+              className="relative max-w-5xl max-h-[90vh] overflow-hidden rounded-[15px] shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={zoomImage}
+                alt="Vista ampliada del producto"
+                className="max-w-full max-h-[90vh] object-contain rounded-[15px] select-none"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Footer />
     </div>
   );
