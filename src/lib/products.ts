@@ -1,9 +1,7 @@
 import monstera from "@/assets/p-monstera.jpg";
 import sansevieria from "@/assets/p-sansevieria.jpg";
 import ficus from "@/assets/p-ficus.jpg";
-import pot from "@/assets/p-pot-terracotta.jpg";
-import shears from "@/assets/p-shears.jpg";
-import basket from "@/assets/p-basket.jpg";
+
 import lavanda from "@/assets/p-lavanda.jpg";
 import romero from "@/assets/Romero.png";
 import { getStorefrontApiUrl, getPublicTokenHeaders } from "./shopify";
@@ -20,6 +18,8 @@ import veronica from "@/assets/p-veronica-buxifolia.png";
 import pittosporum from "@/assets/p-pittosporum-tobira.png";
 import pennisetum from "@/assets/p-pennisetum-alopecuroides.png";
 import lippia from "@/assets/p-lippia-citriodora.png";
+import ficusBinnendijkii from "@/assets/p-ficus-binnendijkii.png";
+
 
 export type Product = {
   slug: string;
@@ -41,6 +41,19 @@ export type Product = {
 export const products: Product[] = [
   { slug: "monstera-deliciosa", name: "Monstera Deliciosa", scientific: "Costilla de Adán", category: "Plantas", price: 24500, image: monstera, tag: "Best Seller", care: "Fácil" },
   { slug: "ficus-lyrata", name: "Ficus Lyrata", scientific: "Hoja de violín", category: "Plantas", price: 32000, image: ficus, tag: "Nuevo", care: "Medio" },
+  {
+    slug: "ficus-binnendijkii",
+    name: "Ficus binnendijkii",
+    scientific: "Ficus binnendijkii",
+    category: "Plantas",
+    price: 21500,
+    image: ficusBinnendijkii,
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "El Ficus binnendijkii (también conocido como Ficus Ali o de hoja estrecha) es una planta de interior sumamente elegante y decorativa. Se caracteriza por sus hojas largas y arqueadas de un verde brillante y textura coriácea, que caen con gracia simulando un sauce. Es ideal para dar un toque tropical y sofisticado a espacios interiores, purifica el aire de forma eficiente y requiere cuidados sencillos.",
+    careDetails: "Luz brillante indirecta o semisombra. Riego moderado, permitiendo que la tierra se seque superficialmente entre riegos. Mantener en temperaturas cálidas y proteger de heladas intensas."
+  },
+
   { slug: "sansevieria", name: "Sansevieria", scientific: "Lengua de suegra", category: "Plantas", price: 12000, image: sansevieria, tag: "Pet Friendly", care: "Fácil" },
   { slug: "lavanda-dentada", name: "Lavanda", scientific: "Lavandula dentata", category: "Plantas", price: 4500, image: lavanda, tag: "Poca luz", care: "Fácil" },
   {
@@ -212,10 +225,7 @@ export const products: Product[] = [
     description: "La Lippia Citriodora, conocida popularmente como Cedrón, Hierba Luisa o Verbena de Indias, es un arbusto caducifolio famoso por el intenso y delicioso aroma a limón que desprenden sus hojas al ser rozadas. Sus hojas son alargadas, ásperas y de un verde pálido muy característico. En verano produce pequeñas espigas de flores de tonos blanco-violáceos. Es sumamente valorada en infusión por sus propiedades digestivas y relajantes, así como en gastronomía para aromatizar platos y postres.",
     careDetails: "Pleno sol o semisombra muy luminosa. Requiere un suelo con excelente drenaje y riego moderado, evitando el encharcamiento ya que es sensible al exceso de humedad en las raíces. Proteger de heladas fuertes y vientos fríos."
   },
-  { slug: "macetero-greda-25", name: "Macetero Greda · 25cm", category: "Maceteros", price: 20000, image: pot, tag: "Best Seller", inStock: false },
-  { slug: "canasto-mimbre-30", name: "Canasto Mimbre · 30cm", category: "Maceteros", price: 22000, image: basket, inStock: false },
-  { slug: "tijera-bypass-pro", name: "Tijera de Poda Bypass", category: "Jardinería", price: 45000, oldPrice: 58000, image: shears, tag: "Nuevo", inStock: false },
-  { slug: "macetero-greda-30", name: "Macetero Greda · 30cm", category: "Maceteros", price: 30000, image: pot, inStock: false },
+
 ];
 
 export function mapShopifyProduct(node: any): Product {

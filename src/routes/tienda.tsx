@@ -127,7 +127,7 @@ function Shop() {
               onTag={(v) => toggle(tags, v, setTags)}
             />
           </aside>
-          <div className="lg:col-span-9 grid grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 lg:gap-x-8">
+          <div className="lg:col-span-9 grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-6 lg:gap-x-8 gap-y-8 md:gap-y-12">
             {filtered.map((p) => <ProductCard key={p.slug} product={p} />)}
           </div>
         </div>
@@ -135,7 +135,7 @@ function Shop() {
         {/* Mobile filter drawer */}
         {openFilters && (
           <div className="fixed inset-0 z-50 lg:hidden">
-            <div className="absolute inset-0 bg-black/40" onClick={() => setOpenFilters(false)} />
+            <div className="absolute inset-0 bg-black/45 backdrop-blur-[3px]" onClick={() => setOpenFilters(false)} />
             <div className="absolute right-0 top-0 bottom-0 w-[88%] max-w-sm bg-background rounded-l-[20px] p-6 overflow-y-auto shadow-2xl">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="font-display text-2xl font-bold">Filtros</h3>

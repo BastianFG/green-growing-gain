@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react";
+import { Heart, Plus } from "lucide-react";
 import type { Product } from "@/lib/products";
 import { formatCLP } from "@/lib/products";
 import { addToCart } from "@/lib/cart";
@@ -10,6 +10,15 @@ import { easeOutQuint } from "@/lib/motion";
 interface ProductCardProps {
   product: Product;
   index?: number;
+}
+
+function getOptimizedImageUrl(url: string, width = 600): string {
+  if (!url) return "";
+  if (url.includes("cdn.shopify.com")) {
+    const separator = url.includes("?") ? "&" : "?";
+    return `${url}${separator}width=${width}`;
+  }
+  return url;
 }
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
@@ -52,7 +61,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
 
           {/* Product image — zooms on hover */}
           <motion.img
-            src={product.image}
+            src={getOptimizedImageUrl(product.image, 600)}
             alt={product.name}
             width={800}
             height={1000}
@@ -88,11 +97,12 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             <Heart className="size-3.5 text-[#272831]" strokeWidth={1.5} />
           </motion.button>
 
-          {/* Quick-add button slides up from bottom as a premium pill */}
-          {product.inStock !== false ? (
-            <motion.button
+          {/* Quick-add button: circular + icon, visible on mobile, slides up on desktop hover */}
+          {product.inStock !== false && (
+            <button
               onClick={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 addToCart({
                   slug: product.slug,
                   name: product.name,
@@ -101,45 +111,30 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                   qty: 1,
                 });
               }}
-              className="absolute bottom-4 inset-x-4 bg-[#86895d] text-white text-[11px] font-semibold tracking-[0.2em] uppercase py-3 rounded-[50px] z-10 shadow-lg text-center"
-              variants={{
-                idle: { y: "130%", opacity: 0 },
-                hovered: {
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 0.4, ease: easeOutQuint },
-                },
-              }}
-              whileHover={{ backgroundColor: "#777a53", scale: 1.02 }}
-              whileTap={{ scale: 0.96 }}
+              className="absolute bottom-3 right-3 z-10 size-8 md:size-10 rounded-full bg-[#86895d] text-white flex items-center justify-center shadow-md md:opacity-0 md:translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 active:scale-95 hover:bg-[#777a53]"
+              aria-label={`Agregar ${product.name} al carrito`}
             >
-              Agregar rápido
-            </motion.button>
-          ) : (
-            <div className="absolute bottom-4 inset-x-4 bg-neutral-500/80 text-white text-[11px] font-semibold tracking-[0.2em] uppercase py-3 rounded-[50px] z-10 shadow-lg text-center cursor-default">
-              Sin stock
-            </div>
+              <Plus className="size-4" strokeWidth={2.5} />
+            </button>
           )}
         </motion.div>
 
-        {/* Product info */}
-        <div className="pt-4 flex justify-between gap-3">
-          <div className="min-w-0">
-            <h3 className="font-display text-lg leading-snug truncate group-hover:text-forest transition-colors duration-300">
+        {/* Product info - stacked layout for better mobile space and readability */}
+        <div className="pt-3 flex flex-col justify-between h-[88px] md:h-[96px] min-w-0">
+          <div className="flex flex-col gap-0.5">
+            <h3 className="font-display text-sm md:text-base font-bold text-[#272831] leading-tight group-hover:text-forest transition-colors duration-300 line-clamp-2">
               {product.name}
             </h3>
-            {product.scientific && (
-              <p className="text-xs text-muted-foreground italic mt-0.5 truncate">
-                {product.scientific}
-              </p>
-            )}
+            <p className="text-[11px] text-muted-foreground italic leading-none min-h-[12px] line-clamp-1">
+              {product.scientific || "\u00A0"}
+            </p>
           </div>
-          <div className="text-right shrink-0">
-            <p className="text-sm font-medium">{formatCLP(product.price)}</p>
+          <div className="flex items-baseline gap-2 mt-auto">
+            <span className="text-sm font-bold text-[#272831]">{formatCLP(product.price)}</span>
             {product.oldPrice && (
-              <p className="text-xs text-muted-foreground line-through">
+              <span className="text-[11px] text-muted-foreground line-through">
                 {formatCLP(product.oldPrice)}
-              </p>
+              </span>
             )}
           </div>
         </div>
