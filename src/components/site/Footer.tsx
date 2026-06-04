@@ -72,7 +72,7 @@ export function Footer() {
             className="lg:text-right"
           >
             <p className="text-sm text-bone/60 max-w-xs lg:ml-auto leading-relaxed mb-8">
-              Plantas seleccionadas, maceteros de artesanos y todo lo necesario
+              Plantas seleccionadas, maceteros y todo lo necesario
               para cultivar un hogar más sereno.
             </p>
             <form className="flex border-b border-bone/30 focus-within:border-bone transition max-w-sm lg:ml-auto">
