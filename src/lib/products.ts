@@ -20,6 +20,9 @@ import pennisetum from "@/assets/p-pennisetum-alopecuroides.png";
 import lippia from "@/assets/p-lippia-citriodora.png";
 import ficusBinnendijkii from "@/assets/p-ficus-binnendijkii.png";
 import primula from "@/assets/p-primula.png";
+import stenocarpusS from "@/assets/p-stenocarpus-s.png";
+import stenocarpusM from "@/assets/p-stenocarpus-m.png";
+import stenocarpusL from "@/assets/p-stenocarpus-l.png";
 
 
 export type Product = {
@@ -375,6 +378,24 @@ export const products: Product[] = [
       "Pequeña": 3900,
       "Mediana": 5900,
       "Grande": 8900
+    }
+  },
+  {
+    slug: "stenocarpus-sinuatus",
+    name: "Stenocarpus · Rueda de Fuego",
+    scientific: "Stenocarpus sinuatus",
+    category: "Plantas",
+    price: 22500,
+    image: stenocarpusS,
+    images: [stenocarpusS, stenocarpusM, stenocarpusL],
+    tag: "Nuevo",
+    care: "Medio",
+    description: "El Stenocarpus (Stenocarpus sinuatus), también conocido como Árbol Rueda de Fuego, es un árbol ornamental exótico de gran valor paisajístico. Destaca por sus hojas de verde brillante que recuerdan al roble y sus espectaculares flores rojas en forma de rueda. Es una opción exclusiva y de alta gama para exteriores protegidos y patios de luz en Chile.",
+    careDetails: "Sol directo o semisombra muy luminosa. Riego regular permitiendo que la capa superior se seque entre riegos. Proteger de heladas fuertes.",
+    pricesBySize: {
+      "Pequeña": 22500,
+      "Mediana": 38500,
+      "Grande": 59500
     }
   }
 ];

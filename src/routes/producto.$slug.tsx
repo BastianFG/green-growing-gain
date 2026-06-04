@@ -89,6 +89,12 @@ function PDP() {
   }, [product]);
 
   useEffect(() => {
+    if (product.images && product.images.length > 0 && product.images[size]) {
+      setActiveImage(product.images[size]);
+    }
+  }, [size, product.images]);
+
+  useEffect(() => {
     if (!api) return;
     setCurrent(api.selectedScrollSnap() + 1);
 
