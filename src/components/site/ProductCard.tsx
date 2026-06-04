@@ -46,7 +46,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       >
         {/* Image wrapper */}
         <motion.div
-          className="relative overflow-hidden bg-secondary aspect-[4/5] rounded-[20px]"
+          className="relative overflow-hidden bg-secondary aspect-square sm:aspect-[4/5] rounded-[20px]"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           initial="idle"
@@ -130,6 +130,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                   transition: { duration: 0.4, ease: easeOutQuint },
                 },
               }}
+              style={isMobile ? { opacity: 1, transform: "none" } : undefined}
               whileHover={{ backgroundColor: "#777a53", scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label={`Agregar ${product.name} al carrito`}

@@ -71,7 +71,7 @@ const SIZES = [
 function PDP() {
   const { product } = Route.useLoaderData();
   const router = useRouter();
-  const [size, setSize] = useState(1);
+  const [size, setSize] = useState(0);
   const [qty, setQty] = useState(1);
   const [openTab, setOpenTab] = useState<string | null>("desc");
   const [api, setApi] = useState<CarouselApi>();
@@ -99,12 +99,16 @@ function PDP() {
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 
+  const activePrice = product.pricesBySize && SIZES[size]
+    ? (product.pricesBySize[SIZES[size].label] ?? product.price)
+    : product.price;
+
   const handleAddToCartOnly = () => {
     addToCart({
       slug: product.slug,
       name: product.name,
       image: product.image,
-      price: product.price,
+      price: activePrice,
       qty,
       size: SIZES[size].label,
       variantId: product.variantId,
@@ -123,7 +127,7 @@ function PDP() {
       slug: product.slug,
       name: product.name,
       image: product.image,
-      price: product.price,
+      price: activePrice,
       qty,
       size: SIZES[size].label,
       variantId: product.variantId,
@@ -234,17 +238,17 @@ function PDP() {
             {product.scientific && <p className="mt-2 text-muted-foreground italic">{product.scientific}</p>}
 
             <div className="mt-6 flex items-baseline gap-3">
-              <span className="text-2xl font-bold text-[#272831]">{formatCLP(product.price)}</span>
+              <span className="text-2xl font-bold text-[#272831]">{formatCLP(activePrice)}</span>
               {product.oldPrice && (
                 <>
                   <span className="text-muted-foreground line-through">{formatCLP(product.oldPrice)}</span>
                   <span className="text-xs bg-[#86895d] text-white px-2.5 py-1 rounded-full font-bold shadow-sm">
-                    −{Math.round((1 - product.price / product.oldPrice) * 100)}%
+                    −{Math.round((1 - activePrice / product.oldPrice) * 100)}%
                   </span>
                 </>
               )}
             </div>
-            <p className="mt-1 text-xs text-muted-foreground">o 3 cuotas de {formatCLP(Math.round(product.price / 3))} sin interés</p>
+            <p className="mt-1 text-xs text-muted-foreground">o 3 cuotas de {formatCLP(Math.round(activePrice / 3))} sin interés</p>
 
             {/* Care icons */}
             <ul className="mt-8 grid grid-cols-3 gap-y-6 gap-x-4 border-y border-border py-6">

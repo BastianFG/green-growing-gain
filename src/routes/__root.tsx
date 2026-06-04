@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportError } from "../lib/error-reporting";
 import { WhatsAppButton } from "../components/site/WhatsAppButton";
+import { MobileStickyBar } from "../components/site/MobileStickyBar";
 import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
@@ -125,7 +126,10 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      {/* WhatsApp circular: hidden on mobile, replaced by MobileStickyBar */}
       <WhatsAppButton />
+      {/* Mobile-only sticky CTA bar (hidden on sm+) */}
+      <MobileStickyBar />
       <Toaster />
     </QueryClientProvider>
   );

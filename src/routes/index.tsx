@@ -216,7 +216,7 @@ function Hero() {
       </motion.div>
 
       {/* Right — image with parallax */}
-      <div className="order-1 lg:order-2 relative bg-secondary overflow-hidden min-h-[55vw] lg:min-h-0 rounded-[20px] lg:my-6 lg:mr-6 shadow-sm">
+      <div className="order-1 lg:order-2 relative bg-secondary overflow-hidden min-h-[45vw] max-h-[280px] sm:max-h-none lg:min-h-0 rounded-[20px] lg:my-6 lg:mr-6 shadow-sm">
         <motion.img
           src={heroPlant}
           alt="Monstera Deliciosa en macetero crema dentro de un salón luminoso"
@@ -337,7 +337,7 @@ function Categories() {
       </motion.div>
 
       <motion.div
-        className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-3 gap-6 lg:gap-8 pb-4 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-none"
+        className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-3 gap-4 lg:gap-8 pb-4 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-none"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
@@ -346,12 +346,12 @@ function Categories() {
         {cats.map((c) => (
           <motion.div
             key={c.label}
-            className="group block shrink-0 w-[78vw] sm:w-[50vw] md:w-auto snap-center snap-always"
+            className="group block shrink-0 w-[72vw] sm:w-[50vw] md:w-auto snap-center snap-always"
             variants={fadeUp(40, 0.7)}
           >
             <Link to={c.href} className="block">
               <motion.div
-                className="relative aspect-[3/4] overflow-hidden bg-secondary rounded-[20px] shadow-sm"
+                className="relative aspect-[4/3] sm:aspect-[3/4] overflow-hidden bg-secondary rounded-[20px] shadow-sm"
                 whileHover="hovered"
                 initial="idle"
               >
@@ -385,9 +385,14 @@ function Categories() {
                   }}
                 />
 
-                {/* Centered label on hover - custom glass pill */}
+                {/* Label always visible on mobile, hover only on desktop */}
+                <div className="sm:hidden absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent rounded-b-[20px] px-4 py-3">
+                  <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-white">{c.label}</p>
+                </div>
+
+                {/* Centered label on hover — desktop only */}
                 <motion.div
-                  className="absolute inset-0 flex items-center justify-center px-4"
+                  className="hidden sm:flex absolute inset-0 items-center justify-center px-4"
                   variants={{
                     idle: { opacity: 0, scale: 0.9 },
                     hovered: {
@@ -433,7 +438,7 @@ function ProductGrid({
 }) {
   return (
     <motion.div
-      className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-12 lg:gap-x-8"
+      className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 lg:gap-x-8"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
@@ -455,7 +460,7 @@ function BestSellers({
   products: typeof import("@/lib/products").products;
 }) {
   return (
-    <section className="container-x mt-24 lg:mt-32">
+    <section className="container-x mt-24 lg:mt-32 pb-20 sm:pb-0">
       <motion.div
         className="flex items-end justify-between mb-10"
         initial="hidden"
@@ -475,6 +480,19 @@ function BestSellers({
           </motion.h2>
         </div>
       </motion.div>
+      {/* Trust mini-strip — mobile only, shown before product grid for social proof */}
+      <div className="sm:hidden flex items-center justify-between gap-2 mb-6 px-1">
+        {[
+          { emoji: "🚚", label: "Envío cuidado" },
+          { emoji: "🌱", label: "Garantía verde" },
+          { emoji: "💬", label: "Asesoría gratis" },
+        ].map((t) => (
+          <div key={t.label} className="flex-1 flex flex-col items-center gap-1 text-center">
+            <span className="text-lg">{t.emoji}</span>
+            <span className="text-[9px] font-semibold tracking-[0.15em] uppercase text-muted-foreground">{t.label}</span>
+          </div>
+        ))}
+      </div>
       <ProductGrid products={prods} />
     </section>
   );
@@ -531,13 +549,12 @@ function Lookbook() {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-
   // Parallax: image moves slower than scroll
   const imageY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
     <section id="lookbook" ref={sectionRef} className="mt-24 lg:mt-32 relative">
-      <div className="relative min-h-[65vh] overflow-hidden rounded-[20px] shadow-sm">
+      <div className="relative min-h-[50vh] lg:min-h-[65vh] overflow-hidden rounded-[20px] shadow-sm">
         {/* Parallax image */}
         <motion.div className="absolute inset-0 rounded-[20px]" style={{ y: imageY }}>
           <img
@@ -620,28 +637,31 @@ function Lookbook() {
         </motion.div>
       </div>
 
-      {/* Editorial second row: 3-col layout */}
-      <div className="container-x mt-6 grid md:grid-cols-3 gap-6 lg:gap-8">
+      {/* Editorial second row: scroll horizontal en móvil, grid en md+ */}
+      <div className="mt-6 md:container-x">
+        <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-3 gap-4 lg:gap-8 pb-4 -mx-0 px-6 md:px-0 md:mx-0 scrollbar-none container-x md:container-x-0">
         {[
           {
             label: "Sala de estar",
             desc: "Naturaleza que envuelve",
             img: catIndoor,
             span: "md:col-span-2",
-            aspect: "aspect-[16/9]",
+            aspect: "aspect-[4/3] sm:aspect-[16/9]",
+            mobileW: "w-[80vw] shrink-0 snap-center snap-always",
           },
           {
             label: "Terrazas",
             desc: "Exterior vivo",
             img: catGarden,
             span: "",
-            aspect: "aspect-[4/5]",
+            aspect: "aspect-[4/3] sm:aspect-[4/5]",
+            mobileW: "w-[72vw] shrink-0 snap-center snap-always",
           },
         ].map((item, i) => (
           <motion.a
             key={item.label}
             href="#"
-            className={`group block ${item.span}`}
+            className={`group block ${item.span} ${item.mobileW} md:w-auto`}
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -668,6 +688,7 @@ function Lookbook() {
             </div>
           </motion.a>
         ))}
+      </div>
       </div>
     </section>
   );
@@ -912,7 +933,7 @@ function Editorial() {
 // ─────────────────────────────────────────────
 function Newsletter() {
   return (
-    <section className="container-x mt-24 lg:mt-32 mb-24 lg:mb-32">
+    <section className="container-x mt-24 lg:mt-32 mb-36 sm:mb-24 lg:mb-32">
       <motion.div
         className="bg-[#f9f9fb] border border-[#e9e9e9] p-10 lg:p-16 rounded-[20px] text-center max-w-3xl mx-auto shadow-sm"
         initial="hidden"
