@@ -35,6 +35,9 @@ import olivoL from "@/assets/p-olivo-l.png";
 import bougainvilleaS from "@/assets/p-bougainvillea-s.png";
 import bougainvilleaM from "@/assets/p-bougainvillea-m.png";
 import bougainvilleaL from "@/assets/p-bougainvillea-l.png";
+import mandarinoS from "@/assets/p-mandarino-s.png";
+import mandarinoM from "@/assets/p-mandarino-m.png";
+import mandarinoL from "@/assets/p-mandarino-l.png";
 
 
 export type Product = {
@@ -489,6 +492,29 @@ export const products: Product[] = [
       "Pequeña": 12500,
       "Mediana": 24500,
       "Grande": 39500
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": true,
+      "Grande": false
+    }
+  },
+  {
+    slug: "mandarino-comun",
+    name: "Mandarino · Citrus Reticulata",
+    scientific: "Citrus reticulata",
+    category: "Plantas",
+    price: 19500,
+    image: mandarinoS,
+    images: [mandarinoS, mandarinoM, mandarinoL],
+    tag: "Nuevo",
+    care: "Medio",
+    description: "El Mandarino (Citrus reticulata) es un árbol frutal perenne y ornamental de extraordinario valor para patios, terrazas y jardines. Se caracteriza por sus hojas de color verde brillante y sus flores blancas (azahar), intensamente perfumadas. Sus frutos, las mandarinas, son dulces, jugosas y fáciles de pelar. Es una planta ideal para cultivar tanto en macetas grandes a pleno sol como directamente en el suelo.",
+    careDetails: "Pleno sol. Riego regular y profundo, especialmente en primavera y verano, dejando secar la superficie del sustrato. Proteger de heladas fuertes y vientos fríos intensos. Agradece la fertilización periódica con abono para cítricos.",
+    pricesBySize: {
+      "Pequeña": 19500,
+      "Mediana": 32500,
+      "Grande": 49500
     }
   }
 ];
