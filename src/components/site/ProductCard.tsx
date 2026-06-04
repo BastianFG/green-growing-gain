@@ -6,6 +6,7 @@ import type { Product } from "@/lib/products";
 import { formatCLP } from "@/lib/products";
 import { addToCart } from "@/lib/cart";
 import { easeOutQuint } from "@/lib/motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ProductCardProps {
   product: Product;
@@ -23,6 +24,7 @@ function getOptimizedImageUrl(url: string, width = 600): string {
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const isMobile = useIsMobile();
   return (
     <motion.article
       variants={{
@@ -99,7 +101,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
 
           {/* Quick-add button: circular + icon, visible on mobile, slides up on desktop hover */}
           {product.inStock !== false && (
-            <button
+            <motion.button
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -111,11 +113,21 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                   qty: 1,
                 });
               }}
-              className="absolute bottom-3 right-3 z-10 size-8 md:size-10 rounded-full bg-[#86895d] text-white flex items-center justify-center shadow-md md:opacity-0 md:translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 active:scale-95 hover:bg-[#777a53]"
+              className="absolute bottom-3 right-3 z-10 size-8 md:size-10 rounded-full bg-[#86895d] text-white flex items-center justify-center shadow-md cursor-pointer"
+              variants={isMobile ? undefined : {
+                idle: { y: "120%", opacity: 0 },
+                hovered: {
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.4, ease: easeOutQuint },
+                },
+              }}
+              whileHover={{ backgroundColor: "#777a53", scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               aria-label={`Agregar ${product.name} al carrito`}
             >
               <Plus className="size-4" strokeWidth={2.5} />
-            </button>
+            </motion.button>
           )}
         </motion.div>
 

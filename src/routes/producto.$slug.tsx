@@ -11,7 +11,7 @@ import {
   ChevronRight, Truck, RotateCcw, ShieldCheck, Heart, Plus, Minus,
   Sun, Droplets, Thermometer, PawPrint, TrendingUp, Ruler, X,
 } from "lucide-react";
-
+import { staggerContainer } from "@/lib/motion";
 export const Route = createFileRoute("/producto/$slug")({
   loader: async ({ params }) => {
     const product = await getShopifyProductByHandle(params.slug);
@@ -340,9 +340,15 @@ function PDP() {
               <h2 className="mt-3 font-display text-3xl lg:text-4xl">También te puede gustar</h2>
             </div>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 lg:gap-x-8">
+          <motion.div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 lg:gap-x-8"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.05 }}
+            variants={staggerContainer(0.06, 0.04)}
+          >
             {related.map((p) => <ProductCard key={p.slug} product={p} />)}
-          </div>
+          </motion.div>
         </section>
 
         {/* Sticky mobile CTA */}

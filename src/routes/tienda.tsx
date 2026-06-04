@@ -5,6 +5,8 @@ import { Footer } from "@/components/site/Footer";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products, fetchShopifyProducts } from "@/lib/products";
 import { ChevronRight, SlidersHorizontal, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { staggerContainer } from "@/lib/motion";
 
 export const Route = createFileRoute("/tienda")({
   loader: async () => {
@@ -127,9 +129,15 @@ function Shop() {
               onTag={(v) => toggle(tags, v, setTags)}
             />
           </aside>
-          <div className="lg:col-span-9 grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-6 lg:gap-x-8 gap-y-8 md:gap-y-12">
+          <motion.div
+            className="lg:col-span-9 grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-6 lg:gap-x-8 gap-y-8 md:gap-y-12"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.05 }}
+            variants={staggerContainer(0.06, 0.04)}
+          >
             {filtered.map((p) => <ProductCard key={p.slug} product={p} />)}
-          </div>
+          </motion.div>
         </div>
 
         {/* Mobile filter drawer */}
