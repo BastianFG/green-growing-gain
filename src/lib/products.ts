@@ -19,6 +19,7 @@ import pittosporum from "@/assets/p-pittosporum-tobira.png";
 import pennisetum from "@/assets/p-pennisetum-alopecuroides.png";
 import lippia from "@/assets/p-lippia-citriodora.png";
 import ficusBinnendijkii from "@/assets/p-ficus-binnendijkii.png";
+import primula from "@/assets/p-primula.png";
 
 
 export type Product = {
@@ -357,6 +358,23 @@ export const products: Product[] = [
       "Pequeña": 5900,
       "Mediana": 8900,
       "Grande": 12900
+    }
+  },
+  {
+    slug: "primula-acaulis",
+    name: "Oreja de Oso · Prímula",
+    scientific: "Primula acaulis",
+    category: "Plantas",
+    price: 3900,
+    image: primula,
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "La Oreja de Oso (Primula acaulis) es una planta herbácea perenne muy apreciada por sus vibrantes flores que brotan en racimos a fines del invierno y principios de la primavera. Posee hojas rugosas dispuestas en una roseta basal de un verde intenso, de donde proviene su nombre común. Es ideal para dar color a bordillos, macetas y balcones sombríos.",
+    careDetails: "Semisombra o luz indirecta. Riego moderado manteniendo el sustrato húmedo pero no encharcado. Prefiere climas frescos y templados.",
+    pricesBySize: {
+      "Pequeña": 3900,
+      "Mediana": 5900,
+      "Grande": 8900
     }
   }
 ];
