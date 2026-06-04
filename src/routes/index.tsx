@@ -286,7 +286,7 @@ const cats = [
 
 function Categories() {
   return (
-    <section className="container-x mt-24 lg:mt-32" id="shop">
+    <section className="container-x mt-24 lg:mt-32 overflow-hidden" id="shop">
       <motion.div
         className="flex items-end justify-between mb-10"
         initial="hidden"

@@ -101,6 +101,8 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   body {
@@ -109,6 +111,8 @@
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
   }
 
   h1, h2, h3, h4 {
