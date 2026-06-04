@@ -29,6 +29,7 @@ export type Product = {
   price: number;
   oldPrice?: number;
   image: string;
+  images?: string[];
   tag?: "Nuevo" | "Best Seller" | "Pet Friendly" | "Poca luz";
   care?: "Fácil" | "Medio" | "Avanzado";
   description?: string;
@@ -245,6 +246,8 @@ export function mapShopifyProduct(node: any): Product {
     else if (tagsLower.includes("poca luz")) tag = "Poca luz";
   }
 
+  const images = node.images?.edges?.map((edge: any) => edge.node?.url).filter(Boolean) || [];
+
   return {
     slug: node.handle,
     name: node.title,
@@ -253,6 +256,7 @@ export function mapShopifyProduct(node: any): Product {
     price,
     oldPrice,
     image,
+    images: images.length > 0 ? images : [image],
     tag,
     care,
     description: node.description,

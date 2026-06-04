@@ -75,6 +75,16 @@ function PDP() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
+  const productImages = product.images && product.images.length > 0
+    ? product.images
+    : [product.image, product.image, product.image, product.image, product.image];
+
+  const [activeImage, setActiveImage] = useState(productImages[0]);
+
+  useEffect(() => {
+    setActiveImage(productImages[0]);
+  }, [product]);
+
   useEffect(() => {
     if (!api) return;
     setCurrent(api.selectedScrollSnap() + 1);
@@ -116,58 +126,56 @@ function PDP() {
         <section className="container-x mt-6 grid lg:grid-cols-12 gap-10 lg:gap-16">
           {/* Gallery - Desktop Grid / Mobile Carousel */}
           <div className="lg:col-span-7">
-            {/* Desktop Grid Layout */}
-            <div className="hidden lg:grid grid-cols-2 gap-4">
-              <div className="lg:col-span-2 aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
+            {/* Desktop Gallery Layout */}
+            <div className="hidden lg:flex gap-4">
+              {/* Vertical Thumbnails List */}
+              <div className="flex flex-col gap-3 shrink-0 w-20">
+                {productImages.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImage(img)}
+                    className={`aspect-[4/5] bg-secondary overflow-hidden rounded-[10px] border-2 transition-all ${
+                      activeImage === img ? "border-[#86895d] opacity-100" : "border-transparent opacity-60 hover:opacity-100"
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`Miniatura ${i + 1}`}
+                      width={100} height={125}
+                      className="size-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+
+              {/* Main Image */}
+              <div className="flex-1 aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
                 <img
-                  src={product.image}
+                  src={activeImage}
                   alt={product.name}
                   width={1200} height={1500}
                   fetchPriority="high"
                   decoding="async"
-                  className="size-full object-cover rounded-[20px]"
+                  className="size-full object-cover rounded-[20px] transition-all duration-300"
                 />
               </div>
-              {[0, 1, 2, 3].map((i) => (
-                <div key={i} className="aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
-                  <img
-                    src={product.image}
-                    alt=""
-                    aria-hidden
-                    width={600} height={750}
-                    loading="lazy" decoding="async"
-                    className="size-full object-cover opacity-90 rounded-[20px]"
-                  />
-                </div>
-              ))}
             </div>
 
             {/* Mobile Carousel Layout */}
             <div className="lg:hidden w-full">
               <Carousel setApi={setApi} className="w-full">
                 <CarouselContent>
-                  <CarouselItem>
-                    <div className="aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        width={1200} height={1500}
-                        fetchPriority="high"
-                        decoding="async"
-                        className="size-full object-cover rounded-[20px]"
-                      />
-                    </div>
-                  </CarouselItem>
-                  {[0, 1, 2, 3].map((i) => (
+                  {productImages.map((img, i) => (
                     <CarouselItem key={i}>
                       <div className="aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
                         <img
-                          src={product.image}
-                          alt=""
-                          aria-hidden
-                          width={600} height={750}
-                          loading="lazy" decoding="async"
-                          className="size-full object-cover opacity-90 rounded-[20px]"
+                          src={img}
+                          alt={`${product.name} - Imagen ${i + 1}`}
+                          width={1200} height={1500}
+                          fetchPriority={i === 0 ? "high" : undefined}
+                          loading={i === 0 ? undefined : "lazy"}
+                          decoding="async"
+                          className="size-full object-cover rounded-[20px]"
                         />
                       </div>
                     </CarouselItem>
@@ -176,7 +184,7 @@ function PDP() {
                 
                 {/* Custom premium dots indicators */}
                 <div className="flex justify-center gap-2 mt-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
+                  {productImages.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => api?.scrollTo(i)}
