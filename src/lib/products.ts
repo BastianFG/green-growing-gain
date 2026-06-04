@@ -29,6 +29,9 @@ import sanpedroL from "@/assets/p-sanpedro-l.png";
 import ficusbenjaminaS from "@/assets/p-ficusbenjamina-s.png";
 import ficusbenjaminaM from "@/assets/p-ficusbenjamina-m.png";
 import ficusbenjaminaL from "@/assets/p-ficusbenjamina-l.png";
+import olivoS from "@/assets/p-olivo-s.png";
+import olivoM from "@/assets/p-olivo-m.png";
+import olivoL from "@/assets/p-olivo-l.png";
 
 
 export type Product = {
@@ -439,6 +442,24 @@ export const products: Product[] = [
       "Pequeña": 12500,
       "Mediana": 22000,
       "Grande": 34500
+    }
+  },
+  {
+    slug: "olivo-comun",
+    name: "Olivo · Olea Europaea",
+    scientific: "Olea europaea",
+    category: "Plantas",
+    price: 16500,
+    image: olivoS,
+    images: [olivoS, olivoM, olivoL],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "El Olivo (Olea europaea) es un árbol perenne emblemático del Mediterráneo, muy valorado en Chile por su elegancia rústica y gran adaptabilidad. Posee hojas estrechas de color verde plateado y un tronco leñoso que gana un hermoso carácter escultural con los años. Es perfecto para terrazas soleadas, balcones y jardines secos de bajo mantenimiento.",
+    careDetails: "Pleno sol. Riego moderado en maceta, tolerando periodos de sequía una vez establecido en tierra. Prefiere suelos muy bien drenados.",
+    pricesBySize: {
+      "Pequeña": 16500,
+      "Mediana": 28500,
+      "Grande": 46500
     }
   }
 ];
