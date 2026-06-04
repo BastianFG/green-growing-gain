@@ -26,7 +26,7 @@ export const Route = createFileRoute("/tienda")({
   component: Shop,
 });
 
-const CATEGORIES = ["Todas", "Plantas", "Maceteros", "Jardinería", "Decoración"] as const;
+const CATEGORIES = ["Todas", "Plantas", "Maceteros", "Jardinería", "Decoración", "Cactáceas"] as const;
 const CARE = ["Fácil", "Medio", "Avanzado"] as const;
 const TAGS = ["Best Seller", "Nuevo", "Pet Friendly", "Poca luz"] as const;
 

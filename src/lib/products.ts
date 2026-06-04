@@ -23,13 +23,16 @@ import primula from "@/assets/p-primula.png";
 import stenocarpusS from "@/assets/p-stenocarpus-s.png";
 import stenocarpusM from "@/assets/p-stenocarpus-m.png";
 import stenocarpusL from "@/assets/p-stenocarpus-l.png";
+import sanpedroS from "@/assets/p-sanpedro-s.png";
+import sanpedroM from "@/assets/p-sanpedro-m.png";
+import sanpedroL from "@/assets/p-sanpedro-l.png";
 
 
 export type Product = {
   slug: string;
   name: string;
   scientific?: string;
-  category: "Plantas" | "Maceteros" | "Jardinería" | "Decoración";
+  category: "Plantas" | "Maceteros" | "Jardinería" | "Decoración" | "Cactáceas";
   price: number;
   oldPrice?: number;
   image: string;
@@ -398,6 +401,24 @@ export const products: Product[] = [
       "Grande": 59500
     },
     inStock: false
+  },
+  {
+    slug: "cactus-san-pedro",
+    name: "Cactus San Pedro",
+    scientific: "Echinopsis pachanoi",
+    category: "Cactáceas",
+    price: 14500,
+    image: sanpedroS,
+    images: [sanpedroS, sanpedroM, sanpedroL],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "El Cactus San Pedro (Echinopsis pachanoi) es una cactácea columnar de rápido crecimiento originaria de los Andes. Es muy apreciado en el paisajismo de bajo consumo de agua por su silueta escultural y gran resistencia. Posee costillas pronunciadas de color verde azulado y flores blancas nocturnas en ejemplares maduros.",
+    careDetails: "Sol directo o luz muy brillante. Riego mínimo, permitiendo que la tierra se seque completamente. Usar sustrato arenoso y bien drenado.",
+    pricesBySize: {
+      "Pequeña": 14500,
+      "Mediana": 26500,
+      "Grande": 42500
+    }
   }
 ];
 
@@ -413,6 +434,7 @@ export function mapShopifyProduct(node: any): Product {
   if (type === "maceteros" || type === "macetero") category = "Maceteros";
   else if (type === "jardineria" || type === "jardinería") category = "Jardinería";
   else if (type === "decoracion" || type === "decoración") category = "Decoración";
+  else if (type === "cactaceas" || type === "cactáceas" || type === "cactus") category = "Cactáceas";
 
   // Map care & tag from Shopify tags
   let care: Product["care"] = undefined;
