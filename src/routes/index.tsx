@@ -279,9 +279,9 @@ function MarqueeStrip() {
 // CATEGORIES
 // ─────────────────────────────────────────────
 const cats = [
-  { label: "Plantas de interior", img: catIndoor, count: "82 productos", href: "#" },
-  { label: "Maceteros", img: catPots, count: "54 productos", href: "#" },
-  { label: "Jardinería", img: catGarden, count: "37 productos", href: "#" },
+  { label: "Plantas de interior", img: catIndoor, count: "82 productos", href: "/tienda" },
+  { label: "Maceteros", img: catPots, count: "54 productos", href: "/tienda" },
+  { label: "Jardinería", img: catGarden, count: "37 productos", href: "/tienda" },
 ];
 
 function Categories() {
@@ -323,78 +323,79 @@ function Categories() {
         variants={staggerContainer(0.12, 0.05)}
       >
         {cats.map((c) => (
-          <motion.a
+          <motion.div
             key={c.label}
-            href={c.href}
             className="group block"
             variants={fadeUp(40, 0.7)}
           >
-            <motion.div
-              className="relative aspect-[3/4] overflow-hidden bg-secondary rounded-[20px] shadow-sm"
-              whileHover="hovered"
-              initial="idle"
-            >
-              {/* Image */}
-              <motion.img
-                src={c.img}
-                alt={c.label}
-                width={1024}
-                height={1280}
-                loading="lazy"
-                decoding="async"
-                className="size-full object-cover rounded-[20px]"
-                variants={{
-                  idle: { scale: 1 },
-                  hovered: {
-                    scale: 1.08,
-                    transition: { duration: 1.4, ease: easeOutQuint },
-                  },
-                }}
-              />
-
-              {/* Hover dark overlay */}
+            <Link to={c.href} className="block">
               <motion.div
-                className="absolute inset-0 bg-[#272831]"
-                variants={{
-                  idle: { opacity: 0 },
-                  hovered: {
-                    opacity: 0.15,
-                    transition: { duration: 0.5, ease: easeOutQuint },
-                  },
-                }}
-              />
-
-              {/* Centered label on hover - custom glass pill */}
-              <motion.div
-                className="absolute inset-0 flex items-center justify-center px-4"
-                variants={{
-                  idle: { opacity: 0, scale: 0.9 },
-                  hovered: {
-                    opacity: 1,
-                    scale: 1,
-                    transition: { duration: 0.4, ease: easeOutQuint },
-                  },
-                }}
+                className="relative aspect-[3/4] overflow-hidden bg-secondary rounded-[20px] shadow-sm"
+                whileHover="hovered"
+                initial="idle"
               >
-                <span className="glass px-6 py-3 rounded-full text-foreground text-[11px] font-semibold tracking-[0.2em] uppercase shadow-md pointer-events-none">
-                  Explorar →
-                </span>
+                {/* Image */}
+                <motion.img
+                  src={c.img}
+                  alt={c.label}
+                  width={1024}
+                  height={1280}
+                  loading="lazy"
+                  decoding="async"
+                  className="size-full object-cover rounded-[20px]"
+                  variants={{
+                    idle: { scale: 1 },
+                    hovered: {
+                      scale: 1.08,
+                      transition: { duration: 1.4, ease: easeOutQuint },
+                    },
+                  }}
+                />
+
+                {/* Hover dark overlay */}
+                <motion.div
+                  className="absolute inset-0 bg-[#272831]"
+                  variants={{
+                    idle: { opacity: 0 },
+                    hovered: {
+                      opacity: 0.15,
+                      transition: { duration: 0.5, ease: easeOutQuint },
+                    },
+                  }}
+                />
+
+                {/* Centered label on hover - custom glass pill */}
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center px-4"
+                  variants={{
+                    idle: { opacity: 0, scale: 0.9 },
+                    hovered: {
+                      opacity: 1,
+                      scale: 1,
+                      transition: { duration: 0.4, ease: easeOutQuint },
+                    },
+                  }}
+                >
+                  <span className="glass px-6 py-3 rounded-full text-foreground text-[11px] font-semibold tracking-[0.2em] uppercase shadow-md pointer-events-none">
+                    Explorar →
+                  </span>
+                </motion.div>
               </motion.div>
-            </motion.div>
 
-            <div className="pt-4 flex justify-between items-baseline">
-              <motion.h3
-                className="font-display text-2xl group-hover:text-forest transition-colors duration-300 font-bold"
-                variants={{
-                  idle: { y: 0 },
-                  hovered: { y: -2, transition: { duration: 0.3 } },
-                }}
-              >
-                {c.label}
-              </motion.h3>
-              <span className="text-xs text-muted-foreground font-medium">{c.count}</span>
-            </div>
-          </motion.a>
+              <div className="pt-4 flex justify-between items-baseline">
+                <motion.h3
+                  className="font-display text-2xl group-hover:text-forest transition-colors duration-300 font-bold"
+                  variants={{
+                    idle: { y: 0 },
+                    hovered: { y: -2, transition: { duration: 0.3 } },
+                  }}
+                >
+                  {c.label}
+                </motion.h3>
+                <span className="text-xs text-muted-foreground font-medium">{c.count}</span>
+              </div>
+            </Link>
+          </motion.div>
         ))}
       </motion.div>
     </section>
