@@ -316,7 +316,7 @@ function Categories() {
       </motion.div>
 
       <motion.div
-        className="grid md:grid-cols-3 gap-6 lg:gap-8"
+        className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-3 gap-6 lg:gap-8 pb-4 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-none"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
@@ -325,7 +325,7 @@ function Categories() {
         {cats.map((c) => (
           <motion.div
             key={c.label}
-            className="group block"
+            className="group block shrink-0 w-[78vw] sm:w-[50vw] md:w-auto snap-center snap-always"
             variants={fadeUp(40, 0.7)}
           >
             <Link to={c.href} className="block">
