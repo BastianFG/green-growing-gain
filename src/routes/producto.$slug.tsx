@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -71,6 +72,17 @@ function PDP() {
   const [size, setSize] = useState(1);
   const [qty, setQty] = useState(1);
   const [openTab, setOpenTab] = useState<string | null>("desc");
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 
@@ -102,30 +114,81 @@ function PDP() {
         </div>
 
         <section className="container-x mt-6 grid lg:grid-cols-12 gap-10 lg:gap-16">
-          {/* Gallery */}
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-            <div className="sm:col-span-2 aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
-              <img
-                src={product.image}
-                alt={product.name}
-                width={1200} height={1500}
-                fetchPriority="high"
-                decoding="async"
-                className="size-full object-cover rounded-[20px]"
-              />
-            </div>
-            {[0, 1, 2, 3].map((i) => (
-              <div key={i} className="aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
+          {/* Gallery - Desktop Grid / Mobile Carousel */}
+          <div className="lg:col-span-7">
+            {/* Desktop Grid Layout */}
+            <div className="hidden lg:grid grid-cols-2 gap-4">
+              <div className="lg:col-span-2 aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
                 <img
                   src={product.image}
-                  alt=""
-                  aria-hidden
-                  width={600} height={750}
-                  loading="lazy" decoding="async"
-                  className="size-full object-cover opacity-90 rounded-[20px]"
+                  alt={product.name}
+                  width={1200} height={1500}
+                  fetchPriority="high"
+                  decoding="async"
+                  className="size-full object-cover rounded-[20px]"
                 />
               </div>
-            ))}
+              {[0, 1, 2, 3].map((i) => (
+                <div key={i} className="aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
+                  <img
+                    src={product.image}
+                    alt=""
+                    aria-hidden
+                    width={600} height={750}
+                    loading="lazy" decoding="async"
+                    className="size-full object-cover opacity-90 rounded-[20px]"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Carousel Layout */}
+            <div className="lg:hidden w-full">
+              <Carousel setApi={setApi} className="w-full">
+                <CarouselContent>
+                  <CarouselItem>
+                    <div className="aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        width={1200} height={1500}
+                        fetchPriority="high"
+                        decoding="async"
+                        className="size-full object-cover rounded-[20px]"
+                      />
+                    </div>
+                  </CarouselItem>
+                  {[0, 1, 2, 3].map((i) => (
+                    <CarouselItem key={i}>
+                      <div className="aspect-[4/5] bg-secondary overflow-hidden rounded-[20px] shadow-sm">
+                        <img
+                          src={product.image}
+                          alt=""
+                          aria-hidden
+                          width={600} height={750}
+                          loading="lazy" decoding="async"
+                          className="size-full object-cover opacity-90 rounded-[20px]"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                
+                {/* Custom premium dots indicators */}
+                <div className="flex justify-center gap-2 mt-4">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => api?.scrollTo(i)}
+                      className={`size-2 rounded-full transition-all duration-300 ${
+                        current === i + 1 ? "bg-[#86895d] w-6" : "bg-neutral-300"
+                      }`}
+                      aria-label={`Ir a imagen ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </Carousel>
+            </div>
           </div>
 
           {/* Info */}
