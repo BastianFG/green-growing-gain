@@ -32,6 +32,9 @@ import ficusbenjaminaL from "@/assets/p-ficusbenjamina-l.png";
 import olivoS from "@/assets/p-olivo-s.png";
 import olivoM from "@/assets/p-olivo-m.png";
 import olivoL from "@/assets/p-olivo-l.png";
+import bougainvilleaS from "@/assets/p-bougainvillea-s.png";
+import bougainvilleaM from "@/assets/p-bougainvillea-m.png";
+import bougainvilleaL from "@/assets/p-bougainvillea-l.png";
 
 
 export type Product = {
@@ -51,6 +54,9 @@ export type Product = {
   inStock?: boolean;
   pricesBySize?: {
     [sizeLabel: string]: number;
+  };
+  sizesAvailability?: {
+    [sizeLabel: string]: boolean;
   };
 };
 
@@ -460,6 +466,29 @@ export const products: Product[] = [
       "Pequeña": 16500,
       "Mediana": 28500,
       "Grande": 46500
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "bougainvillea",
+    name: "Bougainvillea · Santa Rita",
+    scientific: "Bougainvillea spectabilis",
+    category: "Plantas",
+    price: 12500,
+    image: bougainvilleaS,
+    images: [bougainvilleaS, bougainvilleaM, bougainvilleaL],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "La Bougainvillea (conocida en Chile como Santa Rita) es una planta trepadora arbustiva de extraordinaria belleza, famosa por sus espectaculares e intensas floraciones en tonos rosa, morado o magenta. Sus verdaderas flores son pequeñas y blancas, pero están rodeadas por llamativas brácteas de colores vibrantes que cubren casi por completo la planta. Es una opción excelente para añadir un estallido de color mediterráneo a fachadas, pérgolas, muros o grandes maceteros en terrazas soleadas.",
+    careDetails: "Pleno sol para maximizar la floración. Riego moderado, permitiendo que la tierra se seque superficialmente entre riegos. Es muy resistente a la sequía una vez establecida, pero sensible a las heladas intensas en invierno.",
+    pricesBySize: {
+      "Pequeña": 12500,
+      "Mediana": 24500,
+      "Grande": 39500
     }
   }
 ];

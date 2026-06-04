@@ -77,6 +77,16 @@ function PDP() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
+  const isSizeAvailable = (sizeIndex: number) => {
+    const s = SIZES[sizeIndex];
+    if (product.sizesAvailability && s.label in product.sizesAvailability) {
+      return product.sizesAvailability[s.label];
+    }
+    return s.available;
+  };
+
+  const isOutOfStock = product.inStock === false || !isSizeAvailable(size);
+
   const productImages = product.images && product.images.length > 0
     ? product.images
     : [product.image, product.image, product.image, product.image, product.image];
@@ -86,6 +96,8 @@ function PDP() {
 
   useEffect(() => {
     setActiveImage(productImages[0]);
+    const firstAvailable = SIZES.findIndex((_, i) => isSizeAvailable(i));
+    setSize(firstAvailable !== -1 ? firstAvailable : 0);
   }, [product]);
 
   useEffect(() => {
@@ -286,7 +298,7 @@ function PDP() {
                 {SIZES.map((s, i) => (
                   <button
                     key={s.label}
-                    disabled={!s.available}
+                    disabled={!isSizeAvailable(i)}
                     onClick={() => setSize(i)}
                     className={`py-3 px-4 text-[11px] font-bold uppercase tracking-[0.1em] border rounded-full transition-all disabled:opacity-40 disabled:line-through ${
                       i === size ? "border-[#86895d] bg-[#86895d] text-white shadow-sm" : "border-neutral-200 hover:border-neutral-400 text-muted-foreground hover:text-[#272831]"
@@ -312,17 +324,17 @@ function PDP() {
                 </div>
                 <button
                   onClick={handleAddToCartOnly}
-                  disabled={product.inStock === false}
+                  disabled={isOutOfStock}
                   className="flex-1 bg-[#86895d] hover:bg-[#777a53] disabled:bg-neutral-400 text-white text-[12px] font-semibold tracking-[0.2em] uppercase rounded-full shadow-md transition-all py-4 hover:shadow-lg disabled:cursor-not-allowed"
                 >
-                  {product.inStock === false ? "Agotado" : "Agregar al carrito"}
+                  {isOutOfStock ? "Agotado" : "Agregar al carrito"}
                 </button>
                 <button aria-label="Favoritos" className="border border-neutral-200 size-14 rounded-full flex items-center justify-center hover:border-neutral-400 hover:text-[#86895d] transition-colors shrink-0">
                   <Heart className="size-5" strokeWidth={1.5} />
                 </button>
               </div>
 
-              {product.inStock !== false && (
+              {!isOutOfStock && (
                 <button
                   onClick={handleBuyNow}
                   className="w-full bg-[#272831] hover:bg-[#1a1b22] text-white text-[12px] font-semibold tracking-[0.2em] uppercase rounded-full shadow-md transition-all py-4 hover:shadow-lg"
@@ -394,7 +406,7 @@ function PDP() {
 
         {/* Sticky mobile CTA */}
         <div className="lg:hidden sticky bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-border p-4 z-30">
-          {product.inStock === false ? (
+          {isOutOfStock ? (
             <button
               disabled
               className="w-full bg-neutral-400 text-white py-4 rounded-full text-[12px] font-semibold tracking-[0.2em] uppercase cursor-not-allowed"
