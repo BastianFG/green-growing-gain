@@ -396,7 +396,8 @@ export const products: Product[] = [
       "Pequeña": 22500,
       "Mediana": 38500,
       "Grande": 59500
-    }
+    },
+    inStock: false
   }
 ];
 
