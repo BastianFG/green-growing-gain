@@ -38,6 +38,9 @@ import bougainvilleaL from "@/assets/p-bougainvillea-l.png";
 import mandarinoS from "@/assets/p-mandarino-s.png";
 import mandarinoM from "@/assets/p-mandarino-m.png";
 import mandarinoL from "@/assets/p-mandarino-l.png";
+import scheffleraS from "@/assets/p-schefflera-s.png";
+import scheffleraM from "@/assets/p-schefflera-m.png";
+import scheffleraL from "@/assets/p-schefflera-l.png";
 
 
 export type Product = {
@@ -515,6 +518,24 @@ export const products: Product[] = [
       "Pequeña": 19500,
       "Mediana": 32500,
       "Grande": 49500
+    }
+  },
+  {
+    slug: "schefflera-arboricola",
+    name: "Cheflera · Schefflera Arboricola",
+    scientific: "Schefflera arboricola",
+    category: "Plantas",
+    price: 12500,
+    image: scheffleraS,
+    images: [scheffleraS, scheffleraM, scheffleraL],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "La Schefflera arboricola (conocida popularmente como Cheflera o Árbol Paraguas Enano) es una planta de interior muy resistente y popular por sus llamativas hojas palmadas de color verde brillante que crecen en forma de paraguas. Es ideal para dar un toque verde y frondoso a rincones del hogar u oficinas, tolerando bien una gran variedad de condiciones ambientales y purificando el aire con gran eficacia.",
+    careDetails: "Luz brillante indirecta o semisombra. Riego moderado, permitiendo que la tierra se seque superficialmente entre riegos. Evitar el exceso de agua y proteger de corrientes de aire helado.",
+    pricesBySize: {
+      "Pequeña": 12500,
+      "Mediana": 22500,
+      "Grande": 34500
     }
   }
 ];
