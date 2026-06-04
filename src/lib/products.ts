@@ -26,6 +26,9 @@ import stenocarpusL from "@/assets/p-stenocarpus-l.png";
 import sanpedroS from "@/assets/p-sanpedro-s.png";
 import sanpedroM from "@/assets/p-sanpedro-m.png";
 import sanpedroL from "@/assets/p-sanpedro-l.png";
+import ficusbenjaminaS from "@/assets/p-ficusbenjamina-s.png";
+import ficusbenjaminaM from "@/assets/p-ficusbenjamina-m.png";
+import ficusbenjaminaL from "@/assets/p-ficusbenjamina-l.png";
 
 
 export type Product = {
@@ -418,6 +421,24 @@ export const products: Product[] = [
       "Pequeña": 14500,
       "Mediana": 26500,
       "Grande": 42500
+    }
+  },
+  {
+    slug: "ficus-benjamina",
+    name: "Ficus Benjamina",
+    scientific: "Ficus benjamina",
+    category: "Plantas",
+    price: 12500,
+    image: ficusbenjaminaS,
+    images: [ficusbenjaminaS, ficusbenjaminaM, ficusbenjaminaL],
+    tag: "Nuevo",
+    care: "Medio",
+    description: "El Ficus Benjamina (Weeping fig) es una de las plantas de interior más populares y elegantes gracias a su follaje denso y ramas ligeramente péndulas. Posee pequeñas hojas brillantes de un verde intenso. Se adapta muy bien a espacios con luz indirecta brillante, ayudando a purificar el aire del hogar y aportando un toque arbóreo inigualable al diseño de interiores.",
+    careDetails: "Luz brillante indirecta. Riego moderado, permitiendo que la capa superficial de la tierra se seque entre riegos. Evitar corrientes de aire frío y cambios bruscos de ubicación para prevenir la caída de hojas.",
+    pricesBySize: {
+      "Pequeña": 12500,
+      "Mediana": 22000,
+      "Grande": 34500
     }
   }
 ];
