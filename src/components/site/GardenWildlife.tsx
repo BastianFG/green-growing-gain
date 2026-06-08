@@ -140,7 +140,7 @@ export function GardenWildlife() {
   if (!isClient) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[45] overflow-hidden" aria-hidden="true">
+    <div className="absolute inset-0 pointer-events-none z-[45] overflow-hidden" aria-hidden="true">
       
       {/* Picaflor chico (vuelo muy rápido, errático, se inclina al volar) */}
       <motion.div
