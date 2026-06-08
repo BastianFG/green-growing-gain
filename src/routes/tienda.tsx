@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ProductCard } from "@/components/site/ProductCard";
+import { GardenWildlife } from "@/components/site/GardenWildlife";
 import { products, fetchShopifyProducts } from "@/lib/products";
 import { ChevronRight, SlidersHorizontal, X } from "lucide-react";
 import { motion } from "framer-motion";
@@ -54,7 +55,8 @@ function Shop() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
+      <GardenWildlife />
       <Header />
       <main className="flex-1">
         {/* Editorial banner */}
