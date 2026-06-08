@@ -130,6 +130,35 @@ function Bee({ speed = 0.05 }) {
 
 // --- Componente Principal ---
 
+function InteractiveWildlife({ children, animate, transition, style }: any) {
+  const [frightened, setFrightened] = useState(false);
+
+  return (
+    <motion.div
+      className="absolute"
+      animate={animate}
+      transition={transition}
+      style={style}
+    >
+      <motion.div
+        className="pointer-events-auto cursor-pointer"
+        animate={frightened ? { scale: 0.2, y: -150, opacity: 0 } : { scale: 1, y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeIn" }}
+        onTap={() => {
+          if (frightened) return;
+          setFrightened(true);
+          // Restaura su estado para que vuelvan a aparecer en la página después de 8 segundos
+          setTimeout(() => {
+            setFrightened(false);
+          }, 8000);
+        }}
+      >
+        {children}
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export function GardenWildlife() {
   const [isClient, setIsClient] = useState(false);
   
@@ -143,8 +172,7 @@ export function GardenWildlife() {
     <div className="absolute inset-0 pointer-events-none z-[45] overflow-hidden" aria-hidden="true">
       
       {/* Picaflor chico (vuelo muy rápido, errático, se inclina al volar) */}
-      <motion.div
-        className="absolute"
+      <InteractiveWildlife
         animate={{
           x: ["-10vw", "30vw", "50vw", "70vw", "110vw"],
           y: ["30vh", "25vh", "35vh", "20vh", "10vh"],
@@ -159,11 +187,10 @@ export function GardenWildlife() {
         }}
       >
         <Hummingbird />
-      </motion.div>
+      </InteractiveWildlife>
 
       {/* Zorzal (vuelo recto y mediano) */}
-      <motion.div
-        className="absolute"
+      <InteractiveWildlife
         animate={{
           x: ["110vw", "75vw", "50vw", "25vw", "-10vw"],
           y: ["45vh", "40vh", "50vh", "45vh", "40vh"],
@@ -179,11 +206,10 @@ export function GardenWildlife() {
         style={{ transform: "scaleX(-1)" }} // Volando hacia la izquierda
       >
         <Thrush />
-      </motion.div>
+      </InteractiveWildlife>
 
       {/* Chincol (vuelo con pequeños saltos) */}
-      <motion.div
-        className="absolute"
+      <InteractiveWildlife
         animate={{
           x: ["-10vw", "25vw", "45vw", "65vw", "110vw"],
           y: ["75vh", "65vh", "75vh", "60vh", "75vh"],
@@ -198,11 +224,10 @@ export function GardenWildlife() {
         }}
       >
         <Sparrow />
-      </motion.div>
+      </InteractiveWildlife>
 
       {/* Abeja 1 */}
-      <motion.div
-        className="absolute"
+      <InteractiveWildlife
         animate={{
           x: ["-5vw", "25vw", "45vw", "65vw", "105vw"],
           y: ["50vh", "45vh", "55vh", "40vh", "50vh"],
@@ -216,11 +241,10 @@ export function GardenWildlife() {
         }}
       >
         <Bee />
-      </motion.div>
+      </InteractiveWildlife>
       
       {/* Mariposa */}
-      <motion.div
-        className="absolute"
+      <InteractiveWildlife
         animate={{
           x: ["105vw", "75vw", "55vw", "35vw", "-5vw"],
           y: ["20vh", "30vh", "25vh", "35vh", "20vh"],
@@ -233,12 +257,11 @@ export function GardenWildlife() {
           times: [0, 0.15, 0.5, 0.85, 1]
         }}
       >
-        <Butterfly color="#60a5fa" /> {/* Mariposa azul celeste */}
-      </motion.div>
+        <Butterfly color="#60a5fa" />
+      </InteractiveWildlife>
 
       {/* Abeja 2 */}
-      <motion.div
-        className="absolute"
+      <InteractiveWildlife
         animate={{
           x: ["-5vw", "30vw", "50vw", "70vw", "105vw"],
           y: ["80vh", "90vh", "75vh", "85vh", "80vh"],
@@ -252,7 +275,7 @@ export function GardenWildlife() {
         }}
       >
         <Bee speed={0.04} />
-      </motion.div>
+      </InteractiveWildlife>
     </div>
   );
 }
