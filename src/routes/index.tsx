@@ -154,7 +154,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: easeOutQuint, delay: 0.26 }}
           >
-            Plantas seleccionadas, maceteros de artesanos y todo lo necesario
+            Plantas seleccionadas, maceteros  y todo lo necesario
             para cultivar un hogar más sereno.
           </motion.p>
 
@@ -941,15 +941,7 @@ function Newsletter() {
         viewport={{ once: true, amount: 0.3 }}
         variants={staggerContainer(0.12, 0.05)}
       >
-        {/* Decorative line */}
-        <motion.div
-          className="flex items-center justify-center gap-6 mb-6"
-          variants={fadeIn(0.6)}
-        >
-          <span className="h-px w-16 bg-border" />
-          <span className="eyebrow">Cartas Bascharant</span>
-          <span className="h-px w-16 bg-border" />
-        </motion.div>
+
 
         <motion.h2
           className="font-display text-4xl lg:text-5xl font-bold"

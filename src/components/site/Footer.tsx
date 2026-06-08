@@ -51,7 +51,7 @@ export function Footer() {
               variants={fadeUp(16, 0.6)}
               className="eyebrow text-bone/50 mb-5"
             >
-              Cultivo responsable · Chile
+              Venta de Plantas · Chile
             </motion.p>
             <motion.h2
               variants={fadeUp(28, 0.85)}
