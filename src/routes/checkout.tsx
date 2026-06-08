@@ -127,7 +127,7 @@ function Checkout() {
       {/* Minimal header */}
       <header className="border-b border-border">
         <div className="container-x flex items-center justify-between h-16">
-          <Link to="/" className="font-display text-2xl">Verdé<span className="italic">.</span></Link>
+          <Link to="/" className="font-display text-2xl">Bascharant<span className="italic">.</span></Link>
           <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
             <Lock className="size-3.5" strokeWidth={1.5} />
             Pago 100% seguro

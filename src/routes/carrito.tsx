@@ -9,7 +9,7 @@ import { Minus, Plus, X, ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/carrito")({
   head: () => ({
     meta: [
-      { title: "Carrito — Verdé" },
+      { title: "Carrito — Bascharant" },
       { name: "description", content: "Revisa los productos de tu carrito." },
       { name: "robots", content: "noindex" },
     ],

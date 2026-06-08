@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportError } from "../lib/error-reporting";
 import { WhatsAppButton } from "../components/site/WhatsAppButton";
 import { MobileStickyBar } from "../components/site/MobileStickyBar";
+import { DevelopmentAlert } from "../components/site/DevelopmentAlert";
 import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
@@ -126,6 +127,8 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      {/* Alert for development mode */}
+      <DevelopmentAlert />
       {/* WhatsApp circular: hidden on mobile, replaced by MobileStickyBar */}
       <WhatsAppButton />
       {/* Mobile-only sticky CTA bar (hidden on sm+) */}

@@ -15,9 +15,9 @@ export const Route = createFileRoute("/tienda")({
   },
   head: () => ({
     meta: [
-      { title: "Tienda — Verdé" },
+      { title: "Tienda — Bascharant" },
       { name: "description", content: "Explora plantas de interior, maceteros, jardinería y decoración premium." },
-      { property: "og:title", content: "Tienda — Verdé" },
+      { property: "og:title", content: "Tienda — Bascharant" },
       { property: "og:description", content: "Explora plantas, maceteros y jardinería premium." },
       { property: "og:url", content: "/tienda" },
     ],

@@ -24,9 +24,9 @@ export const Route = createFileRoute("/producto/$slug")({
     const p = loaderData.product;
     return {
       meta: [
-        { title: `${p.name} — Verdé` },
+        { title: `${p.name} — Bascharant` },
         { name: "description", content: `${p.name}${p.scientific ? ` (${p.scientific})` : ""}. ${p.category} premium. Envío cuidado en Chile.` },
-        { property: "og:title", content: `${p.name} — Verdé` },
+        { property: "og:title", content: `${p.name} — Bascharant` },
         { property: "og:description", content: `${p.name}${p.scientific ? ` · ${p.scientific}` : ""} · ${formatCLP(p.price)}` },
         { property: "og:type", content: "product" },
         { property: "og:image", content: p.image },
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/producto/$slug")({
           image: [p.image],
           description: `${p.name}${p.scientific ? ` (${p.scientific})` : ""}`,
           sku: p.slug,
-          brand: { "@type": "Brand", name: "Verdé" },
+          brand: { "@type": "Brand", name: "Bascharant" },
           offers: {
             "@type": "Offer",
             price: p.price,
@@ -349,7 +349,7 @@ function PDP() {
               {[
                 { Icon: Truck, t: "Envío en 24–72h", s: "Empaque especializado a todo Chile" },
                 { Icon: RotateCcw, t: "Devolución 30 días", s: "Cambia o devuelve sin complicaciones" },
-                { Icon: ShieldCheck, t: "Garantía Verdé", s: "Reposición si llega en mal estado" },
+                { Icon: ShieldCheck, t: "Garantía", s: "Reposición si llega en mal estado" },
               ].map(({ Icon, t, s }) => (
                 <li key={t} className="flex gap-3.5 items-start">
                   <div className="size-8 rounded-full bg-[#86895d]/10 flex items-center justify-center shrink-0">
