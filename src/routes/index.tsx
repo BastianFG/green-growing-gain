@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { FallingLeaves } from "@/components/site/FallingLeaves";
 import { ProductCard } from "@/components/site/ProductCard";
 import { products, fetchShopifyProducts } from "@/lib/products";
 import heroPlant from "@/assets/hero-plant.jpg";
@@ -80,6 +81,7 @@ function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <FallingLeaves />
       <Header />
       <main className="flex-1">
         <Hero />
