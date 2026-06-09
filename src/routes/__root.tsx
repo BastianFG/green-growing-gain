@@ -15,6 +15,7 @@ import { WhatsAppButton } from "../components/site/WhatsAppButton";
 import { MobileStickyBar } from "../components/site/MobileStickyBar";
 import { DevelopmentAlert } from "../components/site/DevelopmentAlert";
 import { Toaster } from "../components/ui/sonner";
+import { Analytics } from "@vercel/analytics/react";
 
 function NotFoundComponent() {
   return (
@@ -134,6 +135,7 @@ function RootComponent() {
       {/* Mobile-only sticky CTA bar (hidden on sm+) */}
       <MobileStickyBar />
       <Toaster />
+      <Analytics />
     </QueryClientProvider>
   );
 }
