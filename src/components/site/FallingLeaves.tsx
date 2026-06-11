@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Leaf } from "lucide-react";
 
 // Autumn color palette
 const LEAF_COLORS = [
@@ -11,6 +10,19 @@ const LEAF_COLORS = [
   "#c4883d", // golden brown
   "#b04323", // deep red/orange
 ];
+
+// Solid Leaf SVG to match the reference image
+const SolidLeaf = ({ size }: { size: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M21 3C21 3 20 2.5 17 3C13.5 3.5 10 5.5 8 9C7.5 10 7.5 11.5 8 13L2 19L3.5 20.5L9.5 14.5C11 15 12.5 15 13.5 14.5C17 12.5 19 9 19.5 5.5C19.5 2.5 21 3 21 3Z" />
+  </svg>
+);
 
 export function FallingLeaves() {
   const [leaves, setLeaves] = useState<any[]>([]);
@@ -25,7 +37,7 @@ export function FallingLeaves() {
       delay: Math.random() * 15, // stagger the start times
       size: 16 + Math.random() * 20, // 16px to 36px
       color: LEAF_COLORS[Math.floor(Math.random() * LEAF_COLORS.length)],
-      opacity: 0.3 + Math.random() * 0.5,
+      opacity: 0.4 + Math.random() * 0.6,
       rotationStart: Math.random() * 360,
       rotationEnd: Math.random() * 360 + 360 * (Math.random() > 0.5 ? 1 : -1),
       swayAmount: 20 + Math.random() * 40, // how much it moves left and right
@@ -36,7 +48,7 @@ export function FallingLeaves() {
   if (leaves.length === 0) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[40] overflow-hidden" aria-hidden="true">
+    <div className="absolute inset-0 pointer-events-none z-[0] overflow-hidden" aria-hidden="true">
       {leaves.map((leaf) => (
         <motion.div
           key={leaf.id}
@@ -48,7 +60,7 @@ export function FallingLeaves() {
             opacity: leaf.opacity 
           }}
           animate={{
-            y: ["0vh", "120vh"],
+            y: ["0%", "1200%"],
             x: [
               "0px", 
               `${leaf.swayAmount}px`, 
@@ -79,11 +91,7 @@ export function FallingLeaves() {
             }
           }}
         >
-          <Leaf 
-            style={{ width: leaf.size, height: leaf.size }} 
-            strokeWidth={1} 
-            fill="currentColor" 
-          />
+          <SolidLeaf size={leaf.size} />
         </motion.div>
       ))}
     </div>

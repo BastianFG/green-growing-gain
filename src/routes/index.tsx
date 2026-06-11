@@ -81,7 +81,6 @@ function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <FallingLeaves />
       <Header />
       <main className="flex-1">
         <Hero />
@@ -121,6 +120,7 @@ function Hero() {
       ref={heroRef}
       className="relative grid lg:grid-cols-2 min-h-[92vh] lg:min-h-[96vh] overflow-hidden"
     >
+      <FallingLeaves />
       {/* Left — copy */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
