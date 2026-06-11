@@ -215,7 +215,7 @@ function ServicesDetail() {
 // ─────────────────────────────────────────────
 // CONTACT FORM SECTION (Glassmorphism & Tech)
 // ─────────────────────────────────────────────
-function ContactFormSection() {
+export function ContactFormSection() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", service: "mantencion", message: "" });
   const [state, handleSubmit] = useForm("xgoblbeg");
 

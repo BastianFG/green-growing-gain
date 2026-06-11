@@ -11,6 +11,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FallingLeaves } from "@/components/site/FallingLeaves";
 import { ProductCard } from "@/components/site/ProductCard";
+import { ContactFormSection } from "./servicios";
 import { products, fetchShopifyProducts } from "@/lib/products";
 import heroPlant from "@/assets/hero-plant.jpg";
 import catPots from "@/assets/cat-pots.jpg";
@@ -92,7 +93,7 @@ function Home() {
         <Benefits />
         <Quiz />
         <Editorial />
-        <Newsletter />
+        <ContactFormSection />
       </main>
       <Footer />
     </div>
@@ -930,56 +931,4 @@ function Editorial() {
   );
 }
 
-// ─────────────────────────────────────────────
-// NEWSLETTER
-// ─────────────────────────────────────────────
-function Newsletter() {
-  return (
-    <section className="container-x mt-24 lg:mt-32 mb-36 sm:mb-24 lg:mb-32">
-      <motion.div
-        className="bg-[#f9f9fb] border border-[#e9e9e9] p-10 lg:p-16 rounded-[20px] text-center max-w-3xl mx-auto shadow-sm"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer(0.12, 0.05)}
-      >
 
-
-        <motion.h2
-          className="font-display text-4xl lg:text-5xl font-bold"
-          variants={fadeUp(24, 0.8)}
-        >
-          Una nota mensual,{" "}
-          <span className="italic font-serif">nunca ruido</span>.
-        </motion.h2>
-        <motion.p
-          className="mt-4 text-muted-foreground max-w-md mx-auto"
-          variants={fadeUp(16, 0.65)}
-        >
-          Inspiración, nuevas llegadas y un consejo de cuidado al mes.
-        </motion.p>
-
-        <motion.form
-          className="mt-8 flex max-w-md mx-auto bg-white border border-[#e9e9e9] rounded-[50px] p-1.5 focus-within:border-[#86895d]/50 transition-colors shadow-inner"
-          variants={fadeUp(20, 0.7)}
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <input
-            type="email"
-            required
-            placeholder="tu@correo.cl"
-            aria-label="Correo electrónico"
-            className="flex-1 bg-transparent py-3 px-6 text-base outline-none placeholder:text-muted-foreground"
-          />
-          <motion.button
-            type="submit"
-            className="text-[11px] font-semibold tracking-[0.18em] uppercase px-6 py-3.5 bg-[#86895d] text-white rounded-[50px] hover:bg-[#777a53] transition-colors"
-            whileTap={{ scale: 0.96 }}
-          >
-            Suscribir
-          </motion.button>
-        </motion.form>
-      </motion.div>
-    </section>
-  );
-}

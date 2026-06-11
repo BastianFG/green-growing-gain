@@ -37,6 +37,24 @@ import lantanaL from "@/assets/p-lantana-l.png";
 import veronicaS from "@/assets/p-veronica-buxifolia-s.png";
 import veronicaM from "@/assets/p-veronica-buxifolia-m.png";
 import veronicaL from "@/assets/p-veronica-buxifolia-l.png";
+import rhusCrenataS from "@/assets/p-rhus-crenata-s.png";
+import rhusCrenataM from "@/assets/p-rhus-crenata-m.png";
+import rhusCrenataL from "@/assets/p-rhus-crenata-l.png";
+import yuccaS from "@/assets/p-yucca-s.png";
+import yuccaM from "@/assets/p-yucca-m.png";
+import yuccaL from "@/assets/p-yucca-l.png";
+import pennisetumS from "@/assets/p-pennisetum-s.png";
+import pennisetumM from "@/assets/p-pennisetum-m.png";
+import pennisetumL from "@/assets/p-pennisetum-l.png";
+import agapantoS from "@/assets/p-agapanto-s.png";
+import agapantoM from "@/assets/p-agapanto-m.png";
+import agapantoL from "@/assets/p-agapanto-l.png";
+import lavandaS from "@/assets/p-lavanda-s.png";
+import lavandaM from "@/assets/p-lavanda-m.png";
+import lavandaL from "@/assets/p-lavanda-l.png";
+import helechoS from "@/assets/p-helecho-s.png";
+import helechoM from "@/assets/p-helecho-m.png";
+import helechoL from "@/assets/p-helecho-l.png";
 import { getStorefrontApiUrl, getPublicTokenHeaders } from "./shopify";
 
 
@@ -339,6 +357,144 @@ export const products: Product[] = [
       "Pequeña": 3900,
       "Mediana": 7400,
       "Grande": 12900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "rhus-crenata-arbusto-dunas",
+    name: "Rhus Crenata · Arbusto de Dunas",
+    scientific: "Searsia crenata",
+    category: "Plantas",
+    price: 6900,
+    image: rhusCrenataS,
+    images: [rhusCrenataS, rhusCrenataM, rhusCrenataL],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "El Rhus Crenata (también conocido como Searsia crenata o Arbusto de Dunas) es una robusta planta de exterior perenne famosa por su increíble resistencia y adaptabilidad. Originario de zonas costeras, se caracteriza por un follaje verde denso de pequeñas hojas lobuladas que aportan una textura muy atractiva a macizos y maceteros. Es la elección perfecta para terrazas expuestas, bordes de piscinas y balcones soleados gracias a su tolerancia a los vientos, la salinidad y la escasez de agua. Una opción de paisajismo infalible para exteriores de bajo mantenimiento.",
+    careDetails: "Crece óptimamente a pleno sol, aunque tolera la semisombra. Riego moderado, permitiendo que la tierra se seque superficialmente entre riegos. Es extremadamente tolerante a la sequía y soporta vientos fuertes. Requiere suelo bien drenado.",
+    pricesBySize: {
+      "Pequeña": 6900,
+      "Mediana": 14900,
+      "Grande": 24900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "yucca-pata-de-elefante",
+    name: "Yucca Pata de Elefante",
+    scientific: "Yucca elephantipes",
+    category: "Plantas",
+    price: 8900,
+    image: yuccaS,
+    images: [yuccaS, yuccaM, yuccaL],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "La Yucca Pata de Elefante (Yucca elephantipes) es una de las plantas de interior y exterior más esculturales y resistentes que existen. Originaria de Centroamérica, se distingue por su robusto tronco ensanchado en la base —similar a la pata de un elefante— y sus múltiples rosetas de hojas rígidas y alargadas en color verde intenso. Ideal para aportar verticalidad, carácter arquitectónico y un toque desértico-tropical a terrazas, balcones soleados o interiores muy luminosos. Una verdadera guerrera que perdona casi cualquier descuido.",
+    careDetails: "Requiere luz brillante indirecta o sol directo; prefiere exposiciones muy soleadas. El riego debe ser escaso: es crucial dejar que el sustrato se seque por completo antes de volver a regar, ya que su tronco almacena agua. Es extremadamente sensible al encharcamiento. Soporta ambientes secos y altas temperaturas.",
+    pricesBySize: {
+      "Pequeña": 8900,
+      "Mediana": 18900,
+      "Grande": 34900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "pennisetum-alopecuroides",
+    name: "Pennisetum Alopecuroides",
+    scientific: "Pennisetum alopecuroides",
+    category: "Plantas",
+    price: 4900,
+    image: pennisetumS,
+    images: [pennisetumS, pennisetumM, pennisetumL],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "El Pennisetum alopecuroides, también conocido como Pasto Cola de Zorro o Plumero, es una gramínea ornamental de exterior sumamente popular en el paisajismo contemporáneo. Su denso follaje arqueado aporta movimiento y ligereza al jardín, pero su verdadero espectáculo ocurre en verano y otoño, cuando produce suaves espigas en forma de cepillo o 'cola de zorro'. Ideal para crear borduras, macizos dinámicos o para cultivar en maceteros de gran tamaño. Una opción rústica que demanda muy pocos cuidados.",
+    careDetails: "Prefiere pleno sol para una máxima producción de espigas. Riego moderado, tolerando periodos de sequía una vez establecida. Requiere suelo bien drenado. A finales de invierno se recomienda realizar una poda drástica (a unos 10-15 cm del suelo) para renovar el follaje en primavera.",
+    pricesBySize: {
+      "Pequeña": 4900,
+      "Mediana": 8900,
+      "Grande": 15900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "agapanto-lirio-africano",
+    name: "Agapanto · Lirio Africano",
+    scientific: "Agapanthus africanus",
+    category: "Plantas",
+    price: 4500,
+    image: agapantoS,
+    images: [agapantoS, agapantoM, agapantoL],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "El Agapanto (Agapanthus africanus), también conocido como Lirio Africano o Flor del Amor, es una planta perenne de exterior sumamente apreciada por sus espectaculares floraciones. Sus abundantes flores en forma de trompeta se agrupan en llamativas esferas de color azul violáceo, elevándose con elegancia sobre un denso follaje de hojas acintadas. Es un clásico indispensable en el paisajismo chileno para conformar macizos, borduras o cultivar en maceteros grandes. Una planta sumamente resistente, rústica y de muy bajo mantenimiento que iluminará tus exteriores durante primavera y verano.",
+    careDetails: "Crece y florece mejor a pleno sol, aunque tolera la semisombra (con menos flores). Riego moderado, aumentando ligeramente en los meses cálidos de floración. Tolera muy bien la sequía y el viento una vez establecida. Prefiere sustratos bien drenados. Se aconseja dividir las matas cada 3 o 4 años.",
+    pricesBySize: {
+      "Pequeña": 4500,
+      "Mediana": 7900,
+      "Grande": 14900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "lavanda-dentata",
+    name: "Lavanda",
+    scientific: "Lavandula dentata",
+    category: "Plantas",
+    price: 3500,
+    image: lavandaS,
+    images: [lavandaS, lavandaM, lavandaL],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "La Lavanda (Lavandula dentata), también conocida como espliego dentado, es un arbusto aromático perenne de exterior, imprescindible en cualquier jardín o terraza mediterránea. Sus inconfundibles hojas de borde dentado y sus espigas coronadas por brácteas color lila desprenden un intenso aroma relajante. Es ideal para crear macizos aromáticos, borduras o simplemente para disfrutar en un macetero al sol. Además de su belleza rústica, es una excelente planta melífera que atrae polinizadores a tus espacios verdes.",
+    careDetails: "Requiere exposición a pleno sol (al menos 6 horas diarias). El riego debe ser moderado a escaso; es fundamental dejar secar el sustrato completamente entre riegos, ya que no tolera el exceso de humedad ni el encharcamiento. Necesita un suelo muy bien drenado, idealmente algo arenoso. Se recomienda una poda ligera después de la floración para mantener su forma compacta y redondeada.",
+    pricesBySize: {
+      "Pequeña": 3500,
+      "Mediana": 6500,
+      "Grande": 12900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "helecho-espada",
+    name: "Helecho Espada",
+    scientific: "Nephrolepis exaltata",
+    category: "Plantas",
+    price: 4900,
+    image: helechoS,
+    images: [helechoS, helechoM, helechoL],
+    tag: "Nuevo",
+    care: "Medio",
+    description: "El Helecho Espada (Nephrolepis exaltata) es la planta de interior clásica por excelencia. Sus elegantes frondas largas y arqueadas de color verde brillante aportan una textura suave y una innegable sensación de exuberancia tropical a cualquier ambiente. Es ideal para colgar en macetas, colocar sobre pedestales o estantes altos donde sus hojas puedan caer libremente en cascada. Además de su belleza atemporal, es una de las mejores plantas para purificar el aire del hogar, mejorando la humedad ambiental y la frescura interior.",
+    careDetails: "Prefiere luz indirecta brillante, pero tolera la semisombra. Se debe evitar siempre el sol directo, ya que quema sus delicadas frondas. Es fundamental mantener el sustrato constantemente húmedo (pero no encharcado) y proporcionarle alta humedad ambiental, idealmente pulverizando sus hojas con frecuencia. No tolera corrientes de aire frío ni los ambientes extremadamente resecos generados por la calefacción o el aire acondicionado.",
+    pricesBySize: {
+      "Pequeña": 4900,
+      "Mediana": 8900,
+      "Grande": 15900
     },
     sizesAvailability: {
       "Pequeña": true,
