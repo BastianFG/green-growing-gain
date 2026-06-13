@@ -50,7 +50,7 @@ export function Header() {
       <AnnouncementBar />
       <motion.header
         id="site-header"
-        className="sticky top-0 z-40 transition-none"
+        className="relative lg:sticky top-0 z-40 transition-none"
         animate={{
           backgroundColor: scrolled
             ? "rgba(255, 255, 255, 0.88)"

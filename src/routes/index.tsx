@@ -203,12 +203,12 @@ function Hero() {
             transition={{ duration: 0.6, ease: easeOutQuint, delay: 0.45 }}
           >
             <motion.a
-              href="https://www.bascharant.com/"
+              href="https://www.bascharant.store/servicios"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.22em] uppercase text-[#272831]/70 hover:text-[#86895d] transition-colors duration-300 border-b border-[#272831]/20 hover:border-[#86895d] pb-0.5"
             >
-              Nuestros Servicios
+              Servicio Jardin
               <ArrowRight
                 className="size-3.5 group-hover:translate-x-0.5 transition-transform duration-300"
                 strokeWidth={1.5}
