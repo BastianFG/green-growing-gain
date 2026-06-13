@@ -115,7 +115,12 @@ function PDP() {
     });
   }, [api]);
 
-  const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
+  // Pick 4 related products, skipping the current one.
+  // Using a stable slice but shifting based on the current product index
+  const currentIndex = products.findIndex((p) => p.slug === product.slug);
+  const related = products
+    .filter((p) => p.slug !== product.slug)
+    .slice(currentIndex % 10, (currentIndex % 10) + 4);
 
   const activePrice = product.pricesBySize && SIZES[size]
     ? (product.pricesBySize[SIZES[size].label] ?? product.price)
@@ -246,6 +251,13 @@ function PDP() {
                   ))}
                 </div>
               </Carousel>
+            </div>
+
+            {/* Disclaimer Desktop/Mobile */}
+            <div className="mt-5 lg:mt-6 flex items-center justify-center lg:justify-start">
+               <p className="text-[11px] text-muted-foreground/80 italic font-medium tracking-wide">
+                 * Las imágenes son referenciales. Al tratarse de seres vivos, cada planta es única y presenta variaciones naturales.
+               </p>
             </div>
           </div>
 
@@ -394,6 +406,7 @@ function PDP() {
             </div>
           </div>
           <motion.div
+            key={product.slug}
             className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 lg:gap-x-8"
             initial="hidden"
             whileInView="show"

@@ -120,6 +120,11 @@ function Shop() {
             </select>
           </label>
         </div>
+        <div className="container-x pb-4">
+          <p className="text-[11px] text-muted-foreground/80 italic tracking-wide font-medium">
+            * Las imágenes de nuestro catálogo son referenciales. Cada planta es un ser vivo único y puede presentar variaciones naturales.
+          </p>
+        </div>
 
         <div className="container-x grid lg:grid-cols-12 gap-10">
           {/* Sidebar filters (desktop) */}

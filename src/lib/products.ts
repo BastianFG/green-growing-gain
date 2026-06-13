@@ -58,6 +58,11 @@ import helechoL from "@/assets/p-helecho-l.png";
 import nandinaS from "@/assets/p-nandina.png";
 import kumquatS from "@/assets/p-kumquat.png";
 import cardenalS from "@/assets/p-cardenal.png";
+import romeroS from "@/assets/p-romero.png";
+import sansevieriaS from "@/assets/p-sansevieria.png";
+import ficusAliiS from "@/assets/p-ficus-alii.png";
+import ficusLyrataS from "@/assets/p-ficus-lyrata.png";
+import monsteraS from "@/assets/p-monstera-deliciosa.png";
 import { getStorefrontApiUrl, getPublicTokenHeaders } from "./shopify";
 
 
@@ -86,6 +91,121 @@ export type Product = {
 };
 
 export const products: Product[] = [
+  {
+    slug: "monstera-deliciosa-costilla-adan",
+    name: "Monstera Deliciosa · Costilla de Adán",
+    scientific: "Monstera deliciosa",
+    category: "Plantas",
+    price: 14900,
+    image: monsteraS,
+    images: [monsteraS, monsteraS, monsteraS],
+    tag: "Best Seller",
+    care: "Fácil",
+    description: "La Monstera Deliciosa, conocida popularmente como 'Costilla de Adán', es un ícono absoluto del diseño botánico de interiores. Esta espectacular planta trepadora tropical se roba todas las miradas gracias a sus inmensas y brillantes hojas de color verde oscuro, caracterizadas por sus exóticas perforaciones naturales que se desarrollan a medida que madura. Aporta un frondoso toque de selva urbana a cualquier rincón y, afortunadamente, es sumamente resistente y fácil de cuidar.",
+    careDetails: "Luz indirecta brillante es ideal para fomentar las perforaciones en sus hojas, aunque tolera luz media. El riego debe ser moderado: permite que la mitad superior del sustrato se seque por completo antes de volver a regar; evita el encharcamiento absoluto. Agradece pulverizaciones ocasionales para simular humedad tropical y que limpies sus hojas con un paño suave.",
+    pricesBySize: {
+      "Pequeña": 14900,
+      "Mediana": 24900,
+      "Grande": 45900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "ficus-lyrata-hoja-violin",
+    name: "Ficus Lyrata · Hoja de violín",
+    scientific: "Ficus lyrata",
+    category: "Plantas",
+    price: 18900,
+    image: ficusLyrataS,
+    images: [ficusLyrataS, ficusLyrataS, ficusLyrataS],
+    tag: "Best Seller",
+    care: "Medio",
+    description: "El Ficus Lyrata, conocido popularmente como 'Hoja de violín', es la superestrella indiscutida del diseño de interiores moderno. Su fama se debe a sus espectaculares y enormes hojas en forma de violín, de un verde intenso, brillante y textura coriácea, atravesadas por marcadas nervaduras. Posee un fuerte porte escultural que lo convierte en el punto focal instantáneo de cualquier salón u oficina. Si bien es exigente con sus condiciones, recompensa con una belleza arquitectónica inigualable.",
+    careDetails: "Luz indirecta muy brillante; necesita estar cerca de una ventana soleada pero sin recibir el sol directo abrasador del mediodía. Riego moderado: es crucial dejar que el primer tercio del sustrato se seque antes de volver a regar. Es extremadamente sensible a las corrientes de aire, a los cambios bruscos de temperatura y a ser cambiado de lugar constantemente.",
+    pricesBySize: {
+      "Pequeña": 18900,
+      "Mediana": 36900,
+      "Grande": 65900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "ficus-binnendijkii-alii",
+    name: "Ficus Alii · Ficus binnendijkii",
+    scientific: "Ficus binnendijkii",
+    category: "Plantas",
+    price: 12900,
+    image: ficusAliiS,
+    images: [ficusAliiS, ficusAliiS, ficusAliiS],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "El Ficus binnendijkii, conocido comercialmente como Ficus Alii, es una de las plantas de interior más elegantes y resistentes de su familia. A diferencia del Ficus benjamina, el Alii es mucho menos propenso a perder sus hojas ante cambios de ambiente. Se caracteriza por sus hermosas hojas alargadas, estrechas y colgantes de un verde brillante, otorgándole un aspecto exótico similar al de un bambú o sauce. Es la opción ideal para aportar un porte arbóreo y un toque sofisticado a salones luminosos y oficinas.",
+    careDetails: "Luz brillante indirecta; tolera semisombra, pero crece más frondoso con buena iluminación. Evitar el sol directo fuerte. Riego moderado: permite que la capa superior del sustrato se seque antes de volver a regar. Mantener alejado de corrientes de aire frío intensas.",
+    pricesBySize: {
+      "Pequeña": 12900,
+      "Mediana": 22900,
+      "Grande": 39900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "sansevieria-lengua-de-suegra",
+    name: "Sansevieria · Lengua de suegra",
+    scientific: "Sansevieria trifasciata",
+    category: "Plantas",
+    price: 8900,
+    image: sansevieriaS,
+    images: [sansevieriaS, sansevieriaS, sansevieriaS],
+    tag: "Best Seller",
+    care: "Fácil",
+    description: "La Sansevieria (Sansevieria trifasciata), popularmente conocida como Lengua de suegra o Espada de San Jorge, es una de las plantas de interior más resistentes y esculturales. Destaca por sus largas hojas carnosas, rígidas y verticales, que a menudo presentan atractivos bordes amarillos y patrones atigrados. Es mundialmente célebre por su inmensa rusticidad —tolera tanto sol directo como poca luz y largos periodos sin agua— y por ser una excelente purificadora de aire, siendo ideal para dormitorios y oficinas.",
+    careDetails: "Se adapta a cualquier condición lumínica, desde sol directo hasta sombra profunda (aunque crece mejor con luz brillante indirecta). El riego debe ser mínimo: es fundamental dejar que el sustrato se seque por completo entre riegos para prevenir pudrición. Utilizar tierra suelta y muy bien drenada, como sustrato para cactus.",
+    pricesBySize: {
+      "Pequeña": 8900,
+      "Mediana": 15900,
+      "Grande": 25900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "romero-officinalis",
+    name: "Romero · Rosmarinus officinalis",
+    scientific: "Rosmarinus officinalis",
+    category: "Plantas",
+    price: 3900,
+    image: romeroS,
+    images: [romeroS, romeroS, romeroS],
+    tag: "Best Seller",
+    care: "Fácil",
+    description: "El Romero (Rosmarinus officinalis) es un arbusto aromático perenne originario del Mediterráneo, indispensable en cualquier balcón, terraza o huerto urbano en Chile. Destaca por su follaje denso de pequeñas hojas aciculares y su inconfundible fragancia leñosa. Es extraordinariamente resistente a la sequía y de muy bajo mantenimiento, aportando valor tanto como planta ornamental rústica, como recurso gastronómico y medicinal.",
+    careDetails: "Requiere exposición a pleno sol para desarrollarse vigoroso y con un aroma intenso. El riego debe ser de moderado a escaso; es crucial dejar que el sustrato se seque completamente entre riegos. Utilizar tierra muy bien drenada.",
+    pricesBySize: {
+      "Pequeña": 3900,
+      "Mediana": 6900,
+      "Grande": 12900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
   {
     slug: "cardenal-pelargonium",
     name: "Cardenal · Pelargonium",
