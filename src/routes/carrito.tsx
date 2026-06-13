@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { formatCLP } from "@/lib/products";
+import { formatCLP, products } from "@/lib/products";
 import { getCart, removeFromCart, updateQty, cartTotal, type CartItem } from "@/lib/cart";
 import { Minus, Plus, X, ArrowRight } from "lucide-react";
 
@@ -57,8 +57,27 @@ function CartPage() {
             <ul className="lg:col-span-8 border-y border-border divide-y divide-border">
               {items.map((i) => (
                 <li key={i.slug + i.size} className="py-6 flex gap-4 lg:gap-6">
-                  <div className="size-24 lg:size-32 bg-secondary shrink-0 overflow-hidden">
-                    <img src={i.image} alt={i.name} width={200} height={200} loading="lazy" className="size-full object-cover" />
+                  <div className="size-24 lg:size-32 bg-secondary shrink-0 overflow-hidden flex items-center justify-center">
+                    <img 
+                      src={
+                        (!i.image.startsWith("http") && products.find(p => p.slug === i.slug)?.image) || 
+                        i.image
+                      }
+                      alt={i.name} 
+                      width={200} 
+                      height={200} 
+                      loading="lazy" 
+                      className="size-full object-cover" 
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        const localFallback = products.find(p => p.name.toLowerCase().includes(i.name.toLowerCase().split(' ')[0]))?.image;
+                        if (localFallback && target.src !== localFallback) {
+                          target.src = localFallback;
+                        } else {
+                          target.style.display = 'none';
+                        }
+                      }}
+                    />
                   </div>
                   <div className="flex-1 flex flex-col justify-between min-w-0">
                     <div className="flex justify-between gap-3">

@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { X, ShoppingBag, Trash2, Plus, Minus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getCart, updateQty, removeFromCart, cartTotal, type CartItem } from "@/lib/cart";
-import { formatCLP } from "@/lib/products";
+import { formatCLP, products } from "@/lib/products";
 import { easeSnappy, easeOutQuint } from "@/lib/motion";
 
 interface CartDrawerProps {
@@ -108,14 +108,28 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
                       className="flex gap-4 py-4 border-b border-border/60 last:border-0"
                     >
                       {/* Product image */}
-                      <div className="size-20 shrink-0 rounded-[12px] overflow-hidden bg-secondary">
+                      <div className="size-20 shrink-0 rounded-[12px] overflow-hidden bg-secondary flex items-center justify-center">
                         <img
-                          src={item.image}
+                          src={
+                            // Fix for online Vite builds: if the image is a local asset, look up the new hashed URL
+                            (!item.image.startsWith("http") && products.find(p => p.slug === item.slug)?.image) || 
+                            item.image
+                          }
                           alt={item.name}
                           className="size-full object-cover"
                           width={80}
                           height={80}
                           loading="lazy"
+                          onError={(e) => {
+                            // Fallback if image fails to load
+                            const target = e.target as HTMLImageElement;
+                            const localFallback = products.find(p => p.name.toLowerCase().includes(item.name.toLowerCase().split(' ')[0]))?.image;
+                            if (localFallback && target.src !== localFallback) {
+                              target.src = localFallback;
+                            } else {
+                              target.style.display = 'none';
+                            }
+                          }}
                         />
                       </div>
 
