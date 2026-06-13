@@ -7,9 +7,9 @@ const navLinks = [
   { to: "/tienda", label: "Tienda" },
   { to: "/tienda", label: "Plantas" },
   { to: "/tienda", label: "Maceteros" },
-  { to: "/tienda", label: "Jardinería" },
-  { to: "/tienda", label: "Lookbook" },
-  { to: "https://www.bascharant.com/", label: "Servicios" },
+  { to: "/tienda", label: "Accesorios" },
+  { to: "/servicios", label: "Servicio Hogar" },
+  { to: "https://www.bascharant.com/", label: "Servicio Empresa" },
 ];
 
 interface MobileMenuProps {
