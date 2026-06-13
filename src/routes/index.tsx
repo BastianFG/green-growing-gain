@@ -91,8 +91,8 @@ function Home() {
         <Lookbook />
         <NewArrivals products={newArrivals} />
         <Benefits />
-        <Quiz />
-        <Editorial />
+        {/* <Quiz /> */}
+        {/* <Editorial /> */}
         <ContactFormSection />
       </main>
       <Footer />
