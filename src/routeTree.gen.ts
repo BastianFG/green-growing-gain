@@ -9,17 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TrabajaConNosotrosRouteImport } from './routes/trabaja-con-nosotros'
+import { Route as TiendasRouteImport } from './routes/tiendas'
 import { Route as TiendaRouteImport } from './routes/tienda'
+import { Route as SobreNosotrosRouteImport } from './routes/sobre-nosotros'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServiciosRouteImport } from './routes/servicios'
+import { Route as ProgramaFidelidadRouteImport } from './routes/programa-fidelidad'
+import { Route as GuiaDeCuidadoRouteImport } from './routes/guia-de-cuidado'
+import { Route as GarantiaVerdeRouteImport } from './routes/garantia-verde'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as EnvioCuidadoRouteImport } from './routes/envio-cuidado'
+import { Route as DevolucionesRouteImport } from './routes/devoluciones'
+import { Route as CultivoResponsableRouteImport } from './routes/cultivo-responsable'
+import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CarritoRouteImport } from './routes/carrito'
+import { Route as AsesoriaDeCuidadoRouteImport } from './routes/asesoria-de-cuidado'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductoSlugRouteImport } from './routes/producto.$slug'
 
+const TrabajaConNosotrosRoute = TrabajaConNosotrosRouteImport.update({
+  id: '/trabaja-con-nosotros',
+  path: '/trabaja-con-nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TiendasRoute = TiendasRouteImport.update({
+  id: '/tiendas',
+  path: '/tiendas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TiendaRoute = TiendaRouteImport.update({
   id: '/tienda',
   path: '/tienda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SobreNosotrosRoute = SobreNosotrosRouteImport.update({
+  id: '/sobre-nosotros',
+  path: '/sobre-nosotros',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -32,6 +59,46 @@ const ServiciosRoute = ServiciosRouteImport.update({
   path: '/servicios',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProgramaFidelidadRoute = ProgramaFidelidadRouteImport.update({
+  id: '/programa-fidelidad',
+  path: '/programa-fidelidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuiaDeCuidadoRoute = GuiaDeCuidadoRouteImport.update({
+  id: '/guia-de-cuidado',
+  path: '/guia-de-cuidado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GarantiaVerdeRoute = GarantiaVerdeRouteImport.update({
+  id: '/garantia-verde',
+  path: '/garantia-verde',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnvioCuidadoRoute = EnvioCuidadoRouteImport.update({
+  id: '/envio-cuidado',
+  path: '/envio-cuidado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevolucionesRoute = DevolucionesRouteImport.update({
+  id: '/devoluciones',
+  path: '/devoluciones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CultivoResponsableRoute = CultivoResponsableRouteImport.update({
+  id: '/cultivo-responsable',
+  path: '/cultivo-responsable',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CheckoutRoute = CheckoutRouteImport.update({
   id: '/checkout',
   path: '/checkout',
@@ -40,6 +107,11 @@ const CheckoutRoute = CheckoutRouteImport.update({
 const CarritoRoute = CarritoRouteImport.update({
   id: '/carrito',
   path: '/carrito',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AsesoriaDeCuidadoRoute = AsesoriaDeCuidadoRouteImport.update({
+  id: '/asesoria-de-cuidado',
+  path: '/asesoria-de-cuidado',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -55,79 +127,184 @@ const ProductoSlugRoute = ProductoSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/asesoria-de-cuidado': typeof AsesoriaDeCuidadoRoute
   '/carrito': typeof CarritoRoute
   '/checkout': typeof CheckoutRoute
+  '/contacto': typeof ContactoRoute
+  '/cultivo-responsable': typeof CultivoResponsableRoute
+  '/devoluciones': typeof DevolucionesRoute
+  '/envio-cuidado': typeof EnvioCuidadoRoute
+  '/faq': typeof FaqRoute
+  '/garantia-verde': typeof GarantiaVerdeRoute
+  '/guia-de-cuidado': typeof GuiaDeCuidadoRoute
+  '/programa-fidelidad': typeof ProgramaFidelidadRoute
   '/servicios': typeof ServiciosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sobre-nosotros': typeof SobreNosotrosRoute
   '/tienda': typeof TiendaRoute
+  '/tiendas': typeof TiendasRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
   '/producto/$slug': typeof ProductoSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/asesoria-de-cuidado': typeof AsesoriaDeCuidadoRoute
   '/carrito': typeof CarritoRoute
   '/checkout': typeof CheckoutRoute
+  '/contacto': typeof ContactoRoute
+  '/cultivo-responsable': typeof CultivoResponsableRoute
+  '/devoluciones': typeof DevolucionesRoute
+  '/envio-cuidado': typeof EnvioCuidadoRoute
+  '/faq': typeof FaqRoute
+  '/garantia-verde': typeof GarantiaVerdeRoute
+  '/guia-de-cuidado': typeof GuiaDeCuidadoRoute
+  '/programa-fidelidad': typeof ProgramaFidelidadRoute
   '/servicios': typeof ServiciosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sobre-nosotros': typeof SobreNosotrosRoute
   '/tienda': typeof TiendaRoute
+  '/tiendas': typeof TiendasRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
   '/producto/$slug': typeof ProductoSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/asesoria-de-cuidado': typeof AsesoriaDeCuidadoRoute
   '/carrito': typeof CarritoRoute
   '/checkout': typeof CheckoutRoute
+  '/contacto': typeof ContactoRoute
+  '/cultivo-responsable': typeof CultivoResponsableRoute
+  '/devoluciones': typeof DevolucionesRoute
+  '/envio-cuidado': typeof EnvioCuidadoRoute
+  '/faq': typeof FaqRoute
+  '/garantia-verde': typeof GarantiaVerdeRoute
+  '/guia-de-cuidado': typeof GuiaDeCuidadoRoute
+  '/programa-fidelidad': typeof ProgramaFidelidadRoute
   '/servicios': typeof ServiciosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sobre-nosotros': typeof SobreNosotrosRoute
   '/tienda': typeof TiendaRoute
+  '/tiendas': typeof TiendasRoute
+  '/trabaja-con-nosotros': typeof TrabajaConNosotrosRoute
   '/producto/$slug': typeof ProductoSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/asesoria-de-cuidado'
     | '/carrito'
     | '/checkout'
+    | '/contacto'
+    | '/cultivo-responsable'
+    | '/devoluciones'
+    | '/envio-cuidado'
+    | '/faq'
+    | '/garantia-verde'
+    | '/guia-de-cuidado'
+    | '/programa-fidelidad'
     | '/servicios'
     | '/sitemap.xml'
+    | '/sobre-nosotros'
     | '/tienda'
+    | '/tiendas'
+    | '/trabaja-con-nosotros'
     | '/producto/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/asesoria-de-cuidado'
     | '/carrito'
     | '/checkout'
+    | '/contacto'
+    | '/cultivo-responsable'
+    | '/devoluciones'
+    | '/envio-cuidado'
+    | '/faq'
+    | '/garantia-verde'
+    | '/guia-de-cuidado'
+    | '/programa-fidelidad'
     | '/servicios'
     | '/sitemap.xml'
+    | '/sobre-nosotros'
     | '/tienda'
+    | '/tiendas'
+    | '/trabaja-con-nosotros'
     | '/producto/$slug'
   id:
     | '__root__'
     | '/'
+    | '/asesoria-de-cuidado'
     | '/carrito'
     | '/checkout'
+    | '/contacto'
+    | '/cultivo-responsable'
+    | '/devoluciones'
+    | '/envio-cuidado'
+    | '/faq'
+    | '/garantia-verde'
+    | '/guia-de-cuidado'
+    | '/programa-fidelidad'
     | '/servicios'
     | '/sitemap.xml'
+    | '/sobre-nosotros'
     | '/tienda'
+    | '/tiendas'
+    | '/trabaja-con-nosotros'
     | '/producto/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AsesoriaDeCuidadoRoute: typeof AsesoriaDeCuidadoRoute
   CarritoRoute: typeof CarritoRoute
   CheckoutRoute: typeof CheckoutRoute
+  ContactoRoute: typeof ContactoRoute
+  CultivoResponsableRoute: typeof CultivoResponsableRoute
+  DevolucionesRoute: typeof DevolucionesRoute
+  EnvioCuidadoRoute: typeof EnvioCuidadoRoute
+  FaqRoute: typeof FaqRoute
+  GarantiaVerdeRoute: typeof GarantiaVerdeRoute
+  GuiaDeCuidadoRoute: typeof GuiaDeCuidadoRoute
+  ProgramaFidelidadRoute: typeof ProgramaFidelidadRoute
   ServiciosRoute: typeof ServiciosRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SobreNosotrosRoute: typeof SobreNosotrosRoute
   TiendaRoute: typeof TiendaRoute
+  TiendasRoute: typeof TiendasRoute
+  TrabajaConNosotrosRoute: typeof TrabajaConNosotrosRoute
   ProductoSlugRoute: typeof ProductoSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/trabaja-con-nosotros': {
+      id: '/trabaja-con-nosotros'
+      path: '/trabaja-con-nosotros'
+      fullPath: '/trabaja-con-nosotros'
+      preLoaderRoute: typeof TrabajaConNosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tiendas': {
+      id: '/tiendas'
+      path: '/tiendas'
+      fullPath: '/tiendas'
+      preLoaderRoute: typeof TiendasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tienda': {
       id: '/tienda'
       path: '/tienda'
       fullPath: '/tienda'
       preLoaderRoute: typeof TiendaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sobre-nosotros': {
+      id: '/sobre-nosotros'
+      path: '/sobre-nosotros'
+      fullPath: '/sobre-nosotros'
+      preLoaderRoute: typeof SobreNosotrosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -144,6 +321,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiciosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/programa-fidelidad': {
+      id: '/programa-fidelidad'
+      path: '/programa-fidelidad'
+      fullPath: '/programa-fidelidad'
+      preLoaderRoute: typeof ProgramaFidelidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guia-de-cuidado': {
+      id: '/guia-de-cuidado'
+      path: '/guia-de-cuidado'
+      fullPath: '/guia-de-cuidado'
+      preLoaderRoute: typeof GuiaDeCuidadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/garantia-verde': {
+      id: '/garantia-verde'
+      path: '/garantia-verde'
+      fullPath: '/garantia-verde'
+      preLoaderRoute: typeof GarantiaVerdeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/envio-cuidado': {
+      id: '/envio-cuidado'
+      path: '/envio-cuidado'
+      fullPath: '/envio-cuidado'
+      preLoaderRoute: typeof EnvioCuidadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devoluciones': {
+      id: '/devoluciones'
+      path: '/devoluciones'
+      fullPath: '/devoluciones'
+      preLoaderRoute: typeof DevolucionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cultivo-responsable': {
+      id: '/cultivo-responsable'
+      path: '/cultivo-responsable'
+      fullPath: '/cultivo-responsable'
+      preLoaderRoute: typeof CultivoResponsableRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/checkout': {
       id: '/checkout'
       path: '/checkout'
@@ -156,6 +389,13 @@ declare module '@tanstack/react-router' {
       path: '/carrito'
       fullPath: '/carrito'
       preLoaderRoute: typeof CarritoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/asesoria-de-cuidado': {
+      id: '/asesoria-de-cuidado'
+      path: '/asesoria-de-cuidado'
+      fullPath: '/asesoria-de-cuidado'
+      preLoaderRoute: typeof AsesoriaDeCuidadoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -177,11 +417,23 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AsesoriaDeCuidadoRoute: AsesoriaDeCuidadoRoute,
   CarritoRoute: CarritoRoute,
   CheckoutRoute: CheckoutRoute,
+  ContactoRoute: ContactoRoute,
+  CultivoResponsableRoute: CultivoResponsableRoute,
+  DevolucionesRoute: DevolucionesRoute,
+  EnvioCuidadoRoute: EnvioCuidadoRoute,
+  FaqRoute: FaqRoute,
+  GarantiaVerdeRoute: GarantiaVerdeRoute,
+  GuiaDeCuidadoRoute: GuiaDeCuidadoRoute,
+  ProgramaFidelidadRoute: ProgramaFidelidadRoute,
   ServiciosRoute: ServiciosRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SobreNosotrosRoute: SobreNosotrosRoute,
   TiendaRoute: TiendaRoute,
+  TiendasRoute: TiendasRoute,
+  TrabajaConNosotrosRoute: TrabajaConNosotrosRoute,
   ProductoSlugRoute: ProductoSlugRoute,
 }
 export const routeTree = rootRouteImport

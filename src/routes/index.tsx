@@ -701,21 +701,24 @@ function Lookbook() {
 // BENEFITS
 // ─────────────────────────────────────────────
 const benefitItems = [
-  { icon: Truck, title: "Envío cuidado", body: "Empaque especializado y entrega en 24–72h." },
+  { icon: Truck, title: "Envío cuidado", body: "Empaque especializado y entrega en 24–72h.", href: "/envio-cuidado" },
   {
     icon: ShieldCheck,
     title: "Garantía verde",
     body: "Reposición si tu planta llega en mal estado.",
+    href: "/garantia-verde"
   },
   {
     icon: Sprout,
     title: "Asesoría de cuidado",
     body: "Recibe consejos personalizados por correo.",
+    href: "/asesoria-de-cuidado"
   },
   {
     icon: Leaf,
     title: "Cultivo responsable",
     body: "Plantas criadas en viveros locales certificados.",
+    href: "/cultivo-responsable"
   },
 ];
 
@@ -732,23 +735,25 @@ function Benefits() {
         {benefitItems.map((b) => (
           <motion.div
             key={b.title}
-            className="bg-[#f9f9fb] border border-[#e9e9e9] p-8 rounded-[20px] flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow duration-300"
             variants={fadeUp(24, 0.65)}
+            className="group"
           >
-            <motion.div 
-              className="size-12 rounded-full bg-[#86895d]/10 flex items-center justify-center shrink-0"
-              variants={scaleUp(0.7, 0.5)}
-            >
-              <b.icon className="size-6 text-[#86895d]" strokeWidth={1.5} />
-            </motion.div>
-            <div>
-              <h3 className="font-display text-xl font-bold text-[#272831]">
-                {b.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mt-2">
-                {b.body}
-              </p>
-            </div>
+            <Link to={b.href} className="bg-[#f9f9fb] border border-[#e9e9e9] p-8 rounded-[20px] flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
+              <motion.div 
+                className="size-12 rounded-full bg-[#86895d]/10 flex items-center justify-center shrink-0 group-hover:bg-[#86895d]/20 transition-colors"
+                variants={scaleUp(0.7, 0.5)}
+              >
+                <b.icon className="size-6 text-[#86895d]" strokeWidth={1.5} />
+              </motion.div>
+              <div>
+                <h3 className="font-display text-xl font-bold text-[#272831]">
+                  {b.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+                  {b.body}
+                </p>
+              </div>
+            </Link>
           </motion.div>
         ))}
       </motion.div>

@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Instagram, ArrowRight } from "lucide-react";
 import { staggerContainer, fadeUp, easeOutQuint } from "@/lib/motion";
@@ -6,31 +7,31 @@ const cols = [
   {
     title: "Comprar",
     links: [
-      "Plantas de interior",
-      "Plantas pet friendly",
-      "Maceteros",
-      "Jardinería",
-      "Regalos verdes",
+      { label: "Plantas de interior", href: "/tienda" },
+      { label: "Plantas pet friendly", href: "/tienda" },
+      { label: "Maceteros", href: "/tienda" },
+      { label: "Jardinería", href: "/tienda" },
+      { label: "Regalos verdes", href: "/tienda" },
     ],
   },
   {
     title: "Ayuda",
     links: [
-      "Envíos y entregas",
-      "Devoluciones",
-      "Guía de cuidado",
-      "Preguntas frecuentes",
-      "Contáctanos",
+      { label: "Envíos y entregas", href: "/envio-cuidado" },
+      { label: "Devoluciones", href: "/devoluciones" },
+      { label: "Guía de cuidado", href: "/guia-de-cuidado" },
+      { label: "Preguntas frecuentes", href: "/faq" },
+      { label: "Contáctanos", href: "/contacto" },
     ],
   },
   {
     title: "Bascharant",
     links: [
-      "Sobre nosotros",
-      "Sostenibilidad",
-      "Programa de fidelidad",
-      "Tiendas",
-      "Trabaja con nosotros",
+      { label: "Sobre nosotros", href: "/sobre-nosotros" },
+      { label: "Sostenibilidad", href: "/cultivo-responsable" },
+      { label: "Programa de fidelidad", href: "/programa-fidelidad" },
+      { label: "Tiendas", href: "/tiendas" },
+      { label: "Trabaja con nosotros", href: "/trabaja-con-nosotros" },
     ],
   },
 ];
@@ -150,13 +151,13 @@ export function Footer() {
               <h4 className="eyebrow mb-5">{c.title}</h4>
               <ul className="space-y-3">
                 {c.links.map((l) => (
-                  <li key={l}>
-                    <a
-                      href="#"
+                  <li key={l.label}>
+                    <Link
+                      to={l.href}
                       className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-200"
                     >
-                      {l}
-                    </a>
+                      {l.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
