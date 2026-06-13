@@ -60,8 +60,8 @@ function CartPage() {
                   <div className="size-24 lg:size-32 bg-secondary shrink-0 overflow-hidden flex items-center justify-center">
                     <img 
                       src={
-                        (!i.image.startsWith("http") && products.find(p => p.slug === i.slug)?.image) || 
-                        i.image
+                        (typeof i.image === "string" && !i.image.startsWith("http") && products.find(p => p.slug === i.slug)?.image) || 
+                        i.image || ""
                       }
                       alt={i.name} 
                       width={200} 
@@ -70,7 +70,10 @@ function CartPage() {
                       className="size-full object-cover" 
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        const localFallback = products.find(p => p.name.toLowerCase().includes(i.name.toLowerCase().split(' ')[0]))?.image;
+                        const itemName = i.name || "";
+                        const firstWord = itemName.split(' ')[0];
+                        const localFallback = firstWord ? products.find(p => p.name.toLowerCase().includes(firstWord.toLowerCase()))?.image : undefined;
+                        
                         if (localFallback && target.src !== localFallback) {
                           target.src = localFallback;
                         } else {

@@ -111,9 +111,8 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
                       <div className="size-20 shrink-0 rounded-[12px] overflow-hidden bg-secondary flex items-center justify-center">
                         <img
                           src={
-                            // Fix for online Vite builds: if the image is a local asset, look up the new hashed URL
-                            (!item.image.startsWith("http") && products.find(p => p.slug === item.slug)?.image) || 
-                            item.image
+                            (typeof item.image === "string" && !item.image.startsWith("http") && products.find(p => p.slug === item.slug)?.image) || 
+                            item.image || ""
                           }
                           alt={item.name}
                           className="size-full object-cover"
@@ -123,7 +122,10 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
                           onError={(e) => {
                             // Fallback if image fails to load
                             const target = e.target as HTMLImageElement;
-                            const localFallback = products.find(p => p.name.toLowerCase().includes(item.name.toLowerCase().split(' ')[0]))?.image;
+                            const itemName = item.name || "";
+                            const firstWord = itemName.split(' ')[0];
+                            const localFallback = firstWord ? products.find(p => p.name.toLowerCase().includes(firstWord.toLowerCase()))?.image : undefined;
+                            
                             if (localFallback && target.src !== localFallback) {
                               target.src = localFallback;
                             } else {
