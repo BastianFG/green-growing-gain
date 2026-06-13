@@ -55,6 +55,9 @@ import lavandaL from "@/assets/p-lavanda-l.png";
 import helechoS from "@/assets/p-helecho-s.png";
 import helechoM from "@/assets/p-helecho-m.png";
 import helechoL from "@/assets/p-helecho-l.png";
+import nandinaS from "@/assets/p-nandina.png";
+import kumquatS from "@/assets/p-kumquat.png";
+import cardenalS from "@/assets/p-cardenal.png";
 import { getStorefrontApiUrl, getPublicTokenHeaders } from "./shopify";
 
 
@@ -83,6 +86,75 @@ export type Product = {
 };
 
 export const products: Product[] = [
+  {
+    slug: "cardenal-pelargonium",
+    name: "Cardenal · Pelargonium",
+    scientific: "Pelargonium zonale",
+    category: "Plantas",
+    price: 4900,
+    image: cardenalS,
+    images: [cardenalS, cardenalS, cardenalS],
+    tag: "Best Seller",
+    care: "Fácil",
+    description: "El Cardenal (Pelargonium zonale) es la planta de exterior floreciente por excelencia en balcones, jardineras y patios de todo Chile. Es famoso por su resistencia inigualable y su capacidad para producir agrupaciones de flores de colores muy vibrantes durante la mayor parte del año. Sus hojas redondeadas, a menudo con una zona central más oscura, desprenden un suave aroma al tacto. Es ideal para aportar color tradicional a cualquier rincón soleado con exigencias de cuidado mínimas.",
+    careDetails: "Requiere pleno sol para una floración abundante y constante. Riego moderado, permitiendo que el sustrato se seque superficialmente antes de volver a regar; sensible al exceso de humedad en las raíces. Eliminar las flores marchitas estimula nuevos brotes.",
+    pricesBySize: {
+      "Pequeña": 4900,
+      "Mediana": 8900,
+      "Grande": 14900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "kumquat-fortunella",
+    name: "Kumquat · Naranjo Enano",
+    scientific: "Fortunella margarita",
+    category: "Plantas",
+    price: 19900,
+    image: kumquatS,
+    images: [kumquatS, kumquatS, kumquatS],
+    tag: "Nuevo",
+    care: "Medio",
+    description: "El Kumquat (Fortunella margarita), comúnmente conocido como Naranjo Enano, es un pequeño árbol frutal perenne muy apreciado en la jardinería y el paisajismo por su extraordinario valor ornamental. Sus brillantes hojas verdes contrastan espectacularmente con sus pequeños frutos ovalados de un intenso color anaranjado, los cuales son comestibles y tienen un sabor que mezcla notas dulces en la cáscara y cítricas en su interior. Es ideal para cultivar en macetas decorativas, patios y terrazas con abundante luz.",
+    careDetails: "Requiere exposición a pleno sol o luz brillante directa. Riego regular, permitiendo que la capa superficial de la tierra se seque entre riegos. Utilizar un sustrato bien drenado y fertilizante para cítricos en temporada de crecimiento para estimular la floración y fructificación.",
+    pricesBySize: {
+      "Pequeña": 19900,
+      "Mediana": 34900,
+      "Grande": 54900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
+  {
+    slug: "nandina-domestica",
+    name: "Bambú Sagrado · Nandina",
+    scientific: "Nandina domestica",
+    category: "Plantas",
+    price: 14900,
+    image: nandinaS,
+    images: [nandinaS, nandinaS, nandinaS],
+    tag: "Nuevo",
+    care: "Fácil",
+    description: "El Bambú Sagrado (Nandina domestica) es una planta arbustiva perenne de exterior muy apreciada en el paisajismo moderno. Su follaje delicado recuerda al bambú y cambia espectacularmente de color con las estaciones, pasando de verde claro en primavera a un rojo intenso en invierno. Es perfecta para cultivar en macetas, jardineras o para formar setos de bajo mantenimiento.",
+    careDetails: "Crece mejor a pleno sol o en semisombra (el frío y el sol directo intensifican el color rojo). Riego moderado, tolerando muy bien periodos de sequía una vez que se ha adaptado. Requiere suelo con buen drenaje.",
+    pricesBySize: {
+      "Pequeña": 14900,
+      "Mediana": 26900,
+      "Grande": 48900
+    },
+    sizesAvailability: {
+      "Pequeña": true,
+      "Mediana": false,
+      "Grande": false
+    }
+  },
   {
     slug: "stenocarpus-sinuatus",
     name: "Stenocarpus · Rueda de Fuego",
