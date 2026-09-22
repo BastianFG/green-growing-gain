@@ -18,30 +18,5 @@ export function AnnouncementBar() {
     setVisible(false);
   };
 
-  return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          id="announcement-bar"
-          initial={{ y: -40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -40, opacity: 0 }}
-          transition={{ duration: 0.4, ease: easeSnappy }}
-          className="relative z-50 bg-charcoal text-bone flex items-center justify-center px-4"
-          style={{ height: "36px" }}
-        >
-          <p className="text-[11px] tracking-[0.22em] uppercase text-center">
-            Envío gratuito en compras sobre $50.000 · Chile
-          </p>
-          <button
-            aria-label="Cerrar aviso"
-            onClick={dismiss}
-            className="absolute right-4 top-1/2 -translate-y-1/2 opacity-60 hover:opacity-100 transition-opacity"
-          >
-            <X className="size-3.5" />
-          </button>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  return null;
 }

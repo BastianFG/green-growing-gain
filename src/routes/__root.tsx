@@ -83,15 +83,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Bascharant— Plantas y maceteros premium" },
-      { name: "description", content: "Tienda premium de plantas de interior, maceteros, herramientas y decoración natural." },
+      { title: "Bascharant Home — Paisajismo y Mantención de Áreas Verdes en Frutillar" },
+      { name: "description", content: "Servicios de mantención de áreas verdes, diseño de parcelas y paisajismo en Santiago, Región de Los Lagos y Zapallar. Respaldado por Bascharant Empresas." },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Bascharant" },
+      { property: "og:site_name", content: "Bascharant Home" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Bascharant— Plantas y maceteros premium" },
-      { name: "twitter:title", content: "Bascharant— Plantas y maceteros premium" },
-      { property: "og:description", content: "Tienda premium de plantas de interior, maceteros, herramientas y decoración natural." },
-      { name: "twitter:description", content: "Tienda premium de plantas de interior, maceteros, herramientas y decoración natural." },
+      { property: "og:title", content: "Bascharant Home — Paisajismo" },
+      { name: "twitter:title", content: "Bascharant Home — Paisajismo" },
+      { property: "og:description", content: "Servicios de mantención de áreas verdes, diseño de parcelas y paisajismo en Santiago, Región de Los Lagos y Zapallar. Respaldado por Bascharant Empresas." },
+      { name: "twitter:description", content: "Servicios de mantención de áreas verdes, diseño de parcelas y paisajismo en Santiago, Región de Los Lagos y Zapallar. Respaldado por Bascharant Empresas." },
 
     ],
     links: [

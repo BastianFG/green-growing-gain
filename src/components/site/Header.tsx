@@ -9,14 +9,10 @@ import { CartDrawer } from "./CartDrawer";
 import { easeInOutExpo } from "@/lib/motion";
 
 const nav = [
-  { to: "/tienda", label: "Tienda" },
-  { to: "/tienda", label: "Plantas" },
-  { to: "/tienda", label: "Maceteros" },
-  { to: "/tienda", label: "Accesorios" },
-  { to: "/servicios", label: "Servicio Hogar" },
- // { to: "/tienda", label: "Lookbook" },
-  { to: "https://www.bascharant.com/", label: "Servicio Empresa" },
-
+  { to: "/servicios", label: "Servicios" },
+  { to: "/sobre-nosotros", label: "Nosotros" },
+  { to: "/tienda", label: "Tienda Online" },
+  { to: "https://www.bascharant.com/", label: "Bascharant Empresas" },
 ];
 
 export function Header() {
@@ -83,7 +79,7 @@ export function Header() {
             to="/"
             className="font-display text-2xl lg:text-3xl tracking-tight absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0"
           >
-            Bascharant<span className="italic">.</span>
+            Bascharant <span className="italic font-serif">Home</span>
           </Link>
 
           {/* Desktop nav — centered */}

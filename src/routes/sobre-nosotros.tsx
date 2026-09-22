@@ -7,12 +7,12 @@ export const Route = createFileRoute("/sobre-nosotros")({
   head: () => ({
     meta: [
       {
-        title: "Nuestra Historia | Bascharant",
+        title: "Nuestra Historia | Bascharant Home",
       },
       {
         name: "description",
         content:
-          "Conoce la historia de Bascharant. Somos un equipo apasionado por la botánica y el diseño, cultivando en Santiago de Chile para llevar naturaleza a tu hogar.",
+          "Conoce la historia de Bascharant Home. Respaldados por Paisajismo Bascharant, traemos nuestra experiencia corporativa de Santiago al diseño y mantención de parcelas en Frutillar.",
       },
     ],
   }),
@@ -27,10 +27,10 @@ function SobreNosotrosPage() {
         <section className="bg-charcoal text-bone py-20 lg:py-32 relative overflow-hidden">
           <div className="container-x text-center max-w-3xl mx-auto">
             <h1 className="font-display text-5xl lg:text-6xl font-bold mb-6">
-              Cultivando un estilo de vida <span className="italic font-serif font-normal text-forest">más verde.</span>
+              Excelencia corporativa <br/><span className="italic font-serif font-normal text-forest">ahora en tu jardín.</span>
             </h1>
-            <p className="text-lg lg:text-xl opacity-90 leading-relaxed">
-              Bascharant nació en Santiago con una idea simple: la naturaleza no debe estar reservada solo para el exterior. Creemos en el poder transformador de las plantas dentro del hogar.
+            <p className="text-muted-foreground mt-4 leading-relaxed text-sm md:text-base">
+              Bascharant Home nace como la división residencial de Bascharant Empresas, una empresa con sólida trayectoria en obras corporativas, viales y de gran escala. Ahora, traemos toda esa experiencia y capacidad operativa a Santiago, Región de Los Lagos y Zapallar.
             </p>
           </div>
         </section>
@@ -42,20 +42,20 @@ function SobreNosotrosPage() {
             </div>
             <div className="space-y-8">
               <div>
-                <h2 className="font-display text-3xl font-bold mb-4">De la tierra a tu casa</h2>
+                <h2 className="font-display text-3xl font-bold mb-4">De Santiago al Sur</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Operamos desde nuestro vivero central en Quilicura, donde seleccionamos, aclimatamos y preparamos cada planta que ves en nuestro catálogo. Nos alejamos del modelo de importación masiva para apostar por el cultivo local y sustentable en la zona central de Chile.
+                  Históricamente, nuestra base de operaciones principal se ha encontrado en Quilicura, Región Metropolitana, desde donde hemos ejecutado megaproyectos de paisajismo para inmobiliarias, autopistas y organismos públicos. Hoy, hemos ampliado nuestra cobertura para llevar esa calidad industrial al cuidado de parcelas, residencias y proyectos de alto estándar en Frutillar, Puerto Varas y sus alrededores.
                 </p>
               </div>
               <div>
-                <h2 className="font-display text-3xl font-bold mb-4">Diseño y Botánica</h2>
+                <h2 className="font-display text-3xl font-bold mb-4">Maquinaria y Profesionalismo</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  No solo vendemos plantas; vendemos diseño interior vivo. Curamos cuidadosamente nuestra selección de maceteros de cerámica, greda y polímeros reciclados para que armonicen con estéticas contemporáneas.
+                  A diferencia de los proveedores de mantención tradicionales en la zona sur, contamos con logística propia, maquinaria de alto rendimiento y un equipo técnico calificado para ejecutar obras viales privadas, movimiento de tierras y sistemas de riego automatizado complejos.
                 </p>
               </div>
               <div className="pt-6 border-t border-border">
                 <blockquote className="font-display text-2xl italic text-ink border-l-4 border-forest pl-6 py-2">
-                  "Nuestra misión es que cualquier persona, sin importar su nivel de experiencia, pueda mantener un hogar verde y sano."
+                  "Nuestra misión es aplicar el rigor y la eficiencia de las obras a gran escala, en el cuidado íntimo de tu hogar en el Sur."
                 </blockquote>
               </div>
             </div>

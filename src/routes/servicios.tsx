@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
-import { useForm, ValidationError } from '@formspree/react';
+import { useRef } from "react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import landscapingService from "@/assets/landscaping-service.png";
@@ -20,12 +19,12 @@ export const Route = createFileRoute("/servicios")({
   head: () => ({
     meta: [
       {
-        title: "Servicios de Mantención y Paisajismo — Bascharant",
+        title: "Servicios de Paisajismo en Frutillar — Bascharant Home",
       },
       {
         name: "description",
         content:
-          "Servicios especializados de mantención de áreas verdes y paisajismo para hogares. Diseño, cuidado, poda y fertilización con garantía.",
+          "Mantención de áreas verdes, diseño de parcelas y paisajismo premium en Santiago, Región de Los Lagos y Zapallar. Respaldado por Bascharant Empresas.",
       },
     ],
   }),
@@ -91,13 +90,14 @@ function HeroServices() {
           className="font-display text-5xl md:text-6xl lg:text-7xl text-white tracking-tight leading-[1.1]"
           variants={fadeUp(30, 0.8)}
         >
-          Transformamos tu hogar en un <span className="italic font-serif text-[#86895d]">ecosistema</span> vivo.
+          Tu entorno natural en el Sur, <br/>
+          <span className="italic font-serif text-[#86895d]">cuidado por expertos.</span>
         </motion.h1>
         <motion.p
           className="mt-6 text-lg text-bone/90 max-w-2xl mx-auto leading-relaxed"
           variants={fadeUp(20, 0.8)}
         >
-          Desde el diseño arquitectónico de tu jardín hasta la mantención mensual para asegurar que cada hoja y cada raíz crezca sana y fuerte.
+          Ofrecemos diseño de parcelas, instalación de riego automatizado y mantención de áreas verdes en Santiago, Región de Los Lagos y Zapallar. Toda la capacidad operativa y logística de Bascharant Empresas, ahora dedicada a tu hogar.
         </motion.p>
       </motion.div>
     </section>
@@ -137,15 +137,15 @@ function ServicesDetail() {
             <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-[#86895d]/10 mb-4">
               <Leaf className="size-6 text-[#86895d]" />
             </div>
-            <h3 className="font-display text-3xl font-bold">Diseño y Paisajismo</h3>
+            <h3 className="font-display text-3xl font-bold">Diseño de Parcelas y Riego</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Creamos espacios verdes únicos que se integran a la arquitectura de tu hogar. Realizamos un estudio de luz, humedad y estilo para seleccionar las especies perfectas, logrando un jardín armónico, funcional y de bajo impacto hídrico.
+              Planificamos tu terreno aprovechando las condiciones climáticas del sur de Chile. Desde la selección de especies nativas hasta la instalación de sistemas de riego automatizado y paisajismo vial privado, garantizamos proyectos de alta gama con terminaciones impecables.
             </p>
             <ul className="mt-4 space-y-2">
               {[
-                "Asesoría en selección de especies y maceteros",
-                "Integración interior / exterior",
-                "Instalación de jardineras y sustratos premium",
+                "Diseño arquitectónico del paisaje y planimetría",
+                "Instalación de riego tecnificado y automatizado",
+                "Construcción de jardines y movimiento de tierras",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-charcoal/80">
                   <div className="mt-1 size-1.5 rounded-full bg-[#86895d] shrink-0" />
@@ -187,15 +187,15 @@ function ServicesDetail() {
             <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-[#86895d]/10 mb-4">
               <Sprout className="size-6 text-[#86895d]" />
             </div>
-            <h3 className="font-display text-3xl font-bold">Mantención Integral</h3>
+            <h3 className="font-display text-3xl font-bold">Mantención de Áreas Verdes</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Un jardín hermoso requiere cuidado constante. Ofrecemos planes de mantención mensual con visitas programadas para hogares y empresas. Nos preocupamos de cada detalle para que tu entorno natural siempre luzca impecable.
+              Un entorno amplio y verde requiere cuidado constante y maquinaria profesional. Ofrecemos planes de mantención para parcelas y residencias en Santiago, Región de Los Lagos y Zapallar, apoyados por nuestro equipo técnico y vehículos de traslado corporativo.
             </p>
             <ul className="mt-4 space-y-2">
               {[
-                "Corte de pasto y orillado profesional",
-                "Poda estética y sanitaria, limpieza de hojas",
-                "Fertilización de temporada y control fitosanitario (plagas)",
+                "Corte de pasto de grandes extensiones y orillado",
+                "Poda estética, sanitaria y manejo de especies mayores",
+                "Fertilización programada y control fitosanitario",
                 "Revisión y ajuste de riego tecnificado",
                 "Garantía verde: reemplazo sin costo de plantas bajo nuestro cuidado mensual",
               ].map((item, i) => (
@@ -216,47 +216,51 @@ function ServicesDetail() {
 // CONTACT FORM SECTION (Glassmorphism & Tech)
 // ─────────────────────────────────────────────
 export function ContactFormSection() {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", service: "mantencion", message: "" });
-  const [state, handleSubmit] = useForm("xgoblbeg");
-
   return (
-    <section className="relative py-24 overflow-hidden bg-charcoal">
+    <section id="contacto" className="relative py-20 lg:py-24 overflow-hidden bg-charcoal">
       {/* Abstract Tech Background */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[60%] rounded-full bg-[#86895d] blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[50%] rounded-full bg-[#a3a67d] blur-[100px]" />
       </div>
 
-      <div className="container-x relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container-x relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
           variants={staggerContainer(0.1)}
-          className="text-white"
+          className="text-white text-center lg:text-left"
         >
           <motion.div variants={scaleUp(0.8, 0.5)} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#a3a67d] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#86895d]"></span>
             </span>
-            <span className="text-xs font-semibold tracking-widest uppercase">Cotización Rápida</span>
+            <span className="text-[10px] md:text-xs font-semibold tracking-widest uppercase">Agenda tu Visita</span>
           </motion.div>
-          <motion.h2 variants={fadeUp(20, 0.6)} className="font-display text-4xl lg:text-5xl font-bold">
-            ¿Listo para darle vida a tus espacios?
-          </motion.h2>
-          <motion.p variants={fadeUp(20, 0.7)} className="mt-4 text-white/70 text-lg max-w-md">
-            Completa nuestro formulario inteligente y nos pondremos en contacto contigo en menos de 24 horas con una propuesta a medida.
-          </motion.p>
           
-          <motion.div variants={fadeUp(20, 0.8)} className="mt-10 flex items-center gap-4">
-            <div className="size-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-              <ShieldCheck className="size-5 text-[#86895d]" />
-            </div>
-            <div>
-              <p className="font-semibold text-sm">Garantía de Satisfacción</p>
-              <p className="text-xs text-white/50">Tu jardín siempre en las mejores manos.</p>
-            </div>
+          <motion.h2 variants={fadeUp(20, 0.6)} className="font-display text-4xl lg:text-5xl font-bold leading-tight">
+            Diseñamos y cuidamos <br className="hidden lg:block"/>tu entorno natural
+          </motion.h2>
+          
+          <motion.p variants={fadeUp(20, 0.7)} className="mt-4 text-white/80 text-base md:text-lg max-w-md mx-auto lg:mx-0">
+            Agenda una visita técnica o solicita tu cotización. Nos adaptamos a tus necesidades.
+          </motion.p>
+
+          <motion.div variants={fadeUp(20, 0.75)} className="mt-8 p-5 rounded-2xl bg-[#86895d]/20 border border-[#86895d]/30 text-left">
+            <h3 className="font-bold text-[#e1e3c8] text-lg mb-1 flex items-center gap-2">
+              <ShieldCheck className="size-5" /> ¿Eres Particular?
+            </h3>
+            <p className="text-sm text-white/90 font-medium">
+              ¿Necesitas boleta o factura para tu servicio? ¡Te lo entregamos sin problemas! Detállalo en tu solicitud.
+            </p>
+          </motion.div>
+          
+          <motion.div variants={fadeUp(20, 0.8)} className="mt-8 flex items-center justify-center lg:justify-start gap-4">
+            <a href="https://wa.me/56900000000" target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-[#25D366] text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-[#25D366]/20 hover:scale-105 transition-transform">
+              Contactar por WhatsApp
+            </a>
           </motion.div>
         </motion.div>
 
@@ -267,122 +271,141 @@ export function ContactFormSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: easeOutQuint, delay: 0.2 }}
         >
-          <div className="glass-panel p-8 md:p-10 rounded-[30px] border border-white/10 bg-white/5 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
+          <div className="glass-panel p-6 md:p-10 rounded-[24px] md:rounded-[30px] border border-white/10 bg-white/5 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
             
             {/* Form Highlight line */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#86895d] to-transparent opacity-50" />
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#86895d] via-[#e1e3c8] to-[#86895d] opacity-80" />
 
-            {state.succeeded ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center text-center py-10"
-              >
-                <div className="size-16 rounded-full bg-[#86895d]/20 flex items-center justify-center mb-6">
-                  <ShieldCheck className="size-8 text-[#86895d]" />
-                </div>
-                <h3 className="font-display text-2xl text-white mb-2">¡Solicitud Enviada!</h3>
-                <p className="text-white/70">Hemos recibido tu información. Un experto se pondrá en contacto contigo muy pronto.</p>
-                <button 
-                  onClick={() => window.location.reload()}
-                  className="mt-8 text-sm text-[#86895d] hover:text-white transition-colors"
-                >
-                  Enviar otra solicitud
-                </button>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-2 gap-5">
-                  <div className="space-y-1.5">
-                    <label htmlFor="name" className="text-[11px] font-medium text-white/60 uppercase tracking-wider">Nombre</label>
-                    <input 
-                      required
-                      id="name"
-                      name="name"
-                      type="text" 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[#86895d] focus:ring-1 focus:ring-[#86895d] transition-all"
-                      placeholder="Ej. María Pérez"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    />
-                    <ValidationError prefix="Name" field="name" errors={state.errors} />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label htmlFor="phone" className="text-[11px] font-medium text-white/60 uppercase tracking-wider">Teléfono</label>
-                    <input 
-                      required
-                      id="phone"
-                      name="phone"
-                      type="tel" 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[#86895d] focus:ring-1 focus:ring-[#86895d] transition-all"
-                      placeholder="+56 9 1234 5678"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    />
-                    <ValidationError prefix="Phone" field="phone" errors={state.errors} />
-                  </div>
-                </div>
-
+            <form 
+              action="https://formspree.io/f/xkjgrljy" 
+              method="POST" 
+              className="space-y-4"
+            >
+              {/* Name and Phone */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="email" className="text-[11px] font-medium text-white/60 uppercase tracking-wider">Email</label>
+                  <label htmlFor="name" className="text-[11px] font-bold text-white uppercase tracking-wider pl-1">Nombre</label>
                   <input 
                     required
-                    id="email"
-                    name="email"
-                    type="email" 
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[#86895d] focus:ring-1 focus:ring-[#86895d] transition-all"
-                    placeholder="correo@ejemplo.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    id="name"
+                    name="name"
+                    type="text" 
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 md:py-3.5 text-white placeholder:text-white/40 focus:outline-none focus:border-[#86895d] focus:bg-white/20 transition-all text-base"
+                    placeholder="Ej. Juan Pérez"
                   />
-                  <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
-
                 <div className="space-y-1.5">
-                  <label htmlFor="service" className="text-[11px] font-medium text-white/60 uppercase tracking-wider">Servicio de Interés</label>
+                  <label htmlFor="phone" className="text-[11px] font-bold text-white uppercase tracking-wider pl-1">Teléfono</label>
+                  <input 
+                    required
+                    id="phone"
+                    name="phone"
+                    type="tel" 
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 md:py-3.5 text-white placeholder:text-white/40 focus:outline-none focus:border-[#86895d] focus:bg-white/20 transition-all text-base"
+                    placeholder="+56 9 1234 5678"
+                  />
+                </div>
+              </div>
+
+              {/* Tipo de Propiedad y Servicio */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label htmlFor="property" className="text-[11px] font-bold text-white uppercase tracking-wider pl-1">Tipo de Propiedad</label>
                   <select 
+                    required
+                    id="property"
+                    name="property"
+                    className="w-full bg-charcoal/90 border border-white/20 rounded-xl px-4 py-3 md:py-3.5 text-white focus:outline-none focus:border-[#86895d] focus:bg-charcoal transition-all text-base appearance-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>Selecciona una opción</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Parcela">Parcela</option>
+                  </select>
+                </div>
+                
+                <div className="space-y-1.5">
+                  <label htmlFor="service" className="text-[11px] font-bold text-white uppercase tracking-wider pl-1">Tipo de Servicio</label>
+                  <select 
+                    required
                     id="service"
                     name="service"
-                    className="w-full bg-charcoal border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#86895d] focus:ring-1 focus:ring-[#86895d] transition-all appearance-none"
-                    value={formData.service}
-                    onChange={(e) => setFormData({...formData, service: e.target.value})}
+                    className="w-full bg-charcoal/90 border border-white/20 rounded-xl px-4 py-3 md:py-3.5 text-white focus:outline-none focus:border-[#86895d] focus:bg-charcoal transition-all text-base appearance-none"
+                    defaultValue=""
                   >
-                    <option value="mantencion">Mantención de Áreas Verdes</option>
-                    <option value="paisajismo">Diseño y Paisajismo</option>
-                    <option value="riego">Mantención de Riego Tecnificado</option>
-                    <option value="otro">Otro</option>
+                    <option value="" disabled>Selecciona un servicio</option>
+                    <option value="Mantención de Áreas Verdes">Mantención de Áreas Verdes</option>
+                    <option value="Diseño de Parcelas">Diseño de Parcelas</option>
+                    <option value="Paisajismo">Paisajismo</option>
+                    <option value="Riego Tecnificado">Riego Tecnificado</option>
                   </select>
-                  <ValidationError prefix="Service" field="service" errors={state.errors} />
                 </div>
+              </div>
 
-                <div className="space-y-1.5">
-                  <label htmlFor="message" className="text-[11px] font-medium text-white/60 uppercase tracking-wider">Detalles Adicionales</label>
-                  <textarea 
-                    id="message"
-                    name="message"
-                    rows={3}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[#86895d] focus:ring-1 focus:ring-[#86895d] transition-all resize-none"
-                    placeholder="Cuéntanos un poco sobre tu jardín..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  />
-                  <ValidationError prefix="Message" field="message" errors={state.errors} />
-                </div>
+              {/* Comuna */}
+              <div className="space-y-1.5">
+                <label htmlFor="comuna" className="text-[11px] font-bold text-white uppercase tracking-wider pl-1">Comuna</label>
+                <select 
+                  required
+                  id="comuna"
+                  name="comuna"
+                  className="w-full bg-charcoal/90 border border-white/20 rounded-xl px-4 py-3 md:py-3.5 text-white focus:outline-none focus:border-[#86895d] focus:bg-charcoal transition-all text-base appearance-none"
+                  defaultValue=""
+                >
+                  <option value="" disabled>Elige tu comuna</option>
+                  <optgroup label="Región de Los Lagos">
+                    <option value="Puerto Montt">Puerto Montt</option>
+                    <option value="Puerto Varas">Puerto Varas</option>
+                    <option value="Llanquihue">Llanquihue</option>
+                    <option value="Frutillar">Frutillar</option>
+                    <option value="Osorno">Osorno</option>
+                  </optgroup>
+                  <optgroup label="Región Metropolitana">
+                    <option value="Colina (Chicureo)">Colina (Chicureo)</option>
+                    <option value="Lo Barnechea">Lo Barnechea</option>
+                    <option value="Las Condes">Las Condes</option>
+                    <option value="Vitacura">Vitacura</option>
+                    <option value="Santiago">Santiago Centro</option>
+                  </optgroup>
+                  <optgroup label="Otras">
+                    <option value="Zapallar">Zapallar</option>
+                  </optgroup>
+                </select>
+              </div>
 
+              {/* Factura / Boleta */}
+              <div className="space-y-1.5 pt-2">
+                <label htmlFor="documento" className="text-[11px] font-bold text-[#e1e3c8] uppercase tracking-wider pl-1">¿Necesitas Boleta o Factura?</label>
+                <select 
+                  required
+                  id="documento"
+                  name="documento"
+                  className="w-full bg-[#86895d]/20 border border-[#86895d]/50 rounded-xl px-4 py-3 md:py-3.5 text-white focus:outline-none focus:border-white transition-all text-base appearance-none"
+                  defaultValue="No necesito / Particular"
+                >
+                  <option value="Boleta">Sí, necesito Boleta</option>
+                  <option value="Factura">Sí, necesito Factura</option>
+                  <option value="No necesito / Particular">No necesito / Particular</option>
+                </select>
+              </div>
+
+              {/* Botón Enviar */}
+              <div className="pt-4">
                 <button
                   type="submit"
-                  disabled={state.submitting}
-                  className="w-full group relative overflow-hidden bg-[#86895d] text-white font-semibold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#777a53] transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full group relative overflow-hidden bg-white text-charcoal font-bold text-base py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#e1e3c8] transition-colors shadow-xl"
                 >
-                  <span className="relative z-10 flex items-center gap-2 text-sm tracking-widest uppercase">
-                    {state.submitting ? "Enviando..." : "Solicitar Cotización"}
-                    {!state.submitting && <Send className="size-4 group-hover:translate-x-1 transition-transform" />}
+                  <span className="relative z-10 flex items-center gap-2">
+                    Solicitar Visita Ahora
+                    <Send className="size-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </span>
-                  {/* Button shine effect */}
-                  <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 </button>
-              </form>
-            )}
+              </div>
+              
+              <p className="text-center text-xs text-white/50 mt-4">
+                Tus datos están seguros con nosotros.
+              </p>
+            </form>
           </div>
         </motion.div>
       </div>

@@ -13,10 +13,13 @@ import { FallingLeaves } from "@/components/site/FallingLeaves";
 import { ProductCard } from "@/components/site/ProductCard";
 import { ContactFormSection } from "./servicios";
 import { products, fetchShopifyProducts } from "@/lib/products";
-import heroPlant from "@/assets/hero-plant.jpg";
+import heroVideo from "@/assets/IndexPortada.mp4";
 import catPots from "@/assets/cat-pots.jpg";
 import catIndoor from "@/assets/cat-indoor.jpg";
 import catGarden from "@/assets/cat-garden.jpg";
+import srvCortePoda from "@/assets/corte_y_poda.jpg";
+import srvAreasVerdes from "@/assets/creacion_areas_verdes.jpg";
+import srvFitosanitario from "@/assets/control_fitosanitario.jpg";
 import lookbook1 from "@/assets/lookbook-1.jpg";
 import {
   ArrowRight,
@@ -37,6 +40,9 @@ import {
   slideRight,
   scaleUp,
 } from "@/lib/motion";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import React from "react";
 
 // ─────────────────────────────────────────────
 // Route
@@ -86,11 +92,11 @@ function Home() {
       <main className="flex-1">
         <Hero />
         <MarqueeStrip />
-        <Categories />
+        <Services />
         <BestSellers products={bestSellers} />
         <Lookbook />
-        <NewArrivals products={newArrivals} />
-        <Benefits />
+        {/* <NewArrivals products={newArrivals} /> */}
+        {/* <Benefits /> */}
         {/* <Quiz /> */}
         {/* <Editorial /> */}
         <ContactFormSection />
@@ -116,54 +122,92 @@ function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.5], ["0%", "-8%"]);
 
+  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const contactSection = document.getElementById("contacto");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       ref={heroRef}
-      className="relative grid lg:grid-cols-2 min-h-[92vh] lg:min-h-[96vh] overflow-hidden"
+      className="relative flex flex-col lg:grid lg:grid-cols-2 min-h-[92vh] lg:min-h-[96vh] overflow-hidden"
     >
       <FallingLeaves />
+
+      {/* Background Image (Mobile) / Right Column (Desktop) */}
+      <div className="absolute inset-0 z-0 lg:relative lg:order-2 lg:bg-secondary overflow-hidden lg:rounded-[20px] lg:my-6 lg:mr-6 lg:shadow-sm">
+        <motion.video
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 size-full object-cover lg:rounded-[20px]"
+          style={{ y: imageY }}
+          initial={{ scale: 1.06 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.4, ease: easeInOutExpo }}
+        />
+        
+        {/* Gradient overlay for mobile text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/10 lg:hidden pointer-events-none" />
+
+        {/* Image caption badge */}
+        <motion.div
+          className="absolute top-32 right-6 lg:top-auto lg:bottom-6 glass px-5 py-4 text-xs max-w-[240px] rounded-[15px] shadow-lg"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: easeOutQuint, delay: 0.6 }}
+        >
+          <p className="font-display italic text-base">Paisajismo</p>
+          <p className="text-muted-foreground mt-1">Casas y Parcelas</p>
+        </motion.div>
+      </div>
+
       {/* Left — copy */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative order-2 lg:order-1 flex items-center container-x py-20 lg:py-0"
+        className="relative z-10 lg:order-1 flex flex-col justify-end lg:justify-center container-x pb-20 pt-48 lg:py-0 min-h-[92vh] lg:min-h-0"
       >
         <div className="max-w-xl">
           {/* Eyebrow */}
-          <motion.p
-            className="eyebrow"
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: easeOutQuint, delay: 0 }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#86895d]/10 border border-[#86895d]/20 mb-4 text-[#86895d] backdrop-blur-sm"
           >
-            Otoño · Colección 2026
-          </motion.p>
+            <ShieldCheck className="size-4" />
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Temporada de Primavera · Especialistas</span>
+          </motion.div>
 
           {/* H1 */}
           <motion.h1
-            className="mt-5 font-display text-[clamp(2.8rem,6.5vw,5.5rem)] leading-[1.1] tracking-tight"
+            className="mt-2 font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-tight"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: easeOutQuint, delay: 0.12 }}
           >
-            Una casa <span className="italic font-serif">viva</span>
-            <br />
-            empieza por una hoja.
+            Tu jardín en manos <br />
+            <span className="italic font-serif text-[#86895d]">profesionales</span>
           </motion.h1>
 
           {/* Body */}
           <motion.p
-            className="mt-6 text-base text-muted-foreground max-w-md leading-relaxed"
+            className="mt-6 text-base text-muted-foreground max-w-md leading-relaxed font-medium"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: easeOutQuint, delay: 0.26 }}
           >
-            Plantas seleccionadas, maceteros  y todo lo necesario
-            para cultivar un hogar más sereno.
+            Diseño, paisajismo y mantención para casas y parcelas. Atendemos en Santiago, Región de Los Lagos y Zapallar.
           </motion.p>
 
           {/* CTAs */}
           <motion.div
-            className="mt-9 flex flex-wrap gap-3.5"
+            className="mt-9 flex flex-col sm:flex-row flex-wrap gap-3.5"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: easeOutQuint, delay: 0.38 }}
@@ -173,78 +217,32 @@ function Hero() {
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.2 }}
             >
-              <Link
-                to="/tienda"
-                className="group inline-flex items-center gap-2 bg-[#86895d] text-white text-[12px] font-semibold tracking-[0.18em] uppercase px-8 py-4 rounded-[50px] hover:bg-[#777a53] transition-colors shadow-md"
+              <a
+                href="#contacto"
+                onClick={scrollToContact}
+                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#86895d] text-white text-[12px] font-semibold tracking-[0.18em] uppercase px-8 py-4 rounded-[50px] hover:bg-[#777a53] transition-colors shadow-lg"
               >
-                Comprar plantas
+                Agendar Visita
                 <ArrowRight
                   className="size-4 group-hover:translate-x-1 transition-transform duration-300"
                   strokeWidth={1.5}
                 />
-              </Link>
+              </a>
             </motion.div>
             <motion.a
-              href="#lookbook"
-              className="inline-flex items-center text-[12px] font-semibold tracking-[0.18em] uppercase px-8 py-4 border border-[#272831]/20 hover:border-[#272831] rounded-[50px] transition-colors"
+              href="https://wa.me/56900000000"
+              target="_blank"
+              rel="noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25D366]/10 text-[#128C7E] text-[12px] font-semibold tracking-[0.18em] uppercase px-8 py-4 border border-[#25D366]/30 hover:bg-[#25D366] hover:text-white rounded-[50px] transition-colors backdrop-blur-sm"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.2 }}
             >
-              Ver lookbook
-            </motion.a>
-          </motion.div>
-
-          {/* Nuestros Servicios CTA */}
-          <motion.div
-            className="mt-6"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: easeOutQuint, delay: 0.45 }}
-          >
-            <motion.a
-              href="https://www.bascharant.store/servicios"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.22em] uppercase text-[#272831]/70 hover:text-[#86895d] transition-colors duration-300 border-b border-[#272831]/20 hover:border-[#86895d] pb-0.5"
-            >
-              Servicio Jardin
-              <ArrowRight
-                className="size-3.5 group-hover:translate-x-0.5 transition-transform duration-300"
-                strokeWidth={1.5}
-              />
+              WhatsApp
             </motion.a>
           </motion.div>
         </div>
       </motion.div>
-
-      {/* Right — image with parallax */}
-      <div className="order-1 lg:order-2 relative bg-secondary overflow-hidden min-h-[45vw] max-h-[280px] sm:max-h-none lg:min-h-0 rounded-[20px] lg:my-6 lg:mr-6 shadow-sm">
-        <motion.img
-          src={heroPlant}
-          alt="Monstera Deliciosa en macetero crema dentro de un salón luminoso"
-          width={1600}
-          height={1200}
-          fetchPriority="high"
-          decoding="async"
-          className="absolute inset-0 size-full object-cover rounded-[20px]"
-          style={{ y: imageY }}
-          initial={{ scale: 1.06 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.4, ease: easeInOutExpo }}
-        />
-
-        {/* Image caption badge — glassmorphism */}
-        <motion.div
-          className="absolute bottom-6 right-6 glass px-5 py-4 text-xs max-w-[240px] rounded-[15px] shadow-lg"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: easeOutQuint, delay: 0.6 }}
-        >
-          <p className="font-display italic text-base">Monstera Deliciosa</p>
-          <p className="text-muted-foreground mt-1">Cuidado fácil · Luz indirecta</p>
-        </motion.div>
-      </div>
 
       {/* Scroll indicator */}
       <motion.div
@@ -254,7 +252,7 @@ function Hero() {
         transition={{ delay: 1.2, duration: 0.6 }}
       >
         <span className="eyebrow" style={{ fontSize: "0.6rem" }}>
-          Scroll
+          Descubre más
         </span>
         <motion.div
           animate={{ y: [0, 8, 0], opacity: [0.5, 1, 0.5] }}
@@ -272,12 +270,12 @@ function Hero() {
 // ─────────────────────────────────────────────
 function MarqueeStrip() {
   const items = [
-    "Envío cuidado a todo Chile",
-    "Garantía de llegada en buen estado",
-    "Asesoría de cuidado gratuita",
-    "Empaque especializado",
-    "Plantas revisadas hoja por hoja",
-    "Viveros locales certificados",
+    "Mantención de áreas verdes en Frutillar",
+    "Diseño de parcelas y jardines premium",
+    "Sistemas de riego automatizado",
+    "Respaldo corporativo Paisajismo Bascharant",
+    "Servicio en Santiago, Los Lagos y Zapallar",
+    "Profesionalismo y maquinaria especializada",
   ];
 
   const full = [...items, ...items]; // duplicate for seamless loop
@@ -300,17 +298,35 @@ function MarqueeStrip() {
 }
 
 // ─────────────────────────────────────────────
-// CATEGORIES
+// SERVICES (Replaced Categories)
 // ─────────────────────────────────────────────
-const cats = [
-  { label: "Plantas de interior", img: catIndoor, count: "82 productos", href: "/tienda" },
-  { label: "Maceteros", img: catPots, count: "54 productos", href: "/tienda" },
-  { label: "Jardinería", img: catGarden, count: "37 productos", href: "/tienda" },
+const servicesList = [
+  { label: "Corte y Poda", img: srvCortePoda, desc: "Corte de césped y poda de formación", href: "/servicios" },
+  { label: "Áreas Verdes", img: srvAreasVerdes, desc: "Asesoría y creación de espacios", href: "/servicios" },
+  { label: "Fitosanitario", img: srvFitosanitario, desc: "Control fitosanitario preventivo", href: "/servicios" },
 ];
 
-function Categories() {
+function MobileCarousel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" }, [
+    Autoplay({ delay: 3000, stopOnInteraction: true }),
+  ]);
+
   return (
-    <section className="container-x mt-24 lg:mt-32 overflow-hidden" id="shop">
+    <div className={`overflow-hidden sm:hidden ${className}`} ref={emblaRef}>
+      <div className="flex">
+        {React.Children.map(children, (child) => (
+          <div className="flex-[0_0_80%] min-w-0 pr-4">
+            {child}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Services() {
+  return (
+    <section className="container-x mt-24 lg:mt-32 overflow-hidden" id="services">
       <motion.div
         className="flex items-end justify-between mb-10"
         initial="hidden"
@@ -320,48 +336,72 @@ function Categories() {
       >
         <div>
           <motion.p className="eyebrow" variants={fadeUp(12, 0.55)}>
-            Explora
+            Especialistas
           </motion.p>
           <motion.h2
             className="mt-3 font-display text-4xl lg:text-5xl"
             variants={fadeUp(20, 0.7)}
           >
-            Por categoría
+            Tipos de Servicios
           </motion.h2>
         </div>
         <motion.div variants={fadeUp(12, 0.55)}>
           <Link
-            to="/tienda"
+            to="/servicios"
             className="hidden sm:inline-flex items-center gap-1 text-sm border-b border-ink pb-0.5 link-underline"
           >
-            Ver todo <ArrowRight className="size-4" strokeWidth={1.5} />
+            Ver detalle <ArrowRight className="size-4" strokeWidth={1.5} />
           </Link>
         </motion.div>
       </motion.div>
 
+      {/* Mobile Carousel */}
+      <MobileCarousel className="-mx-6 px-6 pb-4">
+        {servicesList.map((s) => (
+          <div key={s.label} className="group block h-full">
+            <Link to={s.href} className="block h-full">
+              <div className="relative aspect-[4/3] overflow-hidden bg-secondary rounded-[20px] shadow-sm">
+                <img src={s.img} alt={s.label} loading="lazy" decoding="async" className="size-full object-cover rounded-[20px]" />
+                <div className="absolute inset-0 bg-[#272831] opacity-0" />
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent rounded-b-[20px] px-4 py-3">
+                  <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-white">{s.label}</p>
+                </div>
+              </div>
+              <div className="pt-4 flex justify-between items-baseline gap-4">
+                <h3 className="font-display text-2xl font-bold text-foreground">
+                  {s.label}
+                </h3>
+                <span className="text-xs text-muted-foreground font-medium text-right shrink-0 max-w-[120px]">{s.desc}</span>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </MobileCarousel>
+
+      {/* Desktop Grid */}
       <motion.div
-        className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-3 gap-4 lg:gap-8 pb-4 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-none"
+        className="hidden sm:grid sm:grid-cols-3 gap-8 pb-4"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
         variants={staggerContainer(0.12, 0.05)}
       >
-        {cats.map((c) => (
+        {servicesList.map((s) => (
           <motion.div
-            key={c.label}
-            className="group block shrink-0 w-[72vw] sm:w-[50vw] md:w-auto snap-center snap-always"
+            key={s.label}
+            className="group block"
             variants={fadeUp(40, 0.7)}
           >
-            <Link to={c.href} className="block">
+            <Link to={s.href} className="block">
               <motion.div
-                className="relative aspect-[4/3] sm:aspect-[3/4] overflow-hidden bg-secondary rounded-[20px] shadow-sm"
+                className="relative aspect-[3/4] overflow-hidden bg-secondary rounded-[20px] shadow-sm"
                 whileHover="hovered"
                 initial="idle"
               >
                 {/* Image */}
                 <motion.img
-                  src={c.img}
-                  alt={c.label}
+                  src={s.img}
+                  alt={s.label}
                   width={1024}
                   height={1280}
                   loading="lazy"
@@ -388,14 +428,9 @@ function Categories() {
                   }}
                 />
 
-                {/* Label always visible on mobile, hover only on desktop */}
-                <div className="sm:hidden absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent rounded-b-[20px] px-4 py-3">
-                  <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-white">{c.label}</p>
-                </div>
-
                 {/* Centered label on hover — desktop only */}
                 <motion.div
-                  className="hidden sm:flex absolute inset-0 items-center justify-center px-4"
+                  className="flex absolute inset-0 items-center justify-center px-4"
                   variants={{
                     idle: { opacity: 0, scale: 0.9 },
                     hovered: {
@@ -406,22 +441,22 @@ function Categories() {
                   }}
                 >
                   <span className="glass px-6 py-3 rounded-full text-foreground text-[11px] font-semibold tracking-[0.2em] uppercase shadow-md pointer-events-none">
-                    Explorar →
+                    Ver más →
                   </span>
                 </motion.div>
               </motion.div>
 
-              <div className="pt-4 flex justify-between items-baseline">
+              <div className="pt-4 flex justify-between items-baseline gap-4">
                 <motion.h3
-                  className="font-display text-2xl group-hover:text-forest transition-colors duration-300 font-bold"
+                  className="font-display text-2xl group-hover:text-[#86895d] transition-colors duration-300 font-bold"
                   variants={{
                     idle: { y: 0 },
                     hovered: { y: -2, transition: { duration: 0.3 } },
                   }}
                 >
-                  {c.label}
+                  {s.label}
                 </motion.h3>
-                <span className="text-xs text-muted-foreground font-medium">{c.count}</span>
+                <span className="text-xs text-muted-foreground font-medium text-right shrink-0 max-w-[120px]">{s.desc}</span>
               </div>
             </Link>
           </motion.div>
@@ -440,17 +475,24 @@ function ProductGrid({
   products: typeof import("@/lib/products").products;
 }) {
   return (
-    <motion.div
-      className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 lg:gap-x-8"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={staggerContainer(0.08, 0.05)}
-    >
-      {prods.map((p, i) => (
-        <ProductCard key={p.slug} product={p} index={i} />
-      ))}
-    </motion.div>
+    <>
+      <MobileCarousel className="-mx-6 px-6">
+        {prods.map((p, i) => (
+          <ProductCard key={p.slug} product={p} index={i} />
+        ))}
+      </MobileCarousel>
+      <motion.div
+        className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 lg:gap-x-8"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={staggerContainer(0.08, 0.05)}
+      >
+        {prods.map((p, i) => (
+          <ProductCard key={p.slug} product={p} index={i} />
+        ))}
+      </motion.div>
+    </>
   );
 }
 
@@ -575,36 +617,6 @@ function Lookbook() {
         {/* Dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
-        {/* Hotspot buttons */}
-        {[
-          { x: "22%", y: "55%" },
-          { x: "55%", y: "70%" },
-          { x: "82%", y: "38%" },
-        ].map((h, i) => (
-          <motion.button
-            key={i}
-            aria-label={`Ver producto ${i + 1}`}
-            className="absolute z-10 size-8 rounded-full bg-white/95 border border-black/10 flex items-center justify-center shadow-md"
-            style={{ left: h.x, top: h.y, x: "-50%", y: "-50%" }}
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{
-              delay: 0.3 + i * 0.15,
-              duration: 0.5,
-              ease: easeOutQuint,
-            }}
-            whileHover={{ scale: 1.2 }}
-          >
-            <span className="block size-1.5 bg-[#86895d] rounded-full" />
-            {/* Ping ring */}
-            <span
-              className="absolute size-8 rounded-full border border-white/80 hotspot-ping"
-              style={{ animationDelay: `${i * 0.4}s` }}
-            />
-          </motion.button>
-        ))}
-
         {/* Caption block */}
         <motion.div
           className="absolute bottom-10 left-8 lg:bottom-16 lg:left-16 max-w-md text-white z-10"
@@ -617,13 +629,13 @@ function Lookbook() {
             className="text-[11px] tracking-[0.28em] uppercase opacity-80"
             variants={fadeUp(12, 0.6)}
           >
-            Lookbook · 01
+            Tips & Decoración
           </motion.p>
           <motion.h2
             className="mt-3 font-display text-4xl lg:text-5xl drop-shadow-sm font-bold text-white"
             variants={fadeUp(24, 0.8)}
           >
-            El salón sereno
+            Inspírate para tu jardín y hogar
           </motion.h2>
           <motion.div variants={fadeUp(16, 0.65)}>
             <motion.a
@@ -633,66 +645,14 @@ function Lookbook() {
               whileTap={{ scale: 0.96 }}
               transition={{ duration: 0.25 }}
             >
-              Comprar el look{" "}
+              Ver Artículos{" "}
               <ArrowRight className="size-4" strokeWidth={1.5} />
             </motion.a>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Editorial second row: scroll horizontal en móvil, grid en md+ */}
-      <div className="mt-6 md:container-x">
-        <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-3 gap-4 lg:gap-8 pb-4 -mx-0 px-6 md:px-0 md:mx-0 scrollbar-none container-x md:container-x-0">
-        {[
-          {
-            label: "Sala de estar",
-            desc: "Naturaleza que envuelve",
-            img: catIndoor,
-            span: "md:col-span-2",
-            aspect: "aspect-[4/3] sm:aspect-[16/9]",
-            mobileW: "w-[80vw] shrink-0 snap-center snap-always",
-          },
-          {
-            label: "Terrazas",
-            desc: "Exterior vivo",
-            img: catGarden,
-            span: "",
-            aspect: "aspect-[4/3] sm:aspect-[4/5]",
-            mobileW: "w-[72vw] shrink-0 snap-center snap-always",
-          },
-        ].map((item, i) => (
-          <motion.a
-            key={item.label}
-            href="#"
-            className={`group block ${item.span} ${item.mobileW} md:w-auto`}
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: easeOutQuint, delay: i * 0.12 }}
-          >
-            <div className={`relative ${item.aspect} overflow-hidden bg-secondary rounded-[20px] shadow-sm`}>
-              <motion.img
-                src={item.img}
-                alt={item.label}
-                width={1024}
-                height={768}
-                loading="lazy"
-                decoding="async"
-                className="size-full object-cover rounded-[20px]"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 1.2, ease: easeOutQuint }}
-              />
-            </div>
-            <div className="pt-3 flex justify-between items-baseline">
-              <h3 className="font-display text-xl group-hover:text-forest transition-colors duration-300 font-bold">
-                {item.label}
-              </h3>
-              <span className="text-xs text-muted-foreground font-medium">{item.desc}</span>
-            </div>
-          </motion.a>
-        ))}
-      </div>
-      </div>
+
     </section>
   );
 }
@@ -724,9 +684,31 @@ const benefitItems = [
 
 function Benefits() {
   return (
-    <section className="container-x mt-24 lg:mt-32">
+    <section className="container-x mt-20 lg:mt-32">
+      {/* Mobile Carousel */}
+      <MobileCarousel className="-mx-6 px-6 py-6">
+        {benefitItems.map((b) => (
+          <div key={b.title} className="h-full">
+            <Link to={b.href} className="bg-[#f9f9fb] border border-[#e9e9e9] p-4 rounded-[16px] flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
+              <div className="size-12 rounded-full bg-[#86895d]/10 flex items-center justify-center shrink-0">
+                <b.icon className="size-5 text-[#86895d]" strokeWidth={1.5} />
+              </div>
+              <div>
+                <h3 className="font-display text-base font-bold text-[#272831]">
+                  {b.title}
+                </h3>
+                <p className="text-[12px] text-muted-foreground leading-snug mt-1">
+                  {b.body}
+                </p>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </MobileCarousel>
+
+      {/* Desktop Grid */}
       <motion.div
-        className="py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+        className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 py-6"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
@@ -738,7 +720,7 @@ function Benefits() {
             variants={fadeUp(24, 0.65)}
             className="group"
           >
-            <Link to={b.href} className="bg-[#f9f9fb] border border-[#e9e9e9] p-8 rounded-[20px] flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
+            <Link to={b.href} className="bg-[#f9f9fb] border border-[#e9e9e9] p-6 lg:p-8 rounded-[20px] flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow duration-300 h-full">
               <motion.div 
                 className="size-12 rounded-full bg-[#86895d]/10 flex items-center justify-center shrink-0 group-hover:bg-[#86895d]/20 transition-colors"
                 variants={scaleUp(0.7, 0.5)}

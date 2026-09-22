@@ -5,33 +5,19 @@ import { staggerContainer, fadeUp, easeOutQuint } from "@/lib/motion";
 
 const cols = [
   {
-    title: "Comprar",
+    title: "Servicios",
     links: [
-      { label: "Plantas de interior", href: "/tienda" },
-      { label: "Plantas pet friendly", href: "/tienda" },
-      { label: "Maceteros", href: "/tienda" },
-      { label: "Jardinería", href: "/tienda" },
-      { label: "Regalos verdes", href: "/tienda" },
+      { label: "Corte y Poda", href: "/servicios" },
+      { label: "Áreas Verdes", href: "/servicios" },
+      { label: "Control Fitosanitario", href: "/servicios" },
     ],
   },
   {
-    title: "Ayuda",
+    title: "Nosotros",
     links: [
-      { label: "Envíos y entregas", href: "/envio-cuidado" },
-      { label: "Devoluciones", href: "/devoluciones" },
-      { label: "Guía de cuidado", href: "/guia-de-cuidado" },
-      { label: "Preguntas frecuentes", href: "/faq" },
-      { label: "Contáctanos", href: "/contacto" },
-    ],
-  },
-  {
-    title: "Bascharant",
-    links: [
-      { label: "Sobre nosotros", href: "/sobre-nosotros" },
-      { label: "Sostenibilidad", href: "/cultivo-responsable" },
-      { label: "Programa de fidelidad", href: "/programa-fidelidad" },
-      { label: "Tiendas", href: "/tiendas" },
-      { label: "Trabaja con nosotros", href: "/trabaja-con-nosotros" },
+      { label: "Sobre Bascharant", href: "/sobre-nosotros" },
+      { label: "Zonas de atención", href: "/sobre-nosotros" },
+      { label: "Contáctanos", href: "/#contacto" },
     ],
   },
 ];
@@ -39,61 +25,7 @@ const cols = [
 export function Footer() {
   return (
     <footer className="mt-32 border-t border-border">
-      {/* ── Mega top band ── */}
-      <div className="bg-charcoal text-bone overflow-hidden">
-        <div className="container-x py-20 lg:py-28 grid lg:grid-cols-2 gap-10 items-end">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
-            variants={staggerContainer(0.12, 0.05)}
-          >
-            <motion.p
-              variants={fadeUp(16, 0.6)}
-              className="eyebrow text-bone/50 mb-5"
-            >
-              Venta de Plantas · Chile
-            </motion.p>
-            <motion.h2
-              variants={fadeUp(28, 0.85)}
-              className="font-display text-[clamp(2.8rem,6vw,5rem)] leading-[1.02]"
-            >
-              Vivir con{" "}
-              <span className="italic">plantas</span>
-              <br />
-              es vivir mejor.
-            </motion.h2>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.8, ease: easeOutQuint }}
-            className="lg:text-right"
-          >
-            <p className="text-sm text-bone/60 max-w-xs lg:ml-auto leading-relaxed mb-8">
-              Plantas seleccionadas, maceteros y todo lo necesario
-              para cultivar un hogar más sereno.
-            </p>
-            <form className="flex border-b border-bone/30 focus-within:border-bone transition max-w-sm lg:ml-auto">
-              <input
-                type="email"
-                required
-                placeholder="Tu correo"
-                aria-label="Correo electrónico"
-                className="flex-1 bg-transparent py-3 text-sm outline-none placeholder:text-bone/40 text-bone"
-              />
-              <button
-                type="submit"
-                className="text-xs tracking-[0.2em] uppercase py-3 px-2 text-bone/70 hover:text-bone transition flex items-center gap-2"
-              >
-                Suscribir <ArrowRight className="size-3.5" strokeWidth={1.5} />
-              </button>
-            </form>
-          </motion.div>
-        </div>
-      </div>
 
       {/* ── Links grid ── */}
       <div className="bg-bone">
