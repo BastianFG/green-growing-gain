@@ -130,8 +130,7 @@ function RootComponent() {
       <ScrollRestoration />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      {/* Alert for development mode */}
-      <DevelopmentAlert />
+      {/* Alert for development mode (Removed) */}
       {/* WhatsApp circular: hidden on mobile, replaced by MobileStickyBar */}
       <WhatsAppButton />
       {/* Mobile-only sticky CTA bar (hidden on sm+) */}
