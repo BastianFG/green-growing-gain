@@ -598,10 +598,10 @@ function Lookbook() {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section id="lookbook" ref={sectionRef} className="mt-24 lg:mt-32 relative">
-      <div className="relative min-h-[50vh] lg:min-h-[65vh] overflow-hidden rounded-[20px] shadow-sm">
+    <section id="lookbook" ref={sectionRef} className="mt-24 lg:mt-32 mb-24 lg:mb-32 relative container-x">
+      <div className="relative min-h-[50vh] lg:min-h-[65vh] overflow-hidden rounded-[40px] sm:rounded-[80px] lg:rounded-[140px] shadow-sm">
         {/* Parallax image */}
-        <motion.div className="absolute inset-0 rounded-[20px]" style={{ y: imageY }}>
+        <motion.div className="absolute inset-0 rounded-[40px] sm:rounded-[80px] lg:rounded-[140px]" style={{ y: imageY }}>
           <img
             src={lookbook1}
             alt="Salón con Monstera, Ficus y suculentas sobre mesa de madera"
@@ -609,7 +609,7 @@ function Lookbook() {
             height={1080}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover rounded-[20px]"
+            className="w-full h-full object-cover rounded-[40px] sm:rounded-[80px] lg:rounded-[140px]"
             style={{ minHeight: "110%" }}
           />
         </motion.div>
