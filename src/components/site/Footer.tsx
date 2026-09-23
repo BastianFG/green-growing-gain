@@ -20,6 +20,13 @@ const cols = [
       { label: "Contáctanos", href: "/#contacto" },
     ],
   },
+  {
+    title: "Contacto",
+    links: [
+      { label: "paisajismo@bascharant.com", href: "mailto:paisajismo@bascharant.com" },
+      { label: "+56 8845 8216", href: "tel:+5688458216" },
+    ],
+  },
 ];
 
 export function Footer() {

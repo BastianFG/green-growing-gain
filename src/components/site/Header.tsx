@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Search, ShoppingBag, Heart, Menu } from "lucide-react";
+import { Search, ShoppingBag, Heart, Menu, Phone } from "lucide-react";
 import { getCart } from "@/lib/cart";
 import { AnnouncementBar } from "./AnnouncementBar";
 import { MobileMenu } from "./MobileMenu";
@@ -120,6 +120,26 @@ export function Header() {
 
           {/* Action icons */}
           <div className="flex items-center gap-1 lg:gap-2">
+            <motion.a
+              href="tel:+5688458216"
+              aria-label="Llamar directo al +5688458216"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 mr-1 lg:mr-2 rounded-full bg-forest text-white hover:bg-forest/90 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Phone className="size-3.5" strokeWidth={2} />
+              <span className="text-xs font-medium tracking-wide">+5688458216</span>
+            </motion.a>
+            <motion.a
+              href="tel:+5688458216"
+              aria-label="Llamar directo"
+              className="sm:hidden p-2"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
+            >
+              <Phone className="size-[18px]" strokeWidth={1.5} />
+            </motion.a>
+
             <motion.button
               aria-label="Buscar"
               className="p-2"
