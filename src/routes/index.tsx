@@ -155,9 +155,9 @@ function Hero() {
         {/* Gradient overlay for mobile text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/10 lg:hidden pointer-events-none" />
 
-        {/* Image caption badge */}
+        {/* Image caption badge - DESKTOP ONLY */}
         <motion.div
-          className="absolute top-32 right-6 lg:top-auto lg:bottom-6 glass px-5 py-4 text-xs max-w-[240px] rounded-[15px] shadow-lg"
+          className="hidden lg:block absolute bottom-6 right-auto left-6 glass px-5 py-4 text-xs max-w-[240px] rounded-[15px] shadow-lg"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easeOutQuint, delay: 0.6 }}
@@ -173,15 +173,28 @@ function Hero() {
         className="relative z-10 lg:order-1 flex flex-col justify-end lg:justify-center container-x pb-20 pt-48 lg:py-0 min-h-[92vh] lg:min-h-0"
       >
         <div className="max-w-xl">
-          {/* Eyebrow */}
+          {/* Mobile small badge: Paisajismo */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: easeOutQuint, delay: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#86895d]/10 border border-[#86895d]/20 mb-4 text-[#86895d] backdrop-blur-sm"
+            className="lg:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-border mb-3 shadow-sm"
+          >
+            <span className="font-display italic font-semibold text-[11px]">Paisajismo</span>
+            <span className="text-muted-foreground text-[10px]">Casas y Parcelas</span>
+          </motion.div>
+
+          <br className="lg:hidden" />
+
+          {/* Eyebrow */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: easeOutQuint, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#86895d] border border-[#86895d] mb-4 text-white shadow-md shadow-[#86895d]/20"
           >
             <ShieldCheck className="size-4" />
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Temporada de Primavera · Especialistas</span>
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase drop-shadow-sm">Temporada de Primavera · Especialistas</span>
           </motion.div>
 
           {/* H1 */}
