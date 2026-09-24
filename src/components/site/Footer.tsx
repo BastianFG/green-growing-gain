@@ -24,7 +24,7 @@ const cols = [
     title: "Contacto",
     links: [
       { label: "paisajismo@bascharant.com", href: "mailto:paisajismo@bascharant.com" },
-      { label: "+56 8845 8216", href: "tel:+5688458216" },
+      { label: "+56 9 8845 8216", href: "tel:+56988458216" },
     ],
   },
 ];
