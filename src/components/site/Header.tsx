@@ -123,7 +123,7 @@ export function Header() {
             <motion.a
               href="tel:+56988458216"
               aria-label="Llamar directo al +56988458216"
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 mr-1 lg:mr-2 rounded-full bg-forest text-white hover:bg-forest/90 transition-colors"
+              className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 mr-1 lg:mr-2 rounded-full bg-forest text-white hover:bg-forest/90 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -133,7 +133,7 @@ export function Header() {
             <motion.a
               href="tel:+56988458216"
               aria-label="Llamar directo"
-              className="sm:hidden p-2"
+              className="lg:hidden p-2"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.92 }}
             >
