@@ -19,13 +19,14 @@ export const Route = createFileRoute("/servicios")({
   head: () => ({
     meta: [
       {
-        title: "Servicios de Paisajismo en Frutillar — Bascharant Home",
+        title: "Servicios de Paisajismo, Corte y Poda en Frutillar — Bascharant Home",
       },
       {
         name: "description",
         content:
-          "Mantención de áreas verdes, diseño de parcelas y paisajismo premium en Santiago, Región de Los Lagos y Zapallar. Respaldado por Bascharant Empresas.",
+          "Expertos en mantención de áreas verdes, corte y poda de árboles, y control fitosanitario para tu hogar o parcela en la Región de Los Lagos y Santiago.",
       },
+      { name: "keywords", content: "mantención de jardines, corte y poda, control fitosanitario, paisajismo parcelas, cuidado de áreas verdes" },
     ],
   }),
   component: Servicios,
@@ -84,20 +85,20 @@ function HeroServices() {
           className="eyebrow text-bone/80 mb-4"
           variants={fadeUp(20, 0.7)}
         >
-          Servicios Profesionales
+          Servicios para tu Hogar y Parcela
         </motion.p>
         <motion.h1
           className="font-display text-5xl md:text-6xl lg:text-7xl text-white tracking-tight leading-[1.1]"
           variants={fadeUp(30, 0.8)}
         >
-          Tu entorno natural en el Sur, <br/>
+          El jardín de tus sueños, <br/>
           <span className="italic font-serif text-[#86895d]">cuidado por expertos.</span>
         </motion.h1>
         <motion.p
           className="mt-6 text-lg text-bone/90 max-w-2xl mx-auto leading-relaxed"
           variants={fadeUp(20, 0.8)}
         >
-          Ofrecemos diseño de parcelas, instalación de riego automatizado y mantención de áreas verdes en Santiago, Región de Los Lagos y Zapallar. Toda la capacidad operativa y logística de Bascharant Empresas, ahora dedicada a tu hogar.
+          Desde el corte de pasto y la poda de tus árboles, hasta tratamientos para mantener tus plantas sanas. Nos encargamos de todo el trabajo pesado para que tú y tu familia solo disfruten de su parcela.
         </motion.p>
       </motion.div>
     </section>
@@ -137,15 +138,15 @@ function ServicesDetail() {
             <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-[#86895d]/10 mb-4">
               <Leaf className="size-6 text-[#86895d]" />
             </div>
-            <h3 className="font-display text-3xl font-bold">Diseño de Parcelas y Riego</h3>
+            <h3 className="font-display text-3xl font-bold">Corte y Poda de Árboles</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Planificamos tu terreno aprovechando las condiciones climáticas del sur de Chile. Desde la selección de especies nativas hasta la instalación de sistemas de riego automatizado y paisajismo vial privado, garantizamos proyectos de alta gama con terminaciones impecables.
+              Mantén tus árboles seguros y frondosos. Retiramos ramas secas o peligrosas y damos forma a tus arbustos para que tu hogar luzca siempre ordenado y reciba más luz natural.
             </p>
             <ul className="mt-4 space-y-2">
               {[
-                "Diseño arquitectónico del paisaje y planimetría",
-                "Instalación de riego tecnificado y automatizado",
-                "Construcción de jardines y movimiento de tierras",
+                "Poda de formación y limpieza de árboles",
+                "Rebaje y perfilado de cercos vivos",
+                "Despeje de áreas y retiro de restos vegetales",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-charcoal/80">
                   <div className="mt-1 size-1.5 rounded-full bg-[#86895d] shrink-0" />
@@ -187,17 +188,16 @@ function ServicesDetail() {
             <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-[#86895d]/10 mb-4">
               <Sprout className="size-6 text-[#86895d]" />
             </div>
-            <h3 className="font-display text-3xl font-bold">Mantención de Áreas Verdes</h3>
+            <h3 className="font-display text-3xl font-bold">Mantención y Control Fitosanitario</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Un entorno amplio y verde requiere cuidado constante y maquinaria profesional. Ofrecemos planes de mantención para parcelas y residencias en Santiago, Región de Los Lagos y Zapallar, apoyados por nuestro equipo técnico y vehículos de traslado corporativo.
+              Nos hacemos cargo de que tu jardín esté verde y libre de plagas todo el año. Desde el corte de pasto frecuente hasta tratamientos seguros para eliminar hongos e insectos que dañan tus plantas.
             </p>
             <ul className="mt-4 space-y-2">
               {[
-                "Corte de pasto de grandes extensiones y orillado",
-                "Poda estética, sanitaria y manejo de especies mayores",
-                "Fertilización programada y control fitosanitario",
-                "Revisión y ajuste de riego tecnificado",
-                "Garantía verde: reemplazo sin costo de plantas bajo nuestro cuidado mensual",
+                "Corte de pasto, orillado y control de malezas",
+                "Fumigación y tratamientos preventivos seguros para tu familia",
+                "Nutrición y fertilización de áreas verdes",
+                "Ajuste y mantención de tu sistema de riego",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-charcoal/80">
                   <div className="mt-1 size-1.5 rounded-full bg-[#86895d] shrink-0" />
@@ -335,9 +335,9 @@ export function ContactFormSection() {
                   >
                     <option value="" disabled>Selecciona un servicio</option>
                     <option value="Mantención de Áreas Verdes">Mantención de Áreas Verdes</option>
-                    <option value="Diseño de Parcelas">Diseño de Parcelas</option>
-                    <option value="Paisajismo">Paisajismo</option>
-                    <option value="Riego Tecnificado">Riego Tecnificado</option>
+                    <option value="Corte y Poda">Corte y Poda de Árboles</option>
+                    <option value="Control Fitosanitario">Control Fitosanitario (Plagas)</option>
+                    <option value="Paisajismo / Otro">Diseño de Jardines / Otro</option>
                   </select>
                 </div>
               </div>

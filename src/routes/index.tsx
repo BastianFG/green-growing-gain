@@ -314,9 +314,9 @@ function MarqueeStrip() {
 // SERVICES (Replaced Categories)
 // ─────────────────────────────────────────────
 const servicesList = [
-  { label: "Corte y Poda", img: srvCortePoda, desc: "Corte de césped y poda de formación", href: "/servicios" },
-  { label: "Áreas Verdes", img: srvAreasVerdes, desc: "Asesoría y creación de espacios", href: "/servicios" },
-  { label: "Fitosanitario", img: srvFitosanitario, desc: "Control fitosanitario preventivo", href: "/servicios" },
+  { label: "Corte y Poda", img: srvCortePoda, desc: "Corte de césped y poda de formación", href: "/corte-y-poda-de-arboles" },
+  { label: "Áreas Verdes", img: srvAreasVerdes, desc: "Asesoría y creación de espacios", href: "/mantencion-de-areas-verdes" },
+  { label: "Fitosanitario", img: srvFitosanitario, desc: "Control fitosanitario preventivo", href: "/control-fitosanitario" },
 ];
 
 function MobileCarousel({ children, className = "" }: { children: React.ReactNode; className?: string }) {

@@ -16,12 +16,15 @@ import { Route as SobreNosotrosRouteImport } from './routes/sobre-nosotros'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServiciosRouteImport } from './routes/servicios'
 import { Route as ProgramaFidelidadRouteImport } from './routes/programa-fidelidad'
+import { Route as MantencionDeAreasVerdesRouteImport } from './routes/mantencion-de-areas-verdes'
 import { Route as GuiaDeCuidadoRouteImport } from './routes/guia-de-cuidado'
 import { Route as GarantiaVerdeRouteImport } from './routes/garantia-verde'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as EnvioCuidadoRouteImport } from './routes/envio-cuidado'
 import { Route as DevolucionesRouteImport } from './routes/devoluciones'
 import { Route as CultivoResponsableRouteImport } from './routes/cultivo-responsable'
+import { Route as CorteYPodaDeArbolesRouteImport } from './routes/corte-y-poda-de-arboles'
+import { Route as ControlFitosanitarioRouteImport } from './routes/control-fitosanitario'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CarritoRouteImport } from './routes/carrito'
@@ -64,6 +67,11 @@ const ProgramaFidelidadRoute = ProgramaFidelidadRouteImport.update({
   path: '/programa-fidelidad',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MantencionDeAreasVerdesRoute = MantencionDeAreasVerdesRouteImport.update({
+  id: '/mantencion-de-areas-verdes',
+  path: '/mantencion-de-areas-verdes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuiaDeCuidadoRoute = GuiaDeCuidadoRouteImport.update({
   id: '/guia-de-cuidado',
   path: '/guia-de-cuidado',
@@ -92,6 +100,16 @@ const DevolucionesRoute = DevolucionesRouteImport.update({
 const CultivoResponsableRoute = CultivoResponsableRouteImport.update({
   id: '/cultivo-responsable',
   path: '/cultivo-responsable',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorteYPodaDeArbolesRoute = CorteYPodaDeArbolesRouteImport.update({
+  id: '/corte-y-poda-de-arboles',
+  path: '/corte-y-poda-de-arboles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ControlFitosanitarioRoute = ControlFitosanitarioRouteImport.update({
+  id: '/control-fitosanitario',
+  path: '/control-fitosanitario',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactoRoute = ContactoRouteImport.update({
@@ -131,12 +149,15 @@ export interface FileRoutesByFullPath {
   '/carrito': typeof CarritoRoute
   '/checkout': typeof CheckoutRoute
   '/contacto': typeof ContactoRoute
+  '/control-fitosanitario': typeof ControlFitosanitarioRoute
+  '/corte-y-poda-de-arboles': typeof CorteYPodaDeArbolesRoute
   '/cultivo-responsable': typeof CultivoResponsableRoute
   '/devoluciones': typeof DevolucionesRoute
   '/envio-cuidado': typeof EnvioCuidadoRoute
   '/faq': typeof FaqRoute
   '/garantia-verde': typeof GarantiaVerdeRoute
   '/guia-de-cuidado': typeof GuiaDeCuidadoRoute
+  '/mantencion-de-areas-verdes': typeof MantencionDeAreasVerdesRoute
   '/programa-fidelidad': typeof ProgramaFidelidadRoute
   '/servicios': typeof ServiciosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -152,12 +173,15 @@ export interface FileRoutesByTo {
   '/carrito': typeof CarritoRoute
   '/checkout': typeof CheckoutRoute
   '/contacto': typeof ContactoRoute
+  '/control-fitosanitario': typeof ControlFitosanitarioRoute
+  '/corte-y-poda-de-arboles': typeof CorteYPodaDeArbolesRoute
   '/cultivo-responsable': typeof CultivoResponsableRoute
   '/devoluciones': typeof DevolucionesRoute
   '/envio-cuidado': typeof EnvioCuidadoRoute
   '/faq': typeof FaqRoute
   '/garantia-verde': typeof GarantiaVerdeRoute
   '/guia-de-cuidado': typeof GuiaDeCuidadoRoute
+  '/mantencion-de-areas-verdes': typeof MantencionDeAreasVerdesRoute
   '/programa-fidelidad': typeof ProgramaFidelidadRoute
   '/servicios': typeof ServiciosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -174,12 +198,15 @@ export interface FileRoutesById {
   '/carrito': typeof CarritoRoute
   '/checkout': typeof CheckoutRoute
   '/contacto': typeof ContactoRoute
+  '/control-fitosanitario': typeof ControlFitosanitarioRoute
+  '/corte-y-poda-de-arboles': typeof CorteYPodaDeArbolesRoute
   '/cultivo-responsable': typeof CultivoResponsableRoute
   '/devoluciones': typeof DevolucionesRoute
   '/envio-cuidado': typeof EnvioCuidadoRoute
   '/faq': typeof FaqRoute
   '/garantia-verde': typeof GarantiaVerdeRoute
   '/guia-de-cuidado': typeof GuiaDeCuidadoRoute
+  '/mantencion-de-areas-verdes': typeof MantencionDeAreasVerdesRoute
   '/programa-fidelidad': typeof ProgramaFidelidadRoute
   '/servicios': typeof ServiciosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -197,12 +224,15 @@ export interface FileRouteTypes {
     | '/carrito'
     | '/checkout'
     | '/contacto'
+    | '/control-fitosanitario'
+    | '/corte-y-poda-de-arboles'
     | '/cultivo-responsable'
     | '/devoluciones'
     | '/envio-cuidado'
     | '/faq'
     | '/garantia-verde'
     | '/guia-de-cuidado'
+    | '/mantencion-de-areas-verdes'
     | '/programa-fidelidad'
     | '/servicios'
     | '/sitemap.xml'
@@ -218,12 +248,15 @@ export interface FileRouteTypes {
     | '/carrito'
     | '/checkout'
     | '/contacto'
+    | '/control-fitosanitario'
+    | '/corte-y-poda-de-arboles'
     | '/cultivo-responsable'
     | '/devoluciones'
     | '/envio-cuidado'
     | '/faq'
     | '/garantia-verde'
     | '/guia-de-cuidado'
+    | '/mantencion-de-areas-verdes'
     | '/programa-fidelidad'
     | '/servicios'
     | '/sitemap.xml'
@@ -239,12 +272,15 @@ export interface FileRouteTypes {
     | '/carrito'
     | '/checkout'
     | '/contacto'
+    | '/control-fitosanitario'
+    | '/corte-y-poda-de-arboles'
     | '/cultivo-responsable'
     | '/devoluciones'
     | '/envio-cuidado'
     | '/faq'
     | '/garantia-verde'
     | '/guia-de-cuidado'
+    | '/mantencion-de-areas-verdes'
     | '/programa-fidelidad'
     | '/servicios'
     | '/sitemap.xml'
@@ -261,12 +297,15 @@ export interface RootRouteChildren {
   CarritoRoute: typeof CarritoRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactoRoute: typeof ContactoRoute
+  ControlFitosanitarioRoute: typeof ControlFitosanitarioRoute
+  CorteYPodaDeArbolesRoute: typeof CorteYPodaDeArbolesRoute
   CultivoResponsableRoute: typeof CultivoResponsableRoute
   DevolucionesRoute: typeof DevolucionesRoute
   EnvioCuidadoRoute: typeof EnvioCuidadoRoute
   FaqRoute: typeof FaqRoute
   GarantiaVerdeRoute: typeof GarantiaVerdeRoute
   GuiaDeCuidadoRoute: typeof GuiaDeCuidadoRoute
+  MantencionDeAreasVerdesRoute: typeof MantencionDeAreasVerdesRoute
   ProgramaFidelidadRoute: typeof ProgramaFidelidadRoute
   ServiciosRoute: typeof ServiciosRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -328,6 +367,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramaFidelidadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mantencion-de-areas-verdes': {
+      id: '/mantencion-de-areas-verdes'
+      path: '/mantencion-de-areas-verdes'
+      fullPath: '/mantencion-de-areas-verdes'
+      preLoaderRoute: typeof MantencionDeAreasVerdesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guia-de-cuidado': {
       id: '/guia-de-cuidado'
       path: '/guia-de-cuidado'
@@ -368,6 +414,20 @@ declare module '@tanstack/react-router' {
       path: '/cultivo-responsable'
       fullPath: '/cultivo-responsable'
       preLoaderRoute: typeof CultivoResponsableRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corte-y-poda-de-arboles': {
+      id: '/corte-y-poda-de-arboles'
+      path: '/corte-y-poda-de-arboles'
+      fullPath: '/corte-y-poda-de-arboles'
+      preLoaderRoute: typeof CorteYPodaDeArbolesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/control-fitosanitario': {
+      id: '/control-fitosanitario'
+      path: '/control-fitosanitario'
+      fullPath: '/control-fitosanitario'
+      preLoaderRoute: typeof ControlFitosanitarioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contacto': {
@@ -421,12 +481,15 @@ const rootRouteChildren: RootRouteChildren = {
   CarritoRoute: CarritoRoute,
   CheckoutRoute: CheckoutRoute,
   ContactoRoute: ContactoRoute,
+  ControlFitosanitarioRoute: ControlFitosanitarioRoute,
+  CorteYPodaDeArbolesRoute: CorteYPodaDeArbolesRoute,
   CultivoResponsableRoute: CultivoResponsableRoute,
   DevolucionesRoute: DevolucionesRoute,
   EnvioCuidadoRoute: EnvioCuidadoRoute,
   FaqRoute: FaqRoute,
   GarantiaVerdeRoute: GarantiaVerdeRoute,
   GuiaDeCuidadoRoute: GuiaDeCuidadoRoute,
+  MantencionDeAreasVerdesRoute: MantencionDeAreasVerdesRoute,
   ProgramaFidelidadRoute: ProgramaFidelidadRoute,
   ServiciosRoute: ServiciosRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

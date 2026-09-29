@@ -15,6 +15,9 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", priority: "1.0", changefreq: "weekly", lastmod: today },
           { path: "/tienda", priority: "0.9", changefreq: "daily", lastmod: today },
           { path: "/servicios", priority: "0.9", changefreq: "weekly", lastmod: today },
+          { path: "/corte-y-poda-de-arboles", priority: "0.8", changefreq: "weekly", lastmod: today },
+          { path: "/mantencion-de-areas-verdes", priority: "0.8", changefreq: "weekly", lastmod: today },
+          { path: "/control-fitosanitario", priority: "0.8", changefreq: "weekly", lastmod: today },
           ...shopifyProducts.map((p) => ({ path: `/producto/${p.slug}`, priority: "0.8", changefreq: "weekly", lastmod: today })),
         ];
 

@@ -7,9 +7,9 @@ const cols = [
   {
     title: "Servicios",
     links: [
-      { label: "Corte y Poda", href: "/servicios" },
-      { label: "Áreas Verdes", href: "/servicios" },
-      { label: "Control Fitosanitario", href: "/servicios" },
+      { label: "Corte y Poda", href: "/corte-y-poda-de-arboles" },
+      { label: "Áreas Verdes", href: "/mantencion-de-areas-verdes" },
+      { label: "Control Fitosanitario", href: "/control-fitosanitario" },
     ],
   },
   {
