@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import areasVerdesImg from "@/assets/creacion_areas_verdes.jpg";
+import videoAreasVerdes from "@/assets/Video Project 8.mp4";
 import { CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/mantencion-de-areas-verdes")({
@@ -71,7 +71,14 @@ function AreasVerdesPage() {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl order-1 lg:order-2">
-              <img src={areasVerdesImg} alt="Mantención de áreas verdes y jardines en parcelas" className="w-full h-full object-cover aspect-video lg:aspect-square" />
+              <video 
+                src={videoAreasVerdes} 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+                className="w-full h-full object-cover aspect-video lg:aspect-square" 
+              />
             </div>
           </div>
         </section>

@@ -17,9 +17,11 @@ import heroVideo from "@/assets/IndexPortada.mp4";
 import catPots from "@/assets/cat-pots.jpg";
 import catIndoor from "@/assets/cat-indoor.jpg";
 import catGarden from "@/assets/cat-garden.jpg";
-import srvCortePoda from "@/assets/corte_y_poda.jpg";
+import srvCortePoda from "@/assets/Imagen Project 7.jpeg";
 import srvAreasVerdes from "@/assets/creacion_areas_verdes.jpg";
 import srvFitosanitario from "@/assets/control_fitosanitario.jpg";
+import videoCortePoda from "@/assets/Video Project 7.mp4";
+import videoAreasVerdes from "@/assets/Video Project 8.mp4";
 import lookbook1 from "@/assets/lookbook-1.jpg";
 import {
   ArrowRight,
@@ -314,8 +316,8 @@ function MarqueeStrip() {
 // SERVICES (Replaced Categories)
 // ─────────────────────────────────────────────
 const servicesList = [
-  { label: "Corte y Poda", img: srvCortePoda, desc: "Corte de césped y poda de formación", href: "/corte-y-poda-de-arboles" },
-  { label: "Áreas Verdes", img: srvAreasVerdes, desc: "Asesoría y creación de espacios", href: "/mantencion-de-areas-verdes" },
+  { label: "Corte y Poda", img: srvCortePoda, video: videoCortePoda, desc: "Corte de césped y poda de formación", href: "/corte-y-poda-de-arboles" },
+  { label: "Áreas Verdes", video: videoAreasVerdes, desc: "Asesoría y creación de espacios", href: "/mantencion-de-areas-verdes" },
   { label: "Fitosanitario", img: srvFitosanitario, desc: "Control fitosanitario preventivo", href: "/control-fitosanitario" },
 ];
 
@@ -372,11 +374,42 @@ function Services() {
       <MobileCarousel className="-mx-6 px-6 pb-4">
         {servicesList.map((s) => (
           <div key={s.label} className="group block h-full">
-            <Link to={s.href} className="block h-full">
+            <Link 
+              to={s.href} 
+              className="block h-full"
+              onMouseEnter={(e) => {
+                const video = e.currentTarget.querySelector('video');
+                if(video) video.play().catch(()=>{});
+              }}
+              onMouseLeave={(e) => {
+                const video = e.currentTarget.querySelector('video');
+                if(video) { video.pause(); video.currentTime = 0; }
+              }}
+              onTouchStart={(e) => {
+                const video = e.currentTarget.querySelector('video');
+                if(video) video.play().catch(()=>{});
+              }}
+              onTouchEnd={(e) => {
+                const video = e.currentTarget.querySelector('video');
+                if(video) { video.pause(); video.currentTime = 0; }
+              }}
+            >
               <div className="relative aspect-[4/3] overflow-hidden bg-secondary rounded-[20px] shadow-sm">
-                <img src={s.img} alt={s.label} loading="lazy" decoding="async" className="size-full object-cover rounded-[20px]" />
-                <div className="absolute inset-0 bg-[#272831] opacity-0" />
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent rounded-b-[20px] px-4 py-3">
+                {s.img && (
+                  <img src={s.img} alt={s.label} loading="lazy" decoding="async" className="size-full object-cover rounded-[20px]" />
+                )}
+                {s.video && (
+                  <video 
+                    src={`${s.video}#t=0.001`} 
+                    muted 
+                    loop 
+                    playsInline 
+                    preload="metadata"
+                    className={`absolute inset-0 size-full object-cover transition-opacity duration-500 rounded-[20px] pointer-events-none ${s.img ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
+                  />
+                )}
+                <div className="absolute inset-0 bg-[#272831] opacity-0 pointer-events-none" />
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent rounded-b-[20px] px-4 py-3 pointer-events-none">
                   <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-white">{s.label}</p>
                 </div>
               </div>
@@ -405,21 +438,26 @@ function Services() {
             className="group block"
             variants={fadeUp(40, 0.7)}
           >
-            <Link to={s.href} className="block">
+            <Link 
+              to={s.href} 
+              className="block"
+              onMouseEnter={(e) => {
+                const video = e.currentTarget.querySelector('video');
+                if(video) video.play().catch(()=>{});
+              }}
+              onMouseLeave={(e) => {
+                const video = e.currentTarget.querySelector('video');
+                if(video) { video.pause(); video.currentTime = 0; }
+              }}
+            >
               <motion.div
                 className="relative aspect-[3/4] overflow-hidden bg-secondary rounded-[20px] shadow-sm"
                 whileHover="hovered"
                 initial="idle"
               >
-                {/* Image */}
-                <motion.img
-                  src={s.img}
-                  alt={s.label}
-                  width={1024}
-                  height={1280}
-                  loading="lazy"
-                  decoding="async"
-                  className="size-full object-cover rounded-[20px]"
+                {/* Image & Video wrapper */}
+                <motion.div
+                  className="absolute inset-0 size-full pointer-events-none"
                   variants={{
                     idle: { scale: 1 },
                     hovered: {
@@ -427,11 +465,33 @@ function Services() {
                       transition: { duration: 1.4, ease: easeOutQuint },
                     },
                   }}
-                />
+                >
+                  {s.img && (
+                    <img
+                      src={s.img}
+                      alt={s.label}
+                      width={1024}
+                      height={1280}
+                      loading="lazy"
+                      decoding="async"
+                      className="size-full object-cover rounded-[20px]"
+                    />
+                  )}
+                  {s.video && (
+                    <video 
+                      src={`${s.video}#t=0.001`} 
+                      muted 
+                      loop 
+                      playsInline 
+                      preload="metadata"
+                      className={`absolute inset-0 size-full object-cover transition-opacity duration-500 rounded-[20px] ${s.img ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
+                    />
+                  )}
+                </motion.div>
 
                 {/* Hover dark overlay */}
                 <motion.div
-                  className="absolute inset-0 bg-[#272831]"
+                  className="absolute inset-0 bg-[#272831] pointer-events-none"
                   variants={{
                     idle: { opacity: 0 },
                     hovered: {
@@ -443,7 +503,7 @@ function Services() {
 
                 {/* Centered label on hover — desktop only */}
                 <motion.div
-                  className="flex absolute inset-0 items-center justify-center px-4"
+                  className="flex absolute inset-0 items-center justify-center px-4 pointer-events-none"
                   variants={{
                     idle: { opacity: 0, scale: 0.9 },
                     hovered: {

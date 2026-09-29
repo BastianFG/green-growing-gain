@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import corteYPodaImg from "@/assets/corte_y_poda.jpg";
+import videoCortePoda from "@/assets/Video Project 7.mp4";
 import { CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/corte-y-poda-de-arboles")({
@@ -36,7 +36,14 @@ function CorteYPodaPage() {
         <section className="py-20 container-x">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <img src={corteYPodaImg} alt="Corte y poda de árboles y arbustos" className="w-full h-full object-cover aspect-video lg:aspect-square" />
+              <video 
+                src={videoCortePoda} 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+                className="w-full h-full object-cover aspect-video lg:aspect-square" 
+              />
             </div>
             <div className="space-y-8">
               <div>
