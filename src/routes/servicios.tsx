@@ -381,11 +381,11 @@ export function ContactFormSection() {
                   id="documento"
                   name="documento"
                   className="w-full bg-[#86895d]/20 border border-[#86895d]/50 rounded-xl px-4 py-3 md:py-3.5 text-white focus:outline-none focus:border-white transition-all text-base appearance-none"
-                  defaultValue="No necesito / Particular"
+                  defaultValue=""
                 >
+                  <option value="" disabled>Selecciona una opción</option>
                   <option value="Boleta">Sí, necesito Boleta</option>
                   <option value="Factura">Sí, necesito Factura</option>
-                  <option value="No necesito / Particular">No necesito / Particular</option>
                 </select>
               </div>
 
